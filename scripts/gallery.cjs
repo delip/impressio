@@ -111,7 +111,8 @@ sheet.impress({ ...impressions.foil, ink: bronze(1) }, f => f.text('Aa', 312, 15
   f.text('Impressio', 210, 160, { font: '110px "Mrs Saint Delafield"', align: 'center' }));` },
     { id: 'forme-lines', title: 'Lines, measure, alignment', desc: '`\\n` starts a new line, `maxWidth` wraps to a measure, `align` and `lineHeight` set the block.', sheet: S("'cotton'"),
       code: R`sheet.impress('deep', f =>
-  f.text('Lock the type in the chase, plane it down, and pull a proof.', 400, 70,
+  f.text('Lock the type in the chase, ' +
+    'plane it down, and pull a proof.', 400, 70,
     { font: '500 30px "EB Garamond"', align: 'right', maxWidth: 380, lineHeight: 44 }));` },
     { id: 'forme-tracking', title: 'Letterspacing and underline', desc: '`tracking` adds space between letters; `underline` prints a rule beneath the line.', sheet: S("'cotton'"),
       code: R`sheet.impress('deep', f =>
@@ -126,19 +127,29 @@ sheet.impress({ ...impressions.foil, ink: bronze(1) }, f => f.text('Aa', 312, 15
   f.rule(40, 180, 340, 1.5); f.rule(40, 190, 340, 6);
 });` },
     { id: 'forme-path', title: 'Vector cuts', desc: '`path(d, { x, y, scale, stroke })` prints SVG path data or a `Path2D`, filled or stroked.', sheet: S("'cotton'"),
-      code: R`const heart = 'M0 -18 C-25 -50 -60 -10 0 40 C60 -10 25 -50 0 -18 Z';
+      code: R`const heart = 'M0 -18 C-25 -50 -60 -10 0 40 ' +
+  'C60 -10 25 -50 0 -18 Z';
 sheet.impress({ ...impressions.deep, ink: 'oxblood' }, f => f.path(heart, { x: 120, y: 118, scale: 1.8 }));
 sheet.impress('blind', f => f.path(heart, { x: 300, y: 118, scale: 1.8, stroke: 3 }));` },
     { id: 'forme-image', title: 'Image cuts', desc: '`image(source, x, y, w, h)` prints any image, canvas or bitmap; its alpha channel is the printing surface.', sheet: S("'cotton'"),
-      code: R`const cut = document.createElement('canvas'); cut.width = cut.height = 200;
+      code: R`const cut = document.createElement('canvas');
+cut.width = cut.height = 200;
 const c = cut.getContext('2d');
-for (let i = 0; i < 12; i++) { c.rotate(Math.PI / 6); c.fillRect(-4, 34, 8, 60); c.setTransform(1, 0, 0, 1, 100, 100); c.rotate((i + 1) * Math.PI / 6); }
-c.setTransform(1, 0, 0, 1, 100, 100); c.beginPath(); c.arc(0, 0, 26, 0, 7); c.fill();
+c.translate(100, 100);
+for (let i = 0; i < 12; i++) {
+  c.rotate(Math.PI / 6);
+  c.fillRect(-4, 34, 8, 60);
+}
+c.beginPath(); c.arc(0, 0, 26, 0, 7); c.fill();
 sheet.impress('deep', f => f.image(cut, 120, 30, 180, 180));` },
     { id: 'forme-ctx', title: 'Raw Canvas 2D', desc: '`f.ctx` is the real context, so any drawing code works. Colour is ignored; coverage is what prints.', sheet: S("'cotton'"),
       code: R`sheet.impress({ ...impressions.deep, ink: 'navy' }, f => {
   f.ctx.lineWidth = 3;
-  for (let r = 14; r < 100; r += 14) { f.ctx.beginPath(); f.ctx.arc(210, 120, r, 0, 7); f.ctx.stroke(); }
+  for (let r = 14; r < 100; r += 14) {
+    f.ctx.beginPath();
+    f.ctx.arc(210, 120, r, 0, 7);
+    f.ctx.stroke();
+  }
 });` },
     { id: 'forme-passes', title: 'Several passes', desc: 'Call `impress()` as often as you like: blind ornaments, a second colour, foil on top.', sheet: S("'cotton'"),
       code: R`sheet.impress('blind', f => { f.ctx.lineWidth = 3; f.ctx.strokeRect(22, 22, 376, 196); });
@@ -148,11 +159,17 @@ sheet.impress({ ...impressions.deep, depth: 1.2, ink: 'oxblood' }, f =>
   ] },
   { title: 'Mathematics', intro: 'LaTeX is typeset by MathJax\'s SVG output (or any engine given to `setTexEngine()`), and the outlines are printed.', items: [
     { id: 'tex-cut', title: '`typesetTex`', desc: 'One formula as a cut with a baseline. `f.cut(eq, x, baselineY, { align, scale })` places it.', sheet: S("'cottonWhite'"),
-      code: R`const eq = await typesetTex('\\hat{H}\\Psi = i\\hbar\\frac{\\partial}{\\partial t}\\Psi', { size: 44 });
+      code: R`const eq = await typesetTex(
+  '\\hat{H}\\Psi = i\\hbar' +
+  '\\frac{\\partial}{\\partial t}\\Psi',
+  { size: 44 });
 sheet.impress('deep', f => f.cut(eq, 210, 132, { align: 'center' }));` },
     { id: 'tex-rich', title: '`typesetRich`', desc: 'Running text with maths: `$…$` sits inline on the baseline and wraps with the text, `$$…$$` takes its own centred line, `\\$` is a dollar sign.', sheet: S("'cottonWhite'"),
       code: R`const block = await typesetRich(
-  'A circle of radius $r$ has area $A = \\pi r^{2}$. Summing the squares, $$\\sum_{n=1}^{\\infty} \\frac{1}{n^{2}} = \\frac{\\pi^{2}}{6}$$',
+  'A circle of radius $r$ has area ' +
+  '$A = \\pi r^{2}$. Summing the squares, ' +
+  '$$\\sum_{n=1}^{\\infty} \\frac{1}{n^{2}}' +
+  ' = \\frac{\\pi^{2}}{6}$$',
   { font: '500 21px "EB Garamond"', maxWidth: 360 });
 sheet.impress('deep', f => f.block(block, 30, 38));` },
   ] },
@@ -165,7 +182,7 @@ sheet.impress('deep', f => f.block(block, 30, 38));` },
   ] },
 ];
 
-const cardCss = `font: 400 19px/1.6 "EB Garamond", Georgia, serif; color: #1b1a19; padding: 44px 56px 48px; box-sizing: border-box;`;
+const cardCss = `font: 400 19px/1.6 'EB Garamond', Georgia, serif; color: #1b1a19; padding: 44px 56px 48px; box-sizing: border-box;`;
 const cardHtml = `<p style="font: 500 12px/1.4 'EB Garamond'; letter-spacing: .22em; text-transform: uppercase; margin: 0" data-ink="oxblood">Notice to the trade</p>
 <h3 style="font: italic 500 34px/1.1 'EB Garamond'; margin: 0 0 6px">On the making-ready of a forme</h3>
 <hr style="border: 0; height: 1.5px; margin: 18px 0">
@@ -178,6 +195,35 @@ const pageHtml = `<!doctype html><meta charset="utf-8">
 <script>window.MathJax = { svg: { fontCache: 'none' }, startup: { typeset: false } };</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
 <body style="margin:0"><div id="stage"></div>`;
+
+// Wrap long lines of displayed code at commas and arrows outside string literals, so the code
+// column stays narrow and the picture column keeps its width on GitHub.
+function wrap(code, max = 44) {
+  return code.split('\n').map((line) => {
+    if (line.length <= max) return line;
+    const indent = /^\s*/.exec(line)[0], parts = [];
+    let quote = null, cur = '';
+    for (let i = 0; i < line.length; i++) {
+      const ch = line[i];
+      cur += ch;
+      if (quote) { if (ch === quote && line[i - 1] !== '\\') quote = null; continue; }
+      if (ch === "'" || ch === '"' || ch === '`') { quote = ch; continue; }
+      if ((ch === ',' && line[i + 1] === ' ') || (ch === '>' && line[i - 1] === '=' && line[i + 1] === ' ')) { parts.push(cur); cur = ''; i++; }
+    }
+    parts.push(cur);
+    const out = [];
+    let row = '';
+    for (const part of parts) {
+      const piece = part.replace(/^\s+/, '');
+      if (!row) row = out.length ? indent + '  ' + piece : part;
+      else if ((row + ' ' + piece).length <= max) row += ' ' + piece;
+      else { out.push(row); row = indent + '  ' + piece; }
+    }
+    out.push(row);
+    return out.join('\n');
+  }).join('\n');
+}
+const pad = (n) => '&nbsp;'.repeat(n);
 
 (async () => {
   const outDir = path.join(root, 'docs', 'gallery');
@@ -219,10 +265,10 @@ const pageHtml = `<!doctype html><meta charset="utf-8">
   let md = `# Gallery\n\nEvery feature of Impressio, with the code that made each picture. The pictures are generated by \`scripts/gallery.cjs\`, which runs exactly the snippets shown here. Each snippet assumes:\n\n\`\`\`ts\nimport { createSheet, impressions, ink, typesetTex, typesetRich } from 'impressio';\n\`\`\`\n\n`;
   md += sections.map((s) => `- [${s.title}](#${s.title.toLowerCase().replace(/[^a-z ]/g, '').replace(/ /g, '-')})`).join('\n') + '\n- [Live DOM text](#live-dom-text)\n- [Also](#also)\n';
   for (const sec of sections) {
-    md += `\n## ${sec.title}\n\n${sec.intro}\n\n<table>\n<tr><th width="300">Print</th><th width="220">What it shows</th><th>Code</th></tr>\n`;
+    md += `\n## ${sec.title}\n\n${sec.intro}\n\n<table>\n<tr><th>Print<br>${pad(78)}</th><th>What it shows<br>${pad(40)}</th><th>Code</th></tr>\n`;
     for (const it of sec.items) {
       const code = `const sheet = createSheet(${it.sheet});\n${it.code}\nsheet.render(${it.light || ''});`;
-      md += `<tr>\n<td><img src="docs/gallery/${it.id}.webp" width="300" alt="${it.title.replace(/`/g, '')}"></td>\n<td>\n\n**${it.title}**\n\n${it.desc}\n\n</td>\n<td>\n\n\`\`\`ts\n${code}\n\`\`\`\n\n</td>\n</tr>\n`;
+      md += `<tr>\n<td><img src="docs/gallery/${it.id}.webp" width="300" alt="${it.title.replace(/`/g, '')}"></td>\n<td>\n\n**${it.title}**\n\n${it.desc}\n\n</td>\n<td>\n\n\`\`\`ts\n${wrap(code)}\n\`\`\`\n\n</td>\n</tr>\n`;
     }
     md += '</table>\n';
   }

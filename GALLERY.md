@@ -21,7 +21,7 @@ import { createSheet, impressions, ink, typesetTex, typesetRich } from 'impressi
 Pass a name, any CSS colour, or a (partial) `PaperSpec` as `paper`.
 
 <table>
-<tr><th width="300">Print</th><th width="220">What it shows</th><th>Code</th></tr>
+<tr><th>Print<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>What it shows<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>Code</th></tr>
 <tr>
 <td><img src="docs/gallery/paper-cotton.webp" width="300" alt="cotton"></td>
 <td>
@@ -34,8 +34,12 @@ Soft, toothy 100% cotton in a pearl white. The classic stock for a deep impressi
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cotton', seed: 7 });
-sheet.impress('deep', f => f.text('Impressio', 210, 146, { font: 'italic 500 88px "EB Garamond"', align: 'center' }));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cotton', seed: 7 });
+sheet.impress('deep', f =>
+  f.text('Impressio', 210, 146,
+  { font: 'italic 500 88px "EB Garamond"',
+  align: 'center' }));
 sheet.render();
 ```
 
@@ -53,8 +57,13 @@ The same cotton in bright white.
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cottonWhite', seed: 7 });
-sheet.impress('deep', f => f.text('Impressio', 210, 146, { font: 'italic 500 88px "EB Garamond"', align: 'center' }));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cottonWhite',
+  seed: 7 });
+sheet.impress('deep', f =>
+  f.text('Impressio', 210, 146,
+  { font: 'italic 500 88px "EB Garamond"',
+  align: 'center' }));
 sheet.render();
 ```
 
@@ -72,8 +81,13 @@ Warm grey cotton cover.
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cottonGrey', seed: 7 });
-sheet.impress('deep', f => f.text('Impressio', 210, 146, { font: 'italic 500 88px "EB Garamond"', align: 'center' }));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cottonGrey',
+  seed: 7 });
+sheet.impress('deep', f =>
+  f.text('Impressio', 210, 146,
+  { font: 'italic 500 88px "EB Garamond"',
+  align: 'center' }));
 sheet.render();
 ```
 
@@ -91,8 +105,12 @@ Dyed-through uncoated cover: firmer, with a finer tooth and a faint felt mark.
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cover', seed: 7 });
-sheet.impress('deep', f => f.text('Impressio', 210, 146, { font: 'italic 500 88px "EB Garamond"', align: 'center' }));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cover', seed: 7 });
+sheet.impress('deep', f =>
+  f.text('Impressio', 210, 146,
+  { font: 'italic 500 88px "EB Garamond"',
+  align: 'center' }));
 sheet.render();
 ```
 
@@ -110,8 +128,13 @@ Handmade rag: heavy tooth, felt marks, cockle, visible fibres and a deckle edge 
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'handmade', seed: 7 });
-sheet.impress('deep', f => f.text('Impressio', 210, 146, { font: 'italic 500 88px "EB Garamond"', align: 'center' }));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'handmade',
+  seed: 7 });
+sheet.impress('deep', f =>
+  f.text('Impressio', 210, 146,
+  { font: 'italic 500 88px "EB Garamond"',
+  align: 'center' }));
 sheet.render();
 ```
 
@@ -129,8 +152,13 @@ Smooth, hard poster cartridge. Takes little bite.
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cartridge', seed: 7 });
-sheet.impress('deep', f => f.text('Impressio', 210, 146, { font: 'italic 500 88px "EB Garamond"', align: 'center' }));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cartridge',
+  seed: 7 });
+sheet.impress('deep', f =>
+  f.text('Impressio', 210, 146,
+  { font: 'italic 500 88px "EB Garamond"',
+  align: 'center' }));
 sheet.render();
 ```
 
@@ -148,8 +176,12 @@ Ordinary 80 gsm printer paper: bright blue-white, nearly smooth, thin and hard.
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'a4', seed: 7 });
-sheet.impress('deep', f => f.text('Impressio', 210, 146, { font: 'italic 500 88px "EB Garamond"', align: 'center' }));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'a4', seed: 7 });
+sheet.impress('deep', f =>
+  f.text('Impressio', 210, 146,
+  { font: 'italic 500 88px "EB Garamond"',
+  align: 'center' }));
 sheet.render();
 ```
 
@@ -167,8 +199,12 @@ Unbleached kraft, full of fibres and flecks.
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'kraft', seed: 7 });
-sheet.impress('deep', f => f.text('Impressio', 210, 146, { font: 'italic 500 88px "EB Garamond"', align: 'center' }));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'kraft', seed: 7 });
+sheet.impress('deep', f =>
+  f.text('Impressio', 210, 146,
+  { font: 'italic 500 88px "EB Garamond"',
+  align: 'center' }));
 sheet.render();
 ```
 
@@ -186,8 +222,13 @@ Black cover stock, for opaque inks and foil.
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'black', seed: 7 });
-sheet.impress({ ...impressions.deep, ink: 'white' }, f => f.text('Impressio', 210, 146, { font: 'italic 500 88px "EB Garamond"', align: 'center' }));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'black', seed: 7 });
+sheet.impress({ ...impressions.deep,
+  ink: 'white' }, f => f.text('Impressio',
+  210, 146,
+  { font: 'italic 500 88px "EB Garamond"',
+  align: 'center' }));
 sheet.render();
 ```
 
@@ -205,8 +246,12 @@ A CSS colour string gives the default stock in that colour.
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: '#e7c6bd', seed: 7 });
-sheet.impress('deep', f => f.text('Impressio', 210, 146, { font: 'italic 500 88px "EB Garamond"', align: 'center' }));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: '#e7c6bd', seed: 7 });
+sheet.impress('deep', f =>
+  f.text('Impressio', 210, 146,
+  { font: 'italic 500 88px "EB Garamond"',
+  align: 'center' }));
 sheet.render();
 ```
 
@@ -224,8 +269,16 @@ Every property can be set: tooth and its scale, cloudiness (`formation`), `fiber
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: { color: '#a9bfae', tooth: 0.85, toothScale: 2.6, formation: 1.2, fibers: 6, inclusions: 0.8, weave: 0.4, cockle: 0.6, deckle: 7 }, seed: 7 });
-sheet.impress('deep', f => f.text('Impressio', 210, 146, { font: 'italic 500 88px "EB Garamond"', align: 'center' }));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: { color: '#a9bfae',
+  tooth: 0.85, toothScale: 2.6,
+  formation: 1.2, fibers: 6,
+  inclusions: 0.8, weave: 0.4, cockle: 0.6,
+  deckle: 7 }, seed: 7 });
+sheet.impress('deep', f =>
+  f.text('Impressio', 210, 146,
+  { font: 'italic 500 88px "EB Garamond"',
+  align: 'center' }));
 sheet.render();
 ```
 
@@ -243,8 +296,13 @@ Every sheet is generated. The same seed reproduces the same sheet and print exac
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'kraft', seed: 1234 });
-sheet.impress('deep', f => f.text('Impressio', 210, 146, { font: 'italic 500 88px "EB Garamond"', align: 'center' }));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'kraft',
+  seed: 1234 });
+sheet.impress('deep', f =>
+  f.text('Impressio', 210, 146,
+  { font: 'italic 500 88px "EB Garamond"',
+  align: 'center' }));
 sheet.render();
 ```
 
@@ -257,7 +315,7 @@ sheet.render();
 Presets in `impressions`; each call to `impress()` is one pass through the press.
 
 <table>
-<tr><th width="300">Print</th><th width="220">What it shows</th><th>Code</th></tr>
+<tr><th>Print<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>What it shows<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>Code</th></tr>
 <tr>
 <td><img src="docs/gallery/run-deep.webp" width="300" alt="deep"></td>
 <td>
@@ -270,8 +328,12 @@ Photopolymer plate pressed hard into soft paper: crisp, dark and sculpted.
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cotton', seed: 7 });
-sheet.impress('deep', f => f.text('Impressio', 210, 146, { font: 'italic 500 88px "EB Garamond"', align: 'center' }));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cotton', seed: 7 });
+sheet.impress('deep', f =>
+  f.text('Impressio', 210, 146,
+  { font: 'italic 500 88px "EB Garamond"',
+  align: 'center' }));
 sheet.render();
 ```
 
@@ -289,8 +351,12 @@ Traditional kiss impression: the ink sits on the surface with barely any bite.
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cotton', seed: 7 });
-sheet.impress('kiss', f => f.text('Impressio', 210, 146, { font: 'italic 500 88px "EB Garamond"', align: 'center' }));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cotton', seed: 7 });
+sheet.impress('kiss', f =>
+  f.text('Impressio', 210, 146,
+  { font: 'italic 500 88px "EB Garamond"',
+  align: 'center' }));
 sheet.render();
 ```
 
@@ -308,9 +374,13 @@ Hand-set metal type on a platen. With `handset: true` each letter is its own sor
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cotton', seed: 7 });
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cotton', seed: 7 });
 sheet.impress('handset', f =>
-  f.text('IMPRESSIO', 210, 142, { font: '500 62px "EB Garamond"', align: 'center', tracking: 4, handset: true }));
+  f.text('IMPRESSIO', 210, 142,
+    { font: '500 62px "EB Garamond"',
+    align: 'center', tracking: 4,
+    handset: true }));
 sheet.render();
 ```
 
@@ -328,9 +398,15 @@ Worn wood type inked with a hand brayer on a proof press: salty, scratched and u
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cartridge', seed: 7 });
-sheet.impress({ ...impressions.woodType, ink: 'posterBlack' }, f =>
-  f.text('IMPRESSIO', 210, 166, { font: '112px "League Gothic"', align: 'center', handset: true, jitter: 0.5, tilt: 0.3 }));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cartridge',
+  seed: 7 });
+sheet.impress({ ...impressions.woodType,
+  ink: 'posterBlack' }, f =>
+  f.text('IMPRESSIO', 210, 166,
+    { font: '112px "League Gothic"',
+    align: 'center', handset: true,
+    jitter: 0.5, tilt: 0.3 }));
 sheet.render();
 ```
 
@@ -348,8 +424,12 @@ No ink at all: the forme is only pressed into the sheet.
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cotton', seed: 7 });
-sheet.impress('blind', f => f.text('Impressio', 210, 146, { font: 'italic 500 88px "EB Garamond"', align: 'center' }));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cotton', seed: 7 });
+sheet.impress('blind', f =>
+  f.text('Impressio', 210, 146,
+  { font: 'italic 500 88px "EB Garamond"',
+  align: 'center' }));
 sheet.render({ elevation: 24 });
 ```
 
@@ -367,8 +447,13 @@ Hot foil stamping: shallow and perfectly solid, with a metallic film.
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'black', seed: 7 });
-sheet.impress({ ...impressions.foil, ink: 'goldFoil' }, f => f.text('Impressio', 210, 146, { font: 'italic 500 88px "EB Garamond"', align: 'center' }));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'black', seed: 7 });
+sheet.impress({ ...impressions.foil,
+  ink: 'goldFoil' }, f =>
+  f.text('Impressio', 210, 146,
+  { font: 'italic 500 88px "EB Garamond"',
+  align: 'center' }));
 sheet.render();
 ```
 
@@ -381,7 +466,7 @@ sheet.render();
 Each picture prints the same forme twice, with a low value on the left and a high value on the right.
 
 <table>
-<tr><th width="300">Print</th><th width="220">What it shows</th><th>Code</th></tr>
+<tr><th>Print<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>What it shows<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>Code</th></tr>
 <tr>
 <td><img src="docs/gallery/run-depth.webp" width="300" alt="depth"></td>
 <td>
@@ -394,11 +479,15 @@ Bite: how far the forme sinks into the sheet, in px. The wall of the bite is a s
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cotton', seed: 7 });
-const big = { font: '112px "Alfa Slab One"', align: 'center' };
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cotton', seed: 7 });
+const big = { font: '112px "Alfa Slab One"',
+  align: 'center' };
 const run = impressions.deep;
-sheet.impress({ ...run, depth: 0.2 }, f => f.text('Aa', 108, 158, big));
-sheet.impress({ ...run, depth: 4 }, f => f.text('Aa', 312, 158, big));
+sheet.impress({ ...run, depth: 0.2 }, f =>
+  f.text('Aa', 108, 158, big));
+sheet.impress({ ...run, depth: 4 }, f =>
+  f.text('Aa', 312, 158, big));
 sheet.render({ elevation: 26 });
 ```
 
@@ -416,11 +505,17 @@ How much the paper around the bite is drawn down with it. Shown on a blind impre
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cotton', seed: 7 });
-const big = { font: '112px "Alfa Slab One"', align: 'center' };
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cotton', seed: 7 });
+const big = { font: '112px "Alfa Slab One"',
+  align: 'center' };
 const run = impressions.deep;
-sheet.impress({ ...run, ink: null, depth: 3, dish: 0 }, f => f.text('Aa', 108, 158, big));
-sheet.impress({ ...run, ink: null, depth: 3, dish: 1 }, f => f.text('Aa', 312, 158, big));
+sheet.impress({ ...run, ink: null, depth: 3,
+  dish: 0 }, f => f.text('Aa', 108, 158,
+  big));
+sheet.impress({ ...run, ink: null, depth: 3,
+  dish: 1 }, f => f.text('Aa', 312, 158,
+  big));
 sheet.render({ elevation: 22 });
 ```
 
@@ -438,11 +533,16 @@ Completeness of contact. Below 1 only the high points of the paper meet the form
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cottonWhite', seed: 7 });
-const big = { font: '112px "Alfa Slab One"', align: 'center' };
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cottonWhite',
+  seed: 7 });
+const big = { font: '112px "Alfa Slab One"',
+  align: 'center' };
 const run = impressions.deep;
-sheet.impress({ ...run, contact: 0.78 }, f => f.text('Aa', 108, 158, big));
-sheet.impress({ ...run, contact: 1.05 }, f => f.text('Aa', 312, 158, big));
+sheet.impress({ ...run, contact: 0.78 },
+  f => f.text('Aa', 108, 158, big));
+sheet.impress({ ...run, contact: 1.05 },
+  f => f.text('Aa', 312, 158, big));
 sheet.render();
 ```
 
@@ -460,11 +560,16 @@ How much ink is on the forme: starved on the left, flooded on the right.
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cottonWhite', seed: 7 });
-const big = { font: '112px "Alfa Slab One"', align: 'center' };
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cottonWhite',
+  seed: 7 });
+const big = { font: '112px "Alfa Slab One"',
+  align: 'center' };
 const run = impressions.deep;
-sheet.impress({ ...run, inking: 0.4 }, f => f.text('Aa', 108, 158, big));
-sheet.impress({ ...run, inking: 1.5 }, f => f.text('Aa', 312, 158, big));
+sheet.impress({ ...run, inking: 0.4 }, f =>
+  f.text('Aa', 108, 158, big));
+sheet.impress({ ...run, inking: 1.5 }, f =>
+  f.text('Aa', 312, 158, big));
 sheet.render();
 ```
 
@@ -482,11 +587,18 @@ Ink squeezed to the edge of the face under pressure: a darker rim and a lighter 
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cottonWhite', seed: 7 });
-const big = { font: '112px "Alfa Slab One"', align: 'center' };
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cottonWhite',
+  seed: 7 });
+const big = { font: '112px "Alfa Slab One"',
+  align: 'center' };
 const run = impressions.deep;
-sheet.impress({ ...run, inking: 0.7, squash: 0 }, f => f.text('Aa', 108, 158, big));
-sheet.impress({ ...run, inking: 0.7, squash: 1 }, f => f.text('Aa', 312, 158, big));
+sheet.impress({ ...run, inking: 0.7,
+  squash: 0 }, f => f.text('Aa', 108, 158,
+  big));
+sheet.impress({ ...run, inking: 0.7,
+  squash: 1 }, f => f.text('Aa', 312, 158,
+  big));
 sheet.render();
 ```
 
@@ -504,11 +616,18 @@ Roller streaks and blotches inside solid areas, so black is never one flat black
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cottonWhite', seed: 7 });
-const big = { font: '112px "Alfa Slab One"', align: 'center' };
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cottonWhite',
+  seed: 7 });
+const big = { font: '112px "Alfa Slab One"',
+  align: 'center' };
 const run = impressions.deep;
-sheet.impress({ ...run, inking: 0.7, mottle: 0 }, f => f.text('Aa', 108, 158, big));
-sheet.impress({ ...run, inking: 0.7, mottle: 1 }, f => f.text('Aa', 312, 158, big));
+sheet.impress({ ...run, inking: 0.7,
+  mottle: 0 }, f => f.text('Aa', 108, 158,
+  big));
+sheet.impress({ ...run, inking: 0.7,
+  mottle: 1 }, f => f.text('Aa', 312, 158,
+  big));
 sheet.render();
 ```
 
@@ -526,11 +645,16 @@ Damage to the printing surface: nicks, scratches and grain that print as missing
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cottonWhite', seed: 7 });
-const big = { font: '112px "Alfa Slab One"', align: 'center' };
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cottonWhite',
+  seed: 7 });
+const big = { font: '112px "Alfa Slab One"',
+  align: 'center' };
 const run = impressions.deep;
-sheet.impress({ ...run, wear: 0 }, f => f.text('Aa', 108, 158, big));
-sheet.impress({ ...run, wear: 1 }, f => f.text('Aa', 312, 158, big));
+sheet.impress({ ...run, wear: 0 }, f =>
+  f.text('Aa', 108, 158, big));
+sheet.impress({ ...run, wear: 1 }, f =>
+  f.text('Aa', 312, 158, big));
 sheet.render();
 ```
 
@@ -548,11 +672,22 @@ How far individual sorts sit off type-high. With hand-set type some letters prin
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cottonWhite', seed: 7 });
-const big = { font: '112px "Alfa Slab One"', align: 'center' };
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cottonWhite',
+  seed: 7 });
+const big = { font: '112px "Alfa Slab One"',
+  align: 'center' };
 const run = impressions.deep;
-sheet.impress({ ...run, inking: 0.75, sortVariation: 0 }, f => f.text('AbC', 108, 158, { ...big, font: '84px "Alfa Slab One"', handset: true }));
-sheet.impress({ ...run, inking: 0.75, sortVariation: 1 }, f => f.text('AbC', 312, 158, { ...big, font: '84px "Alfa Slab One"', handset: true }));
+sheet.impress({ ...run, inking: 0.75,
+  sortVariation: 0 }, f => f.text('AbC',
+  108, 158, { ...big,
+  font: '84px "Alfa Slab One"',
+  handset: true }));
+sheet.impress({ ...run, inking: 0.75,
+  sortVariation: 1 }, f => f.text('AbC',
+  312, 158, { ...big,
+  font: '84px "Alfa Slab One"',
+  handset: true }));
 sheet.render();
 ```
 
@@ -570,11 +705,18 @@ Slow pressure variation across the bed, as with careless makeready. Shown with s
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cottonWhite', seed: 7 });
-const big = { font: '112px "Alfa Slab One"', align: 'center' };
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cottonWhite',
+  seed: 7 });
+const big = { font: '112px "Alfa Slab One"',
+  align: 'center' };
 const run = impressions.deep;
-sheet.impress({ ...run, contact: 0.88, makeready: 0 }, f => f.text('Aa', 108, 158, big));
-sheet.impress({ ...run, contact: 0.88, makeready: 1 }, f => f.text('Aa', 312, 158, big));
+sheet.impress({ ...run, contact: 0.88,
+  makeready: 0 }, f => f.text('Aa', 108,
+  158, big));
+sheet.impress({ ...run, contact: 0.88,
+  makeready: 1 }, f => f.text('Aa', 312,
+  158, big));
 sheet.render();
 ```
 
@@ -592,11 +734,16 @@ How far ink spreads beyond the edge of the face, in px.
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cottonWhite', seed: 7 });
-const big = { font: '112px "Alfa Slab One"', align: 'center' };
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cottonWhite',
+  seed: 7 });
+const big = { font: '112px "Alfa Slab One"',
+  align: 'center' };
 const run = impressions.deep;
-sheet.impress({ ...run, gain: 0 }, f => f.text('Aa', 108, 158, big));
-sheet.impress({ ...run, gain: 1.5 }, f => f.text('Aa', 312, 158, big));
+sheet.impress({ ...run, gain: 0 }, f =>
+  f.text('Aa', 108, 158, big));
+sheet.impress({ ...run, gain: 1.5 }, f =>
+  f.text('Aa', 312, 158, big));
 sheet.render();
 ```
 
@@ -614,11 +761,18 @@ Offset and rotation of one pass, for honest multi-colour work. Transparent inks 
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cottonWhite', seed: 7 });
-const big = { font: '112px "Alfa Slab One"', align: 'center' };
-const forme = f => f.text('Aa', 210, 158, big);
-sheet.impress({ ...impressions.deep, ink: 'cyan' }, forme);
-sheet.impress({ ...impressions.deep, ink: 'magenta', register: { x: 7, y: 4, rotate: 1.2 } }, forme);
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cottonWhite',
+  seed: 7 });
+const big = { font: '112px "Alfa Slab One"',
+  align: 'center' };
+const forme = f => f.text('Aa', 210, 158,
+  big);
+sheet.impress({ ...impressions.deep,
+  ink: 'cyan' }, forme);
+sheet.impress({ ...impressions.deep,
+  ink: 'magenta', register: { x: 7, y: 4,
+  rotate: 1.2 } }, forme);
 sheet.render();
 ```
 
@@ -631,7 +785,7 @@ sheet.render();
 A named ink, any CSS colour, an `InkSpec`, or `null` for blind.
 
 <table>
-<tr><th width="300">Print</th><th width="220">What it shows</th><th>Code</th></tr>
+<tr><th>Print<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>What it shows<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>Code</th></tr>
 <tr>
 <td><img src="docs/gallery/ink-named.webp" width="300" alt="Named inks"></td>
 <td>
@@ -644,10 +798,15 @@ A named ink, any CSS colour, an `InkSpec`, or `null` for blind.
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cotton', seed: 7 });
-const t = { font: 'italic 500 96px "EB Garamond"', align: 'center' };
-['oxblood', 'navy', 'forest'].forEach((ink, i) =>
-  sheet.impress({ ...impressions.deep, ink }, f => f.text('Aa', 80 + i * 130, 150, t)));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cotton', seed: 7 });
+const t = { font: 'italic 500 96px "EB Garamond"',
+  align: 'center' };
+['oxblood', 'navy', 'forest'].forEach((ink,
+  i) =>
+  sheet.impress({ ...impressions.deep,
+    ink }, f => f.text('Aa', 80 + i * 130,
+    150, t)));
 sheet.render();
 ```
 
@@ -665,10 +824,16 @@ A colour string is an ink. `ink(color, overrides)` builds one with its own prope
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cotton', seed: 7 });
-const t = { font: 'italic 500 96px "EB Garamond"', align: 'center' };
-sheet.impress({ ...impressions.deep, ink: 'rebeccapurple' }, f => f.text('Aa', 120, 150, t));
-sheet.impress({ ...impressions.deep, ink: ink('#e4572e', { gloss: 0.5 }) }, f => f.text('Aa', 300, 150, t));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cotton', seed: 7 });
+const t = { font: 'italic 500 96px "EB Garamond"',
+  align: 'center' };
+sheet.impress({ ...impressions.deep,
+  ink: 'rebeccapurple' }, f => f.text('Aa',
+  120, 150, t));
+sheet.impress({ ...impressions.deep,
+  ink: ink('#e4572e', { gloss: 0.5 }) },
+  f => f.text('Aa', 300, 150, t));
 sheet.render();
 ```
 
@@ -686,11 +851,18 @@ Transparent pigment filters the light coming back off the paper, so overlapping 
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cottonWhite', seed: 7 });
-const dot = (x, y) => f => { f.ctx.beginPath(); f.ctx.arc(x, y, 70, 0, 7); f.ctx.fill(); };
-sheet.impress({ ...impressions.kiss, ink: 'yellow' }, dot(210, 92));
-sheet.impress({ ...impressions.kiss, ink: 'magenta' }, dot(168, 150));
-sheet.impress({ ...impressions.kiss, ink: 'cyan' }, dot(252, 150));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cottonWhite',
+  seed: 7 });
+const dot = (x, y) => f =>
+  { f.ctx.beginPath(); f.ctx.arc(x, y, 70,
+  0, 7); f.ctx.fill(); };
+sheet.impress({ ...impressions.kiss,
+  ink: 'yellow' }, dot(210, 92));
+sheet.impress({ ...impressions.kiss,
+  ink: 'magenta' }, dot(168, 150));
+sheet.impress({ ...impressions.kiss,
+  ink: 'cyan' }, dot(252, 150));
 sheet.render();
 ```
 
@@ -708,10 +880,17 @@ Pigment load: a pale tint on the left, a dense film on the right.
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cottonWhite', seed: 7 });
-const big = { font: '112px "Alfa Slab One"', align: 'center' };
-sheet.impress({ ...impressions.deep, ink: ink('#1d2f55', { strength: 0.25 }) }, f => f.text('Aa', 108, 158, big));
-sheet.impress({ ...impressions.deep, ink: ink('#1d2f55', { strength: 1.6 }) }, f => f.text('Aa', 312, 158, big));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cottonWhite',
+  seed: 7 });
+const big = { font: '112px "Alfa Slab One"',
+  align: 'center' };
+sheet.impress({ ...impressions.deep,
+  ink: ink('#1d2f55', { strength: 0.25 }) },
+  f => f.text('Aa', 108, 158, big));
+sheet.impress({ ...impressions.deep,
+  ink: ink('#1d2f55', { strength: 1.6 }) },
+  f => f.text('Aa', 312, 158, big));
 sheet.render();
 ```
 
@@ -729,11 +908,20 @@ Hiding power. Yellow printed over a navy bar: transparent on the left (it only t
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cottonWhite', seed: 7 });
-const big = { font: '112px "Alfa Slab One"', align: 'center' };
-sheet.impress({ ...impressions.kiss, ink: 'navy' }, f => f.rule(20, 96, 380, 56));
-sheet.impress({ ...impressions.deep, ink: ink('#f6d21d', { opacity: 0 }) }, f => f.text('Aa', 108, 158, big));
-sheet.impress({ ...impressions.deep, ink: ink('#f6d21d', { opacity: 1 }) }, f => f.text('Aa', 312, 158, big));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cottonWhite',
+  seed: 7 });
+const big = { font: '112px "Alfa Slab One"',
+  align: 'center' };
+sheet.impress({ ...impressions.kiss,
+  ink: 'navy' }, f => f.rule(20, 96, 380,
+  56));
+sheet.impress({ ...impressions.deep,
+  ink: ink('#f6d21d', { opacity: 0 }) },
+  f => f.text('Aa', 108, 158, big));
+sheet.impress({ ...impressions.deep,
+  ink: ink('#f6d21d', { opacity: 1 }) },
+  f => f.text('Aa', 312, 158, big));
 sheet.render();
 ```
 
@@ -751,10 +939,18 @@ Sheen of the dry film: matte on the left, glossy on the right. Most visible on d
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'black', seed: 7 });
-const big = { font: '112px "Alfa Slab One"', align: 'center' };
-sheet.impress({ ...impressions.foil, ink: ink('#30343c', { gloss: 0, opacity: 1 }) }, f => f.text('Aa', 108, 158, big));
-sheet.impress({ ...impressions.foil, ink: ink('#30343c', { gloss: 1, opacity: 1 }) }, f => f.text('Aa', 312, 158, big));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'black', seed: 7 });
+const big = { font: '112px "Alfa Slab One"',
+  align: 'center' };
+sheet.impress({ ...impressions.foil,
+  ink: ink('#30343c', { gloss: 0,
+  opacity: 1 }) }, f => f.text('Aa', 108,
+  158, big));
+sheet.impress({ ...impressions.foil,
+  ink: ink('#30343c', { gloss: 1,
+  opacity: 1 }) }, f => f.text('Aa', 312,
+  158, big));
 sheet.render({ elevation: 30 });
 ```
 
@@ -772,11 +968,18 @@ Metallic reflection, for bronze inks and foil: plain pigment on the left, metal 
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'black', seed: 7 });
-const big = { font: '112px "Alfa Slab One"', align: 'center' };
-const bronze = m => ink('#b08a3c', { opacity: 1, gloss: 0.6, metallic: m });
-sheet.impress({ ...impressions.foil, ink: bronze(0) }, f => f.text('Aa', 108, 158, big));
-sheet.impress({ ...impressions.foil, ink: bronze(1) }, f => f.text('Aa', 312, 158, big));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'black', seed: 7 });
+const big = { font: '112px "Alfa Slab One"',
+  align: 'center' };
+const bronze = m => ink('#b08a3c',
+  { opacity: 1, gloss: 0.6, metallic: m });
+sheet.impress({ ...impressions.foil,
+  ink: bronze(0) }, f => f.text('Aa', 108,
+  158, big));
+sheet.impress({ ...impressions.foil,
+  ink: bronze(1) }, f => f.text('Aa', 312,
+  158, big));
 sheet.render();
 ```
 
@@ -794,10 +997,15 @@ Gold, copper and silver foil on black stock.
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'black', seed: 7 });
-const t = { font: 'italic 500 96px "EB Garamond"', align: 'center' };
-['goldFoil', 'copperFoil', 'silverFoil'].forEach((ink, i) =>
-  sheet.impress({ ...impressions.foil, ink }, f => f.text('Aa', 80 + i * 130, 150, t)));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'black', seed: 7 });
+const t = { font: 'italic 500 96px "EB Garamond"',
+  align: 'center' };
+['goldFoil', 'copperFoil',
+  'silverFoil'].forEach((ink, i) =>
+  sheet.impress({ ...impressions.foil,
+    ink }, f => f.text('Aa', 80 + i * 130,
+    150, t)));
 sheet.render();
 ```
 
@@ -815,8 +1023,13 @@ An opaque ink covers a dark or coloured stock.
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'kraft', seed: 7 });
-sheet.impress({ ...impressions.deep, ink: 'white' }, f => f.text('Impressio', 210, 146, { font: 'italic 500 88px "EB Garamond"', align: 'center' }));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'kraft', seed: 7 });
+sheet.impress({ ...impressions.deep,
+  ink: 'white' }, f => f.text('Impressio',
+  210, 146,
+  { font: 'italic 500 88px "EB Garamond"',
+  align: 'center' }));
 sheet.render();
 ```
 
@@ -829,7 +1042,7 @@ sheet.render();
 A forme is a Canvas 2D context plus a few helpers. Anything drawn becomes printing surface.
 
 <table>
-<tr><th width="300">Print</th><th width="220">What it shows</th><th>Code</th></tr>
+<tr><th>Print<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>What it shows<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>Code</th></tr>
 <tr>
 <td><img src="docs/gallery/forme-font.webp" width="300" alt="Any font"></td>
 <td>
@@ -842,9 +1055,12 @@ Any font the page can render: CSS `@font-face`, web fonts, or a file registered 
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cotton', seed: 7 });
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cotton', seed: 7 });
 sheet.impress('kiss', f =>
-  f.text('Impressio', 210, 160, { font: '110px "Mrs Saint Delafield"', align: 'center' }));
+  f.text('Impressio', 210, 160,
+    { font: '110px "Mrs Saint Delafield"',
+    align: 'center' }));
 sheet.render();
 ```
 
@@ -862,10 +1078,15 @@ sheet.render();
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cotton', seed: 7 });
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cotton', seed: 7 });
 sheet.impress('deep', f =>
-  f.text('Lock the type in the chase, plane it down, and pull a proof.', 400, 70,
-    { font: '500 30px "EB Garamond"', align: 'right', maxWidth: 380, lineHeight: 44 }));
+  f.text('Lock the type in the chase, ' +
+    'plane it down, and pull a proof.', 400,
+      70,
+    { font: '500 30px "EB Garamond"',
+      align: 'right', maxWidth: 380,
+      lineHeight: 44 }));
 sheet.render();
 ```
 
@@ -883,9 +1104,13 @@ sheet.render();
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cotton', seed: 7 });
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cotton', seed: 7 });
 sheet.impress('deep', f =>
-  f.text('IMPRESSIO', 210, 135, { font: '500 34px "EB Garamond"', align: 'center', tracking: 14, underline: true }));
+  f.text('IMPRESSIO', 210, 135,
+    { font: '500 34px "EB Garamond"',
+    align: 'center', tracking: 14,
+    underline: true }));
 sheet.render();
 ```
 
@@ -903,9 +1128,14 @@ sheet.render();
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cartridge', seed: 7 });
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cartridge',
+  seed: 7 });
 sheet.impress('woodType', f =>
-  f.text('SORTS', 210, 172, { font: '140px "League Gothic"', align: 'center', handset: true, jitter: 2.5, tilt: 3 }));
+  f.text('SORTS', 210, 172,
+    { font: '140px "League Gothic"',
+    align: 'center', handset: true,
+    jitter: 2.5, tilt: 3 }));
 sheet.render();
 ```
 
@@ -923,11 +1153,16 @@ sheet.render();
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cotton', seed: 7 });
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cotton', seed: 7 });
 sheet.impress('deep', f => {
-  f.rule(40, 70, 340, 6); f.rule(40, 84, 340, 1.5);
-  f.text('Double rule', 210, 150, { font: 'italic 500 44px "EB Garamond"', align: 'center' });
-  f.rule(40, 180, 340, 1.5); f.rule(40, 190, 340, 6);
+  f.rule(40, 70, 340, 6); f.rule(40, 84,
+    340, 1.5);
+  f.text('Double rule', 210, 150,
+    { font: 'italic 500 44px "EB Garamond"',
+    align: 'center' });
+  f.rule(40, 180, 340, 1.5); f.rule(40, 190,
+    340, 6);
 });
 sheet.render();
 ```
@@ -946,10 +1181,16 @@ sheet.render();
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cotton', seed: 7 });
-const heart = 'M0 -18 C-25 -50 -60 -10 0 40 C60 -10 25 -50 0 -18 Z';
-sheet.impress({ ...impressions.deep, ink: 'oxblood' }, f => f.path(heart, { x: 120, y: 118, scale: 1.8 }));
-sheet.impress('blind', f => f.path(heart, { x: 300, y: 118, scale: 1.8, stroke: 3 }));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cotton', seed: 7 });
+const heart = 'M0 -18 C-25 -50 -60 -10 0 40 ' +
+  'C60 -10 25 -50 0 -18 Z';
+sheet.impress({ ...impressions.deep,
+  ink: 'oxblood' }, f => f.path(heart,
+  { x: 120, y: 118, scale: 1.8 }));
+sheet.impress('blind', f => f.path(heart,
+  { x: 300, y: 118, scale: 1.8,
+  stroke: 3 }));
 sheet.render();
 ```
 
@@ -967,12 +1208,20 @@ sheet.render();
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cotton', seed: 7 });
-const cut = document.createElement('canvas'); cut.width = cut.height = 200;
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cotton', seed: 7 });
+const cut = document.createElement('canvas');
+cut.width = cut.height = 200;
 const c = cut.getContext('2d');
-for (let i = 0; i < 12; i++) { c.rotate(Math.PI / 6); c.fillRect(-4, 34, 8, 60); c.setTransform(1, 0, 0, 1, 100, 100); c.rotate((i + 1) * Math.PI / 6); }
-c.setTransform(1, 0, 0, 1, 100, 100); c.beginPath(); c.arc(0, 0, 26, 0, 7); c.fill();
-sheet.impress('deep', f => f.image(cut, 120, 30, 180, 180));
+c.translate(100, 100);
+for (let i = 0; i < 12; i++) {
+  c.rotate(Math.PI / 6);
+  c.fillRect(-4, 34, 8, 60);
+}
+c.beginPath(); c.arc(0, 0, 26, 0,
+  7); c.fill();
+sheet.impress('deep', f => f.image(cut, 120,
+  30, 180, 180));
 sheet.render();
 ```
 
@@ -990,10 +1239,16 @@ sheet.render();
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cotton', seed: 7 });
-sheet.impress({ ...impressions.deep, ink: 'navy' }, f => {
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cotton', seed: 7 });
+sheet.impress({ ...impressions.deep,
+  ink: 'navy' }, f => {
   f.ctx.lineWidth = 3;
-  for (let r = 14; r < 100; r += 14) { f.ctx.beginPath(); f.ctx.arc(210, 120, r, 0, 7); f.ctx.stroke(); }
+  for (let r = 14; r < 100; r += 14) {
+    f.ctx.beginPath();
+    f.ctx.arc(210, 120, r, 0, 7);
+    f.ctx.stroke();
+  }
 });
 sheet.render();
 ```
@@ -1012,11 +1267,20 @@ Call `impress()` as often as you like: blind ornaments, a second colour, foil on
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cotton', seed: 7 });
-sheet.impress('blind', f => { f.ctx.lineWidth = 3; f.ctx.strokeRect(22, 22, 376, 196); });
-sheet.impress('deep', f => f.text('Impressio', 210, 128, { font: 'italic 500 72px "EB Garamond"', align: 'center' }));
-sheet.impress({ ...impressions.deep, depth: 1.2, ink: 'oxblood' }, f =>
-  f.text('FINE PRINTING', 210, 176, { font: '500 15px "EB Garamond"', align: 'center', tracking: 6 }));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cotton', seed: 7 });
+sheet.impress('blind', f =>
+  { f.ctx.lineWidth = 3; f.ctx.strokeRect(22,
+  22, 376, 196); });
+sheet.impress('deep', f =>
+  f.text('Impressio', 210, 128,
+  { font: 'italic 500 72px "EB Garamond"',
+  align: 'center' }));
+sheet.impress({ ...impressions.deep,
+  depth: 1.2, ink: 'oxblood' }, f =>
+  f.text('FINE PRINTING', 210, 176,
+    { font: '500 15px "EB Garamond"',
+    align: 'center', tracking: 6 }));
 sheet.render();
 ```
 
@@ -1029,7 +1293,7 @@ sheet.render();
 LaTeX is typeset by MathJax's SVG output (or any engine given to `setTexEngine()`), and the outlines are printed.
 
 <table>
-<tr><th width="300">Print</th><th width="220">What it shows</th><th>Code</th></tr>
+<tr><th>Print<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>What it shows<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>Code</th></tr>
 <tr>
 <td><img src="docs/gallery/tex-cut.webp" width="300" alt="typesetTex"></td>
 <td>
@@ -1042,9 +1306,15 @@ One formula as a cut with a baseline. `f.cut(eq, x, baselineY, { align, scale })
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cottonWhite', seed: 7 });
-const eq = await typesetTex('\\hat{H}\\Psi = i\\hbar\\frac{\\partial}{\\partial t}\\Psi', { size: 44 });
-sheet.impress('deep', f => f.cut(eq, 210, 132, { align: 'center' }));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cottonWhite',
+  seed: 7 });
+const eq = await typesetTex(
+  '\\hat{H}\\Psi = i\\hbar' +
+  '\\frac{\\partial}{\\partial t}\\Psi',
+  { size: 44 });
+sheet.impress('deep', f => f.cut(eq, 210,
+  132, { align: 'center' }));
 sheet.render();
 ```
 
@@ -1062,11 +1332,18 @@ Running text with maths: `$…$` sits inline on the baseline and wraps with the 
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cottonWhite', seed: 7 });
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cottonWhite',
+  seed: 7 });
 const block = await typesetRich(
-  'A circle of radius $r$ has area $A = \\pi r^{2}$. Summing the squares, $$\\sum_{n=1}^{\\infty} \\frac{1}{n^{2}} = \\frac{\\pi^{2}}{6}$$',
-  { font: '500 21px "EB Garamond"', maxWidth: 360 });
-sheet.impress('deep', f => f.block(block, 30, 38));
+  'A circle of radius $r$ has area ' +
+  '$A = \\pi r^{2}$. Summing the squares, ' +
+  '$$\\sum_{n=1}^{\\infty} \\frac{1}{n^{2}}' +
+  ' = \\frac{\\pi^{2}}{6}$$',
+  { font: '500 21px "EB Garamond"',
+    maxWidth: 360 });
+sheet.impress('deep', f => f.block(block,
+  30, 38));
 sheet.render();
 ```
 
@@ -1079,7 +1356,7 @@ sheet.render();
 `render(light)` re-photographs the sheet without redoing the press work, so the light can move freely.
 
 <table>
-<tr><th width="300">Print</th><th width="220">What it shows</th><th>Code</th></tr>
+<tr><th>Print<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>What it shows<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>Code</th></tr>
 <tr>
 <td><img src="docs/gallery/light-raking.webp" width="300" alt="Raking light"></td>
 <td>
@@ -1092,9 +1369,14 @@ A low `elevation` rakes across the surface and exaggerates tooth and depth.
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cotton', seed: 7 });
-sheet.impress('deep', f => f.text('Impressio', 210, 146, { font: 'italic 500 88px "EB Garamond"', align: 'center' }));
-sheet.render({ azimuth: 315, elevation: 12 });
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cotton', seed: 7 });
+sheet.impress('deep', f =>
+  f.text('Impressio', 210, 146,
+  { font: 'italic 500 88px "EB Garamond"',
+  align: 'center' }));
+sheet.render({ azimuth: 315,
+  elevation: 12 });
 ```
 
 </td>
@@ -1111,8 +1393,12 @@ A high `elevation` flattens the relief.
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cotton', seed: 7 });
-sheet.impress('deep', f => f.text('Impressio', 210, 146, { font: 'italic 500 88px "EB Garamond"', align: 'center' }));
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cotton', seed: 7 });
+sheet.impress('deep', f =>
+  f.text('Impressio', 210, 146,
+  { font: 'italic 500 88px "EB Garamond"',
+  align: 'center' }));
 sheet.render({ elevation: 85 });
 ```
 
@@ -1130,9 +1416,14 @@ Where the light sits, in degrees clockwise from the top. Here it comes from the 
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cotton', seed: 7 });
-sheet.impress('blind', f => f.text('Impressio', 210, 146, { font: 'italic 500 88px "EB Garamond"', align: 'center' }));
-sheet.render({ azimuth: 90, elevation: 22 });
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cotton', seed: 7 });
+sheet.impress('blind', f =>
+  f.text('Impressio', 210, 146,
+  { font: 'italic 500 88px "EB Garamond"',
+  align: 'center' }));
+sheet.render({ azimuth: 90,
+  elevation: 22 });
 ```
 
 </td>
@@ -1149,9 +1440,14 @@ sheet.render({ azimuth: 90, elevation: 22 });
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cotton', seed: 7 });
-sheet.impress('deep', f => f.text('Impressio', 210, 146, { font: 'italic 500 88px "EB Garamond"', align: 'center' }));
-sheet.render({ color: '#ffd9a0', intensity: 0.92, elevation: 30 });
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cotton', seed: 7 });
+sheet.impress('deep', f =>
+  f.text('Impressio', 210, 146,
+  { font: 'italic 500 88px "EB Garamond"',
+  align: 'center' }));
+sheet.render({ color: '#ffd9a0',
+  intensity: 0.92, elevation: 30 });
 ```
 
 </td>
@@ -1168,9 +1464,14 @@ sheet.render({ color: '#ffd9a0', intensity: 0.92, elevation: 30 });
 <td>
 
 ```ts
-const sheet = createSheet({ width: 420, height: 240, paper: 'cotton', seed: 7 });
-sheet.impress('blind', f => f.text('Impressio', 210, 146, { font: 'italic 500 88px "EB Garamond"', align: 'center' }));
-sheet.render({ elevation: 24, ambient: 0.1, shadow: 1, occlusion: 1, falloff: 0.4 });
+const sheet = createSheet({ width: 420,
+  height: 240, paper: 'cotton', seed: 7 });
+sheet.impress('blind', f =>
+  f.text('Impressio', 210, 146,
+  { font: 'italic 500 88px "EB Garamond"',
+  align: 'center' }));
+sheet.render({ elevation: 24, ambient: 0.1,
+  shadow: 1, occlusion: 1, falloff: 0.4 });
 ```
 
 </td>
@@ -1184,7 +1485,7 @@ sheet.render({ elevation: 24, ambient: 0.1, shadow: 1, occlusion: 1, falloff: 0.
 <img src="docs/header.webp" width="640" alt="A notice card pressed from live HTML">
 
 ```html
-<div class="card" style="font: 400 19px/1.6 "EB Garamond", Georgia, serif; color: #1b1a19; padding: 44px 56px 48px; box-sizing: border-box; width: 640px">
+<div class="card" style="font: 400 19px/1.6 'EB Garamond', Georgia, serif; color: #1b1a19; padding: 44px 56px 48px; box-sizing: border-box; width: 640px">
 <p style="font: 500 12px/1.4 'EB Garamond'; letter-spacing: .22em; text-transform: uppercase; margin: 0" data-ink="oxblood">Notice to the trade</p>
 <h3 style="font: italic 500 34px/1.1 'EB Garamond'; margin: 0 0 6px">On the making-ready of a forme</h3>
 <hr style="border: 0; height: 1.5px; margin: 18px 0">
