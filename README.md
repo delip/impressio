@@ -4,7 +4,7 @@
   <img src="docs/header.webp" width="640" alt="A notice card letterpressed by Impressio from live HTML text">
 </p>
 
-<p align="center"><b><a href="GALLERY.md">Gallery: every feature, with a picture and the code that made it →</a></b></p>
+<p align="center"><b><a href="https://delip.github.io/impressio/">Live demo</a></b> · <b><a href="GALLERY.md">Gallery: every feature, with a picture and the code that made it</a></b></p>
 
 Letterpress on cardstock, simulated. A TypeScript library (zero dependencies, ~20 kB minified)
 that renders to a `<canvas>`. Nothing is a texture or an image: every sheet is generated, pressed,
@@ -24,7 +24,7 @@ document.body.append(sheet.render({ azimuth: 315, elevation: 35 }));
 ```
 
 Build: `npm install && npm run build` (outputs `dist/impressio.js` ESM, `dist/impressio.global.js`
-IIFE exposing `Impressio`, and type declarations). Demo: `node demo/build.mjs`, then open `demo/index.html`.
+IIFE exposing `Impressio`, and type declarations). Demo: `node demo/build.mjs`, then open `docs/index.html` (the page GitHub Pages serves).
 
 ## The model
 
