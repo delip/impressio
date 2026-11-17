@@ -22,7 +22,8 @@
   "sideEffects": false,
   "scripts": {
     "build": "esbuild src/index.ts --bundle --format=esm --target=es2020 --outfile=dist/impressio.js && esbuild src/index.ts --bundle --format=iife --global-name=Impressio --target=es2020 --minify --outfile=dist/impressio.global.js && tsc -p . --emitDeclarationOnly",
-    "typecheck": "tsc -p . --noEmit"
+    "typecheck": "tsc -p . --noEmit",
+    "gallery": "npm run build && node scripts/gallery.cjs"
   },
   "license": "MIT",
   "devDependencies": {

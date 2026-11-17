@@ -1,5 +1,11 @@
 # Impressio
 
+<p align="center">
+  <img src="docs/header.webp" width="640" alt="A notice card letterpressed by Impressio from live HTML text">
+</p>
+
+<p align="center"><b><a href="GALLERY.md">Gallery: every feature, with a picture and the code that made it →</a></b></p>
+
 Letterpress on cardstock, simulated. A TypeScript library (zero dependencies, ~20 kB minified)
 that renders to a `<canvas>`. Nothing is a texture or an image: every sheet is generated, pressed,
 inked and lit from a seed.
