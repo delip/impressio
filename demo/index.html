@@ -1,0 +1,672 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{margin:0}[hidden]{display:none!important}</style></head><body>
+<title>Impressio Specimens</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&family=League+Gothic&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,500&family=Mrs+Saint+Delafield&family=Tinos:wght@400;700&display=swap">
+<style>
+/* Layout: specimens lie on an imposing stone (cool grey slab); each carries a mono job ticket. One wide hero, then a two-column proof rack, then the bench (controls) and the code. */
+:root {
+  --stone: #d5d8d4; --stone-2: #c6cac5; --ink: #1c2120; --muted: #56605c; --line: #aab0aa;
+  --panel: #e6e8e4; --proof: #1f4fbf; --shadow: 28, 36, 33;
+  --display: "Bricolage Grotesque", "Inter", system-ui, sans-serif;
+  --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --stone: #1b1f1e; --stone-2: #141716; --ink: #e7eae6; --muted: #98a29d; --line: #3a423f;
+  --panel: #242928; --proof: #8fb0ff; --shadow: 0, 0, 0; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --stone: #1b1f1e; --stone-2: #141716; --ink: #e7eae6; --muted: #98a29d; --line: #3a423f;
+  --panel: #242928; --proof: #8fb0ff; --shadow: 0, 0, 0; color-scheme: dark }
+
+body { background: var(--stone); color: var(--ink); font: 16px/1.55 var(--body); }
+.wrap { max-width: 1120px; margin: 0 auto; padding-block: 40px 72px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-direction: column; gap: 56px; }
+header { display: flex; flex-direction: column; gap: 12px; }
+h1 { font: 800 clamp(40px, 7vw, 76px)/0.95 var(--display); letter-spacing: -0.03em; margin: 0; }
+h2 { font: 600 26px/1.15 var(--display); letter-spacing: -0.01em; margin: 0; text-wrap: balance; }
+p { margin: 0; max-width: 65ch; }
+.lede { font-size: 18px; color: var(--muted); }
+.hint { font: 12px/1.4 var(--mono); color: var(--proof); letter-spacing: 0.02em; }
+section { display: flex; flex-direction: column; gap: 20px; }
+.rack { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)); gap: 40px 32px; align-items: start; }
+figure { margin: 0; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+figure.wide { grid-column: 1 / -1; }
+.sheet { display: block; width: 100%; height: auto; max-width: 100%; touch-action: pan-y; cursor: crosshair;
+  filter: drop-shadow(0 1px 1px rgba(var(--shadow), .35)) drop-shadow(0 10px 18px rgba(var(--shadow), .28)); }
+.portrait .sheet { max-width: 400px; margin-inline: auto; }
+figcaption { font: 12px/1.5 var(--mono); color: var(--muted); display: grid; grid-template-columns: auto 1fr; gap: 0 12px; border-top: 1px solid var(--line); padding-top: 8px; }
+figcaption b { font-weight: 500; color: var(--ink); grid-column: 1 / -1; font-size: 13px; }
+figcaption span:nth-child(even) { color: var(--proof); }
+
+.bench { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+@media (max-width: 760px) { .bench { grid-template-columns: minmax(0, 1fr); } }
+.controls { background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 14px; min-width: 0; }
+.controls label { display: flex; flex-direction: column; gap: 4px; font: 11px/1.3 var(--mono); color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; min-width: 0; }
+.controls .full { grid-column: 1 / -1; }
+.controls input[type="text"], .controls select { font: 15px var(--body); padding: 7px 8px; border: 1px solid var(--line); border-radius: 3px; background: var(--stone); color: var(--ink); min-width: 0; width: 100%; box-sizing: border-box; }
+.controls input[type="range"] { width: 100%; accent-color: var(--proof); margin: 0; }
+
+.bench-view { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 8px); z-index: 2; min-width: 0; background: var(--stone); padding-bottom: 4px; }
+.controls { display: flex; flex-direction: column; gap: 8px; background: none; border: 0; padding: 0; }
+.controls details { background: var(--panel); border: 1px solid var(--line); border-radius: 4px; }
+.controls summary { cursor: pointer; padding: 10px 14px; font: 600 15px var(--display); }
+.controls .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; padding: 2px 14px 14px; align-items: end; }
+.controls label > span { display: flex; justify-content: space-between; gap: 8px; }
+.controls output { color: var(--ink); font-variant-numeric: tabular-nums; }
+.controls textarea { font: 15px var(--body); padding: 7px 8px; border: 1px solid var(--line); border-radius: 3px; background: var(--stone); color: var(--ink); width: 100%; box-sizing: border-box; resize: vertical; }
+.controls input[type="color"] { width: 100%; height: 34px; padding: 2px; border: 1px solid var(--line); border-radius: 3px; background: var(--stone); box-sizing: border-box; }
+.controls input[type="file"] { font: 12px var(--body); color: var(--muted); max-width: 100%; }
+.controls label.check { flex-direction: row; align-items: center; gap: 8px; grid-column: 1 / -1; text-transform: none; letter-spacing: 0; font: 13px var(--body); color: var(--ink); }
+.controls label.check input { accent-color: var(--proof); margin: 0; }
+button { font: 500 13px var(--body); padding: 8px 12px; border: 1px solid var(--line); border-radius: 3px; background: var(--stone); color: var(--ink); cursor: pointer; }
+button:hover { border-color: var(--proof); }
+.controls .grid button { grid-column: 1 / -1; }
+.codebox { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.codebar { display: flex; justify-content: space-between; align-items: center; font: 12px var(--mono); color: var(--muted); }
+
+.controls label { position: relative; }
+.lab { display: inline-flex; align-items: center; gap: 6px; }
+.info { width: 15px; height: 15px; flex: none; padding: 0; border-radius: 50%; border: 1px solid var(--muted); background: none; color: var(--muted); font: italic 700 10px/1 Georgia, serif; text-transform: none; letter-spacing: 0; cursor: help; }
+.info:hover, .info:focus { border-color: var(--proof); color: var(--proof); }
+.tip { position: absolute; left: 0; right: 0; bottom: calc(100% + 4px); z-index: 5; padding: 8px 10px; border-radius: 4px; background: var(--ink); color: var(--stone); font: 12.5px/1.45 var(--body); text-transform: none; letter-spacing: 0; text-align: left; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .12s; box-shadow: 0 4px 14px rgba(var(--shadow), .3); }
+.info:hover + .tip, .info:focus + .tip { opacity: 1; visibility: visible; }
+@media (prefers-reduced-motion: reduce) { .tip { transition: none; } }
+:focus-visible { outline: 2px solid var(--proof); outline-offset: 2px; }
+
+#live { padding: 44px clamp(20px, 6vw, 64px) 48px; color: #1b1a19; font: 400 19px/1.6 "EB Garamond", Georgia, serif; max-width: 640px; margin-inline: auto; box-sizing: border-box; width: 100%;
+  filter: drop-shadow(0 1px 1px rgba(var(--shadow), .35)) drop-shadow(0 10px 18px rgba(var(--shadow), .28)); }
+#live h3 { font: 500 34px/1.1 "EB Garamond", Georgia, serif; font-style: italic; margin: 0 0 6px; }
+#live .sc { font: 500 12px/1.4 "EB Garamond", Georgia, serif; letter-spacing: 0.22em; text-transform: uppercase; }
+#live hr { border: 0; height: 1.5px; background: currentColor; margin: 18px 0; }
+#live p { max-width: none; }
+#live u { text-underline-offset: 3px; }
+
+pre { margin: 0; background: var(--stone-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; font: 13px/1.6 var(--mono); color: var(--ink); }
+.status { font: 12px var(--mono); color: var(--muted); min-height: 1.4em; }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Impressio</h1>
+    <p class="lede">A letterpress and cardstock renderer for the canvas. Nothing here is an image: each sheet is a simulated height field, pressed by a forme, inked, and photographed under a light.</p>
+    <p class="hint">Move the pointer across any sheet to move the light.</p>
+    <p class="status" id="status" role="status">Pulling sheets…</p>
+  </header>
+
+  <section aria-label="Specimens">
+    <div class="rack" id="rack"></div>
+  </section>
+
+  <section>
+    <h2>The bench</h2>
+    <p>Every control the library has is here: the type, each property of the stock and the ink, how the press is run, a second pass, and the light. The code for the current print is written out underneath.</p>
+    <div class="bench">
+      <div class="bench-view">
+        <canvas class="sheet" id="bench-sheet" aria-label="Your print"></canvas>
+        <p class="status" id="bench-msg" role="status"></p>
+      </div>
+      <form class="controls" id="bench" onsubmit="return false"></form>
+    </div>
+    <div class="codebox">
+      <div class="codebar"><span>This print, as code</span><button type="button" id="b-copy">Copy</button></div>
+      <pre><code id="b-code"></code></pre>
+    </div>
+  </section>
+
+  <section>
+    <h2>Live text, pressed in place</h2>
+    <p>This block is ordinary HTML. The browser lays it out, so it can be selected, searched and read aloud; the glyphs are reprinted on a sheet behind it. Try selecting a sentence.</p>
+    <div id="live">
+      <p class="sc" data-ink="oxblood">Notice to the trade</p>
+      <h3>On the making-ready of a forme</h3>
+      <hr>
+      <p>Lock the type in the chase, plane it down, and pull a proof. Where the print is weak, <u>build up the packing</u> with tissue; where it punches, cut it away. A good makeready is <span data-ink="navy">felt more than seen</span>.</p>
+      <hr data-press="blind">
+      <p class="sc" data-press="blind">Blind stamped · no ink</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Use it</h2>
+    <pre><code>import { createSheet, pressElement, typesetTex } from 'impressio';
+
+const sheet = createSheet({ width: 720, height: 440, paper: 'cotton', seed: 7 });
+
+sheet.impress('deep', f =&gt; {                       // photopolymer, deep bite, black
+  f.text('odile marchetti', 360, 200, { font: 'italic 96px "EB Garamond"', align: 'center' });
+});
+sheet.impress('blind', f =&gt; f.rule(180, 250, 360, 2)); // a second, uninked pass
+sheet.impress({ ink: '#7a1f1c', depth: 1 }, f =&gt; {     // any CSS colour is an ink
+  f.ctx.arc(360, 330, 18, 0, 7); f.ctx.fill();         // any Canvas 2D drawing is a forme
+});
+
+document.body.append(sheet.render({ azimuth: 315, elevation: 35 }));
+
+// LaTeX: typeset with MathJax (or your own engine), then lock it up like any other cut
+const eq = await typesetTex('e^{i\\pi} + 1 = 0', { size: 48 });
+sheet.impress('deep', f =&gt; f.cut(eq, 360, 220, { align: 'center' }));
+
+// type and maths together: $inline$ sits on the baseline, $$display$$ takes its own line
+const block = await typesetRich('The area is $A = \\pi r^2$ exactly.', { font: '24px "EB Garamond"', maxWidth: 480 });
+sheet.impress('deep', f =&gt; f.block(block, 40, 60));
+
+// or press real DOM text in place, in whatever fonts your CSS uses:
+await pressElement(document.querySelector('.card'), { paper: 'handmade' });</code></pre>
+  </section>
+</div>
+
+<script>window.MathJax = { svg: { fontCache: 'none' }, startup: { typeset: false } };</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
+<script>"use strict";var Impressio=(()=>{var It=Object.defineProperty;var Xt=Object.getOwnPropertyDescriptor;var Kt=Object.getOwnPropertyNames;var _t=Object.prototype.hasOwnProperty;var Yt=(i,t)=>{for(var o in t)It(i,o,{get:t[o],enumerable:!0})},Qt=(i,t,o,e)=>{if(t&&typeof t=="object"||typeof t=="function")for(let s of Kt(t))!_t.call(i,s)&&s!==o&&It(i,s,{get:()=>t[s],enumerable:!(e=Xt(t,s))||e.enumerable});return i};var Zt=i=>Qt(It({},"__esModule",{value:!0}),i);var se={};Yt(se,{Forme:()=>ft,Sheet:()=>nt,createSheet:()=>Wt,fontsReady:()=>Pt,impressions:()=>W,ink:()=>Tt,inks:()=>Et,loadFont:()=>Ht,papers:()=>Rt,pressElement:()=>Ut,setCanvasFactory:()=>Bt,setTexEngine:()=>Vt,typesetRich:()=>Jt,typesetTex:()=>Lt});var At=null;function Bt(i){At=i}function ut(i,t,o=!1){if(At)return At(i,t);if(o&&typeof OffscreenCanvas<"u")return new OffscreenCanvas(i,t);if(typeof document<"u"){let e=document.createElement("canvas");return e.width=i,e.height=t,e}if(typeof OffscreenCanvas<"u")return new OffscreenCanvas(i,t);throw new Error("impressio: no canvas available; call setCanvasFactory() first")}var Ct=new Float32Array(256);for(let i=0;i<256;i++){let t=i/255;Ct[i]=t<=.04045?t/12.92:Math.pow((t+.055)/1.055,2.4)}var kt=new Uint8ClampedArray(4097);for(let i=0;i<=4096;i++){let t=i/4096;kt[i]=Math.round(255*(t<=.0031308?t*12.92:1.055*Math.pow(t,1/2.4)-.055))}var pt=null,Nt=new Map;function Mt(i){let t=Nt.get(i);if(t)return t;let o=null,e=/^#([0-9a-f]{3}|[0-9a-f]{6})$/i.exec(i.trim());if(e){let n=e[1].length===3?e[1].replace(/./g,"$&$&"):e[1],r=parseInt(n,16);o=[r>>16,r>>8&255,r&255]}else{pt??(pt=ut(1,1,!0).getContext("2d",{willReadFrequently:!0})),pt.clearRect(0,0,1,1),pt.fillStyle="#000",pt.fillStyle=i,pt.fillRect(0,0,1,1);let n=pt.getImageData(0,0,1,1).data;o=[n[0],n[1],n[2]]}let s=[Ct[o[0]],Ct[o[1]],Ct[o[2]]];return Nt.set(i,s),s}async function Ht(i,t,o){let e=typeof t=="string"&&!/^url\(/.test(t)?`url(${JSON.stringify(t)})`:t,s=new FontFace(i,e,o);await s.load(),document.fonts.add(s)}async function Pt(i=[]){typeof document>"u"||!document.fonts||(await Promise.all(i.map(t=>document.fonts.load(t).catch(()=>{}))),await document.fonts.ready)}function $t(i){let t=i>>>0;return()=>{t=t+1831565813|0;let o=Math.imul(t^t>>>15,1|t);return o=o+Math.imul(o^o>>>7,61|o)^o,((o^o>>>14)>>>0)/4294967296}}function _(i){return(i()+i()+i()+i()-2)*1.732}var et=(i,t=0,o=1)=>i<t?t:i>o?o:i;function Y(i,t,o){let e=et((o-i)/(t-i));return e*e*(3-2*e)}function te(i,t,o,e,s,n){let r=n?o:e,y=n?e:o,m=n?1:o,l=1/(2*s+1);for(let u=0;u<y;u++){let w=n?u*o:u,h=i[w],p=i[w+(r-1)*m],C=h*(s+1);for(let k=1;k<=s;k++)C+=i[w+Math.min(k,r-1)*m];for(let k=0;k<r;k++){t[w+k*m]=C*l;let A=k+s+1,S=k-s;C+=(A<r?i[w+A*m]:p)-(S>=0?i[w+S*m]:h)}}}function ee(i,t,o,e,s,n){let r=n?o:e,y=n?e:o,m=n?1:o,l=1-2*s;for(let u=0;u<y;u++){let w=n?u*o:u;for(let h=0;h<r;h++){let p=w+h*m;t[p]=l*i[p]+s*(i[h>0?p-m:p]+i[h<r-1?p+m:p])}}}function Q(i,t,o,e,s=e){let n=new Float32Array(i),r=new Float32Array(i.length),y=(m,l)=>{if(m<.3)return;if(m<.9){ee(n,r,t,o,Math.min(m*m*.5,1/3),l),[n,r]=[r,n];return}let u=Math.max(1,Math.round((Math.sqrt(4*m*m+1)-1)/2));for(let w=0;w<3;w++)te(n,r,t,o,u,l),[n,r]=[r,n]};return y(e,!0),y(s,!1),n}function N(i,t,o,e,s){let n=Math.max(1,Math.min(8,Math.floor(Math.min(o,e)/2))),r=Math.ceil(i/n)+2,y=Math.ceil(t/n)+2,m=new Float32Array(r*y);for(let p=0;p<m.length;p++)m[p]=s()*2-1;m=Q(m,r,y,o/n,e/n);let l=0;for(let p=0;p<m.length;p++)l+=m[p];l/=m.length;let u=0;for(let p=0;p<m.length;p++)m[p]-=l,u+=m[p]*m[p];let w=1/Math.sqrt(u/m.length||1);for(let p=0;p<m.length;p++)m[p]*=w;if(n===1){let p=new Float32Array(i*t);for(let C=0;C<t;C++)p.set(m.subarray(C*r,C*r+i),C*i);return p}let h=new Float32Array(i*t);for(let p=0;p<t;p++){let C=p/n,k=C|0,A=C-k,S=k*r,R=S+r;for(let F=0;F<i;F++){let c=F/n,g=c|0,f=c-g,D=m[S+g]+(m[S+g+1]-m[S+g])*f,b=m[R+g]+(m[R+g+1]-m[R+g])*f;h[p*i+F]=D+(b-D)*A}}return h}var ft=class{constructor(t,o,e,s){this.ctx=t;this.width=o;this.height=e;this.rng=s;this.setHeight(0)}setHeight(t){let o=Math.round(128+127*Math.max(-1,Math.min(1,t)));return this.ctx.fillStyle=this.ctx.strokeStyle=`rgb(${o},${o},${o})`,this}wrap(t,o){let e=[];for(let s of t.split(`
+`)){if(!o){e.push(s);continue}let n="";for(let r of s.split(/\s+/)){let y=n?n+" "+r:r;n&&this.ctx.measureText(y).width>o?(e.push(n),n=r):n=y}e.push(n)}return e}text(t,o,e,s={}){let n=this.ctx;n.save(),s.font&&(n.font=s.font),n.textBaseline=s.baseline??"alphabetic",n.textAlign="left";let r=parseFloat(/(\d*\.?\d+)px/.exec(n.font)?.[1]??"16"),y=s.tracking??0,m="letterSpacing"in n;m&&(n.letterSpacing=`${y}px`);let l=s.lineHeight??r*1.25,u=this.wrap(t,s.maxWidth),w=0;return u.forEach((h,p)=>{let C=Array.from(h),k=(F,c)=>n.measureText(F).width+(m?0:y*c),A=k(h,C.length)-y;w=Math.max(w,A);let S=o-(s.align==="center"?A/2:s.align==="right"?A:0),R=e+p*l;if(s.handset){let F="";C.forEach((c,g)=>{let f=S+k(F,g);F+=c,c.trim()&&(this.setHeight(_(this.rng)*.6),n.save(),n.translate(f+_(this.rng)*(s.jitter??.15),R+_(this.rng)*(s.jitter??.15)),n.rotate(_(this.rng)*(s.tilt??.15)*Math.PI/180),m&&(n.letterSpacing="0px"),n.fillText(c,0,0),n.restore())}),this.setHeight(0)}else if(m||!y)n.fillText(h,S,R);else{let F="";C.forEach((c,g)=>{n.fillText(c,S+k(F,g),R),F+=c})}s.underline&&n.fillRect(S,R+r*.12,A,Math.max(1,r/16))}),n.restore(),{width:w,height:u.length*l}}rule(t,o,e,s=1){return this.ctx.fillRect(t,o,e,s),this}image(t,o,e,s,n){return this.ctx.drawImage(t,o,e,s,n),this}cut(t,o,e,s={}){let n=s.scale??1,r=t.width*n,y=o-(s.align==="center"?r/2:s.align==="right"?r:0);return this.ctx.drawImage(t.image,y,e-t.baseline*n,r,t.height*n),this}block(t,o,e){return t.draw(this,o,e),this}path(t,o={}){let e=this.ctx,s=typeof t=="string"?new Path2D(t):t;return e.save(),e.translate(o.x??0,o.y??0),e.scale(o.scale??1,o.scale??1),o.stroke?(e.lineWidth=o.stroke,e.lineCap=e.lineJoin="round",e.stroke(s)):e.fill(s),e.restore(),this}};var j=i=>({color:"#efece3",tooth:.5,toothScale:1.6,formation:.5,fibers:1.2,inclusions:.03,softness:.8,absorbency:.7,weave:0,cockle:.05,deckle:0,sheen:.03,...i}),Rt={cotton:j({}),cottonWhite:j({color:"#f6f5f0"}),cottonGrey:j({color:"#bdb9b0",formation:.6}),cover:j({color:"#f0a81e",tooth:.34,toothScale:1.2,softness:.55,absorbency:.5,fibers:.5,formation:.35,weave:.12}),handmade:j({color:"#c9c2b8",tooth:.75,toothScale:2.4,formation:1,fibers:3,inclusions:.12,softness:1,absorbency:.9,weave:.55,cockle:.8,deckle:9}),cartridge:j({color:"#eeede6",tooth:.16,toothScale:1.1,softness:.25,absorbency:.55,fibers:.3,formation:.3,inclusions:.02}),a4:j({color:"#f7f8fa",tooth:.1,toothScale:.9,formation:.22,fibers:.15,inclusions:0,softness:.15,absorbency:.6,cockle:.12,sheen:.06}),kraft:j({color:"#b39068",tooth:.45,toothScale:1.5,softness:.45,fibers:4,inclusions:.5,formation:.9}),black:j({color:"#1d1c1b",tooth:.3,toothScale:1.3,softness:.55,fibers:.6,formation:.4,inclusions:0})},H=i=>({color:"#1b1a19",strength:1,opacity:.5,gloss:.14,metallic:0,...i}),Et={black:H({}),posterBlack:H({color:"#151414",strength:1.1,gloss:.3,opacity:.6}),warmGrey:H({color:"#5d5750",strength:.8}),oxblood:H({color:"#7a1f1c",strength:.95}),navy:H({color:"#1d2f55",strength:.95}),forest:H({color:"#24513a",strength:.9}),cyan:H({color:"#19a7d8",strength:.75,opacity:0}),magenta:H({color:"#e0327c",strength:.75,opacity:0}),yellow:H({color:"#f6d21d",strength:.75,opacity:0}),white:H({color:"#f4f1e8",strength:.9,opacity:.85,gloss:.1}),gold:H({color:"#b08a3c",strength:1,opacity:.9,gloss:.5,metallic:.7}),goldFoil:H({color:"#d9b25a",strength:2,opacity:1,gloss:.92,metallic:1}),copperFoil:H({color:"#cf8156",strength:2,opacity:1,gloss:.92,metallic:1}),silverFoil:H({color:"#d5d7da",strength:2,opacity:1,gloss:.92,metallic:1})};function Tt(i,t={}){return H({color:i,...t})}function jt(i){return i==null||i==="blind"||i==="none"?null:typeof i=="string"?Et[i]??Tt(i):H(i)}function qt(i){return i==null?Rt.cotton:typeof i=="string"?Rt[i]??j({color:i}):j(i)}var W={deep:{depth:2.2,contact:1.04,inking:1,squash:.45,mottle:.35,wear:0,sortVariation:0,makeready:.15,gain:.25,dish:.6},kiss:{depth:.25,contact:.96,inking:.95,squash:.3,mottle:.4,wear:0,sortVariation:.1,makeready:.3,gain:.15,dish:.15},handset:{depth:1.1,contact:.99,inking:1,squash:.5,mottle:.5,wear:.12,sortVariation:.5,makeready:.4,gain:.3,dish:.35},woodType:{depth:.2,contact:.86,inking:1.1,squash:.25,mottle:.9,wear:.75,sortVariation:.8,makeready:.7,gain:.2,dish:.05},blind:{ink:null,depth:2.6,dish:.7},foil:{depth:.9,contact:1.2,inking:1.2,squash:0,mottle:.05,wear:0,sortVariation:0,makeready:0,gain:.05,dish:.2}};var ne={azimuth:315,elevation:42,intensity:1,ambient:.3,shadow:.6,occlusion:.5,falloff:.06,color:"#ffffff"},nt=class{constructor(t){this.alpha=null;this.dirty=!0;this.cavity=null;this.out=null;this.width=t.width,this.height=t.height;let o=typeof devicePixelRatio=="number"?Math.min(devicePixelRatio,2):1,e=this.pixelRatio=t.pixelRatio??o,s=this.W=Math.max(1,Math.round(t.width*e)),n=this.H=Math.max(1,Math.round(t.height*e));this.paper=qt(t.paper),this.light={...ne,...t.light},this.rng=$t(t.seed??Math.random()*2**32>>>0),this.canvas=t.canvas??ut(s,n),this.canvas.width=s,this.canvas.height=n;let r=s*n;this.albedo=new Float32Array(r*3),this.base=new Float32Array(r),this.relief=new Float32Array(r),this.tooth=new Float32Array(r),this.gloss=new Float32Array(r).fill(this.paper.sheen),this.metal=new Float32Array(r),this.makePaper()}makePaper(){let{W:t,H:o,rng:e,paper:s}=this,n=this.pixelRatio,r=t*o,y=s.toothScale*n,m=N(t,o,y,y,e),l=N(t,o,y/2.6,y/2.6,e),u=N(t,o,.55*n,.55*n,e),w=N(t,o,22*n,22*n,e),h=N(t,o,3*n,3*n,e),p=N(t,o,35*n,35*n,e),C=s.cockle>0?N(t,o,45*n,45*n,e):null,k=s.weave>0?N(t,o,12*n,12*n,e):null,[A,S,R]=Mt(s.color),F=s.tooth*.27*n,c=2*Math.PI/(3.4*n);for(let b=0;b<r;b++){let v=.62*m[b]+.58*l[b]+.5*u[b];this.tooth[b]=v;let T=v*F;if(k){let x=b%t,P=b/t|0,I=k[b]*n;T+=s.weave*.07*n*(Math.sin((x+I*1.3)*c)+Math.sin((P-I)*c))}this.relief[b]=T,C&&(this.base[b]=C[b]*s.cockle*1.4*n);let a=1+s.formation*(.024*w[b]+.012*h[b])-.006*v*s.tooth,d=b*3,M=s.formation*p[b];this.albedo[d]=A*a*(1+.007*M),this.albedo[d+1]=S*a,this.albedo[d+2]=R*a*(1-.012*M)}let g=this.width*this.height/1e4;for(let b=Math.round(s.fibers*g);b>0;b--){let v=e()<.65?1.03+e()*.05:.97-e()*.06;this.strand(4+e()*e()*30,.25+e()*.4,.05+e()*.12,(T,a)=>{let d=T*3,M=1+(v-1)*a;this.albedo[d]*=M,this.albedo[d+1]*=M,this.albedo[d+2]*=M,this.relief[T]+=a*.1*n})}let f=s.inclusions*g,D=["#3a2a1c","#4a4038","#2b2b2e","#5a3d24","#2a3c66","#7a2a22"];for(let b=Math.floor(f)+(e()<f%1?1:0);b>0;b--){let[v,T,a]=Mt(D[Math.floor(e()*e()*D.length)]),d=.3+e()*.45,M=e()<.4;this.strand(M?.4:2+e()*9,M?.7+e()*.8:.3+e()*.35,.2,(x,P)=>{let I=x*3,L=P*d;this.albedo[I]+=(v-this.albedo[I])*L,this.albedo[I+1]+=(T-this.albedo[I+1])*L,this.albedo[I+2]+=(a-this.albedo[I+2])*L})}if(s.deckle>0){let b=this.alpha=new Float32Array(r),v=N(t,o,5*n,5*n,e),T=N(t,o,1.1*n,1.1*n,e);for(let a=0;a<o;a++)for(let d=0;d<t;d++){let M=a*t+d,x=Math.min(d,t-1-d,a,o-1-a)/n;if(x>s.deckle*3.5){b[M]=1;continue}let P=Math.max(.6,s.deckle*(.5+.28*v[M]+.1*T[M]));b[M]=Y(P-.7,P+.7,x);let I=1-Y(P,P+s.deckle*1.4,x);this.base[M]-=I*I*1.6*n;let L=M*3,z=1+.05*I;this.albedo[L]*=z,this.albedo[L+1]*=z,this.albedo[L+2]*=z}}}strand(t,o,e,s){let{W:n,H:r,rng:y}=this,m=this.pixelRatio,l=new Map,u=y()*n,w=y()*r,h=y()*Math.PI*2,p=Math.max(1,Math.round(t*m/.6)),C=o*m/2,k=Math.ceil(C+1);for(let A=0;A<=p;A++){let S=p>2?Math.sqrt(Math.sin(Math.PI*(A+.5)/(p+1))):1;for(let R=Math.floor(w-k);R<=w+k;R++)if(!(R<0||R>=r))for(let F=Math.floor(u-k);F<=u+k;F++){if(F<0||F>=n)continue;let c=et(C+.5-Math.hypot(F+.5-u,R+.5-w))*S;if(c>0){let g=R*n+F;c>(l.get(g)??0)&&l.set(g,c)}}u+=Math.cos(h)*.6,w+=Math.sin(h)*.6,h+=_(y)*e}l.forEach((A,S)=>s(S,A))}impress(t,o){let{W:e,H:s,rng:n}=this,r=this.pixelRatio,y=e*s,m=this.paper,l={...W.deep,ink:"black",...typeof t=="string"?W[t]:t},u=jt(l.ink),h=ut(e,s,!0).getContext("2d",{willReadFrequently:!0});h.setTransform(r,0,0,r,0,0);let p=l.register;if(p&&(h.translate(this.width/2+(p.x??0),this.height/2+(p.y??0)),h.rotate((p.rotate??0)*Math.PI/180),h.translate(-this.width/2,-this.height/2)),h.font="16px serif",o(new ft(h,this.width,this.height,n)),l.wear>0){let v=this.width*this.height/1e4;h.setTransform(r,0,0,r,0,0),h.globalCompositeOperation="destination-out",h.lineCap="round";let T=n()*Math.PI;for(let a=Math.round(l.wear*v*2.2);a>0;a--){let d=n()*this.width,M=n()*this.height,x=T+_(n)*.5,P=2+n()*n()*34;h.globalAlpha=.45+n()*.55,h.lineWidth=.2+n()*.55,h.beginPath(),h.moveTo(d,M),h.quadraticCurveTo(d+Math.cos(x+.2)*P*.5,M+Math.sin(x+.2)*P*.5,d+Math.cos(x)*P,M+Math.sin(x)*P),h.stroke()}for(let a=Math.round(l.wear*v*5);a>0;a--)h.globalAlpha=.5+n()*.5,h.beginPath(),h.ellipse(n()*this.width,n()*this.height,.25+n()*n()*1.3,.2+n()*.6,n()*3,0,7),h.fill()}let C=h.getImageData(0,0,e,s).data,k=new Float32Array(y),A=new Float32Array(y),S=!1;for(let v=0;v<y;v++){let T=C[v*4+3];T&&(k[v]=T/255,A[v]=(C[v*4]-128)/127,S=!0)}if(!S)return this;let R=(.3+.7*m.softness)*r,F=Q(k,e,s,R),c=Q(k,e,s,R*3.5+1.2*r),g=Q(k,e,s,12*r),f=l.depth*r*(.55+.45*m.softness/.8),D=et(.3+l.depth*.4,0,.9),b=l.sortVariation;for(let v=0;v<y;v++){let T=c[v];if(T<.002)continue;let a=F[v],d=Y(.06,.8,Math.min(1,a*1.35));this.base[v]+=-d*f*(1.25-.5*g[v])*(1+.2*b*A[v])-l.dish*f*.4*Y(0,.85,T),this.relief[v]*=1-D*d}if(u){let[v,T,a]=Mt(u.color),d=Math.max(.35,l.gain+.25*m.absorbency)*.8*r,M=Q(k,e,s,d),x=Q(k,e,s,.9*r),P=.5-.18*Math.min(1,l.gain*2),I=N(e,s,70*r,70*r,n),L=N(e,s,.8*r,.8*r,n),z=N(e,s,16*r,16*r,n),E=N(e,s,2.2*r,2.2*r,n),q=N(e,s,4*r,120*r,n),dt=l.wear>0?N(e,s,14*r,.7*r,n):null,Ft=l.wear>0?N(e,s,.9*r,.9*r,n):null,V=4.2*u.strength,B=N(e,s,5*r,5*r,n);for(let O=0;O<y;O++){let gt=Math.max(k[O],Y(P-.22,P+.22,M[O]));if(gt<.004)continue;let ot=A[O]*b,bt=l.contact+l.makeready*.1*I[O]+.09*ot,it=.55*this.tooth[O]+.4*L[O]+.72*B[O];dt&&(it+=l.wear*(.5*dt[O]-5*Y(2,2.7,Ft[O]+.5*B[O])));let xt=-3.2+(1-bt)*9,Z=gt*Y(xt-.3,xt+.3,it);if(Z<.003)continue;let yt=et((1-x[O])*2.2)*k[O],J=l.inking*(1+l.mottle*(.2*z[O]+.12*E[O]+.14*q[O]))*(1+.45*ot)*(1+l.squash*(.7*yt-.15)),$=Z*(1-Math.exp(-V*Math.max(0,J))),X=O*3,tt=$*u.opacity,wt=this.albedo[X]*(1-$+$*v),st=this.albedo[X+1]*(1-$+$*T),rt=this.albedo[X+2]*(1-$+$*a);this.albedo[X]=wt+(v-wt)*tt,this.albedo[X+1]=st+(T-st)*tt,this.albedo[X+2]=rt+(a-rt)*tt;let K=Z*Math.min(1,J);this.gloss[O]+=(u.gloss-this.gloss[O])*K,this.metal[O]+=(u.metallic-this.metal[O])*K,this.base[O]+=Z*yt*l.squash*.1*r}}return this.dirty=!0,this}render(t){t&&(this.light={...this.light,...t});let{W:o,H:e,base:s,relief:n,albedo:r,gloss:y,metal:m}=this,l=this.pixelRatio,u=o*e,w=this.light;if(this.dirty||!this.cavity){let E=Q(s,o,e,1.8*l);for(let q=0;q<u;q++)E[q]=et((E[q]-s[q])/(1.2*l));this.cavity=E,this.dirty=!1}let h=this.cavity,p=this.canvas.getContext("2d"),C=this.out??(this.out=p.createImageData(o,e)),k=C.data,A=w.azimuth*Math.PI/180,S=et(w.elevation,4,90)*Math.PI/180,R=Math.sin(A),F=-Math.cos(A),c=R*Math.cos(S),g=F*Math.cos(S),f=Math.sin(S),D=Math.hypot(c,g,f+1),b=c/D,v=g/D,T=(f+1)/D,a=Math.tan(S),[d,M,x]=Mt(w.color).map(E=>E*w.intensity),I=[.75,1.5,2.5,4,6].map(E=>E*l).map(E=>[Math.round(R*E),Math.round(F*E),Math.hypot(Math.round(R*E),Math.round(F*E))*a]),L=w.ambient,z=w.shadow/(.5*l);for(let E=0;E<e;E++){let q=E>0?-o:0,dt=E<e-1?o:0,Ft=(E/e-.5)*F;for(let V=0;V<o;V++){let B=E*o+V,O=V>0?-1:0,gt=V<o-1?1:0,ot=(s[B+gt]+n[B+gt]-s[B+O]-n[B+O])*.5,bt=(s[B+dt]+n[B+dt]-s[B+q]-n[B+q])*.5,it=1/Math.sqrt(ot*ot+bt*bt+1),xt=-ot*it,Z=-bt*it,yt=it,J=(xt*c+Z*g+yt*f)/f;J<0?J=0:J>1.3&&(J=1.3);let $=0,X=s[B];for(let mt=0;mt<I.length;mt++){let vt=I[mt],G=V+vt[0],U=E+vt[1];G<0?G=0:G>=o&&(G=o-1),U<0?U=0:U>=e&&(U=e-1);let Ot=s[U*o+G]-X-vt[2];Ot>$&&($=Ot)}let tt=1-Math.min(1,$*z),wt=1+w.falloff*2*((V/o-.5)*R+Ft),st=(L+(1-L)*J*tt)*(1-w.occlusion*.5*h[B])*wt,rt=y[B],K=m[B],at=B*3,ct=r[at]*st,lt=r[at+1]*st,ht=r[at+2]*st;if(rt>.02){let mt=Math.max(0,xt*b+Z*v+yt*T),vt=Math.pow(mt,10+120*rt)*rt*.3*tt;if(K>.01){let U=(.42+1.7*Math.pow(mt,14)+.3*J)*(.55+.45*tt)*wt;ct+=(r[at]*U-ct)*K,lt+=(r[at+1]*U-lt)*K,ht+=(r[at+2]*U-ht)*K}let G=vt*(1-K);ct+=G,lt+=G,ht+=G}let St=B*4;ct*=d,lt*=M,ht*=x,k[St]=kt[ct>=1?4096:ct*4096|0],k[St+1]=kt[lt>=1?4096:lt*4096|0],k[St+2]=kt[ht>=1?4096:ht*4096|0],k[St+3]=255}}if(this.alpha)for(let E=0;E<u;E++)k[E*4+3]=Math.round(this.alpha[E]*255);return p.putImageData(C,0,0),this.canvas}toDataURL(t="image/png"){return this.canvas.toDataURL(t)}};function Wt(i){return new nt(i)}var zt=null;function Vt(i){zt=i}var oe=async(i,t)=>{let o=globalThis.MathJax;if(!o||!(o.tex2svgPromise||o.tex2svg))throw new Error('impressio: no TeX engine. Load MathJax (tex-svg, with svg.fontCache "none" or "local") or call setTexEngine().');return await o.startup?.promise,o.tex2svgPromise?o.tex2svgPromise(i,{display:t}):o.tex2svg(i,{display:t})};async function Dt(i,t,o){let e=i.cloneNode(!0);e.setAttribute("width",String(t)),e.setAttribute("height",String(o)),e.setAttribute("xmlns","http://www.w3.org/2000/svg"),e.setAttribute("xmlns:xlink","http://www.w3.org/1999/xlink"),e.removeAttribute("style"),e.setAttribute("color","#000");let s=new Image;return s.src="data:image/svg+xml;charset=utf-8,"+encodeURIComponent(new XMLSerializer().serializeToString(e)),await s.decode(),s}async function Lt(i,t={}){let o=t.size??24,e=await(zt??oe)(i,t.display??!0);typeof e=="string"&&(e=new DOMParser().parseFromString(e,"image/svg+xml").documentElement);let s=e.tagName.toLowerCase()==="svg"?e:e.querySelector("svg");if(!s)throw new Error("impressio: TeX engine returned no <svg>");let n=s.querySelector("[data-mjx-error]");if(n)throw new Error("impressio: TeX error: "+(n.getAttribute("data-mjx-error")??i));let r=(s.getAttribute("viewBox")??"").split(/[\s,]+/).map(Number);if(r.length!==4||r.some(Number.isNaN))throw new Error("impressio: TeX SVG has no viewBox");let y=o/1e3,m=r[2]*y,l=r[3]*y;return{image:await Dt(s,m,l),width:m,height:l,baseline:-r[1]*y}}async function Jt(i,t){let o=ut(1,1,!0).getContext("2d");o.font=t.font;let e=parseFloat(/(\d*\.?\d+)px/.exec(o.font)?.[1]??"16"),s=t.tracking??0;"letterSpacing"in o&&(o.letterSpacing=`${s}px`);let n=a=>o.measureText(a).width+("letterSpacing"in o?0:s*a.length),r=o.measureText("Hg"),y=r.fontBoundingBoxAscent??e*.8,m=r.fontBoundingBoxDescent??e*.25,l=n(" "),u=t.lineHeight??e*1.45,w=e*(t.mathScale??1),h=t.maxWidth??1/0,p=[],C=!0,k=i.replace(/\\\$/g,"").split(/(\$\$[\s\S]+?\$\$|\$[^$\n]+?\$)/);for(let a of k)if(a){if(a.startsWith("$$")&&a.length>4){p.push({kind:"display",text:a.slice(2,-2),glue:!1}),C=!0;continue}if(a.startsWith("$")&&a.length>2){p.push({kind:"math",text:a.slice(1,-1),glue:C}),C=!0;continue}for(let d of a.matchAll(/(\s+)|(\S+)/g))if(d[1]){let M=(d[1].match(/\n/g)??[]).length;for(let x=0;x<M;x++)p.push({kind:"break",text:"",glue:!1});C=M>0,M||(C=!1)}else p.push({kind:"word",text:d[2].replace(/\u0001/g,"$"),glue:C}),C=!0}await Promise.all(p.filter(a=>a.kind==="math"||a.kind==="display").map(async a=>{let d=await Lt(a.text,{size:w,display:a.kind==="display"}),M=d.width>h?h/d.width:1;a.cut=M<1?{image:d.image,width:d.width*M,height:d.height*M,baseline:d.baseline*M}:d}));let A=[],S=[],R=0,F=y,c=m,g=(a=!1)=>{A.push({baseline:0,width:R,items:S,asc:F,desc:c,display:a}),S=[],R=0,F=y,c=m};for(let a of p){if(a.kind==="break"){g();continue}if(a.kind==="display"){S.length&&g();let P=a.cut;S=[{x:0,w:P.width,cut:P}],R=P.width,F=P.baseline+e*.45,c=P.height-P.baseline+e*.45,g(!0);continue}let d=a.cut?a.cut.width:n(a.text),M=a.glue||!S.length?0:l;S.length&&!a.glue&&R+M+d>h&&g();let x=S[S.length-1];if(!a.cut&&x&&x.text!=null&&S.length)x.text+=(a.glue?"":" ")+a.text,x.w=n(x.text),R=x.x+x.w;else{let P=S.length?R+M:0;S.push(a.cut?{x:P,w:d,cut:a.cut}:{x:P,w:d,text:a.text}),R=P+d,a.cut&&(F=Math.max(F,a.cut.baseline),c=Math.max(c,a.cut.height-a.cut.baseline))}}(S.length||!A.length)&&g();let f=0,D=0,b=0;A.forEach((a,d)=>{f=d===0?a.asc:f+Math.max(u,D+a.asc+e*.12),a.baseline=f,D=a.desc,b=Math.max(b,a.width)});let v=Number.isFinite(h)?Math.max(h,b):b,T=f+D;return{width:v,height:T,draw(a,d,M){for(let x of A){let P=x.display?"center":t.align??"left",I=d+(P==="center"?(v-x.width)/2:P==="right"?v-x.width:0);for(let L of x.items)L.cut?a.ctx.drawImage(L.cut.image,I+L.x,M+x.baseline-L.cut.baseline,L.cut.width,L.cut.height):a.text(L.text,I+L.x,M+x.baseline,{font:t.font,tracking:s,handset:t.handset})}}}}var Gt=!1;function ie(){if(Gt)return;Gt=!0;let i=document.createElement("style");i.textContent="[data-impressio]{position:relative;isolation:isolate;background:none!important}[data-impressio],[data-impressio] *{-webkit-text-fill-color:transparent!important;text-decoration-color:transparent!important;text-shadow:none!important}[data-impressio] hr,[data-impressio] [data-rule]{background:none!important;border-color:transparent!important}[data-impressio] img[data-cut],[data-impressio] svg[data-cut],[data-impressio] mjx-container>svg{opacity:0}[data-impressio]>canvas[data-impressio-sheet]{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}",document.head.appendChild(i)}async function Ut(i,t={}){ie(),await Pt();let o=document.createElement("canvas");o.setAttribute("data-impressio-sheet",""),o.setAttribute("aria-hidden","true");let e,s=typeof t.impression=="string"?W[t.impression]:t.impression??W.deep,n=l=>{let u=l.closest("[data-press]")?.getAttribute("data-press"),w=l.closest("[data-ink]")?.getAttribute("data-ink"),h={...s,...u&&W[u]?W[u]:{}};return w?h.ink=w:(!("ink"in h)||h.ink===void 0)&&(h.ink=t.ink!==void 0?t.ink:getComputedStyle(l).color),{key:`${u??""}|${typeof h.ink=="string"?h.ink:JSON.stringify(h.ink)}`,spec:h}};async function r(){i.removeAttribute("data-impressio");let l=i.getBoundingClientRect(),u=new Map,w=c=>{let{key:g,spec:f}=n(c),D=u.get(g);return D||u.set(g,D={key:g,spec:f,ops:[]}),D},h=c=>`${c.fontStyle} ${c.fontVariantCaps==="small-caps"?"small-caps ":""}${c.fontWeight} ${c.fontSize} ${c.fontFamily}`,p=document.createElement("canvas").getContext("2d"),C=(c,g)=>{p.font=h(c);let f=p.measureText("Hg"),D=f.fontBoundingBoxAscent??f.actualBoundingBoxAscent,b=f.fontBoundingBoxDescent??f.actualBoundingBoxDescent;return g.top+(g.height-(D+b))/2+D-l.top},k=document.createTreeWalker(i,NodeFilter.SHOW_TEXT),A=document.createRange();for(let c=k.nextNode();c;c=k.nextNode()){let g=c.parentElement;if(!g||!c.data.trim())continue;let f=getComputedStyle(g);if(f.visibility==="hidden"||f.display==="none")continue;let D=w(g),b=h(f),v=f.textTransform,T=f.letterSpacing==="normal"?"0px":f.letterSpacing,a=(x,P)=>{A.setStart(c,x),A.setEnd(c,P);let I=A.getClientRects();if(I.length!==1){if(P-x>1)for(let L=x;L<P;L++)a(L,L+1);else I.length&&d(I[0],c.data.slice(x,P));return}d(I[0],c.data.slice(x,P))},d=(x,P)=>{let I=P;v==="uppercase"?I=I.toUpperCase():v==="lowercase"?I=I.toLowerCase():v==="capitalize"&&(I=I.replace(/^\p{L}/u,E=>E.toUpperCase()));let L=x.left-l.left,z=C(f,x);D.ops.push(E=>{"fontKerning"in E.ctx&&(E.ctx.fontKerning="normal"),E.text(I,L,z,{font:b,tracking:parseFloat(T)||0,handset:t.handset})})},M=/\S+/g;for(let x=M.exec(c.data);x;x=M.exec(c.data))a(x.index,x.index+x[0].length)}let S=[i,...Array.from(i.querySelectorAll("*"))],R=[];for(let c of S){if(c===o)continue;let g=getComputedStyle(c);if(g.textDecorationLine.includes("underline")){let f=parseFloat(g.fontSize),D=w(c);for(let b of Array.from(c.getClientRects())){let v=C(g,b)+f*.14,T=b.left-l.left,a=b.width;D.ops.push(d=>d.rule(T,v,a,Math.max(1,f/15)))}}if(c.tagName==="HR"||c.hasAttribute("data-rule")){let f=c.getBoundingClientRect();w(c).ops.push(b=>b.rule(f.left-l.left,f.top-l.top,f.width,Math.max(1,f.height)))}if(c.hasAttribute("data-cut")||c.tagName.toLowerCase()==="svg"&&c.parentElement?.tagName.toLowerCase()==="mjx-container"){let f=c.getBoundingClientRect(),D=w(c),b=c;R.push((c.tagName.toLowerCase()==="svg"?Dt(b,f.width,f.height):c.decode().then(()=>c)).then(v=>{D.ops.push(T=>T.image(v,f.left-l.left,f.top-l.top,f.width,f.height))}).catch(()=>{}))}}await Promise.all(R),e=new nt({width:l.width,height:l.height,paper:t.paper,seed:t.seed,pixelRatio:t.pixelRatio,light:e?.light??t.light,canvas:o});let F=[...u.values()].sort((c,g)=>+(c.spec.ink!=null&&c.spec.ink!=="blind")-+(g.spec.ink!=null&&g.spec.ink!=="blind"));for(let c of F)e.impress(c.spec,g=>c.ops.forEach(f=>f(g)));e.render(),i.setAttribute("data-impressio",""),o.parentElement!==i&&i.prepend(o)}await r();let y=0,m=l=>{y||(y=requestAnimationFrame(()=>{y=0;let u=i.getBoundingClientRect(),w=l.clientX-(u.left+u.width/2),h=l.clientY-(u.top+u.height/2),p=Math.hypot(w,h)/Math.max(u.width,u.height);e.render({azimuth:Math.atan2(w,-h)*180/Math.PI,elevation:Math.max(14,62-p*60)})}))};return t.interactiveLight&&window.addEventListener("pointermove",m,{passive:!0}),{get sheet(){return e},canvas:o,relight:l=>{e.render(l)},update:r,destroy(){window.removeEventListener("pointermove",m),o.remove(),i.removeAttribute("data-impressio")}}}return Zt(se);})();
+</script>
+<script>
+(async function () {
+  const { createSheet, papers, inks, impressions, fontsReady, pressElement, typesetTex, typesetRich } = Impressio;
+  const status = document.getElementById('status');
+  const PR = Math.min(2, Math.max(1.5, window.devicePixelRatio || 1));
+  const tick = () => new Promise((r) => setTimeout(r, 0));
+
+  await fontsReady(['italic 40px "EB Garamond"', '500 12px "EB Garamond"', '40px "League Gothic"', '40px "Alfa Slab One"',
+    '40px "Mrs Saint Delafield"', '700 20px Tinos', '20px Tinos', '500 20px Literata', 'italic 500 20px Literata']);
+
+  // Light follows the pointer over a sheet.
+  function lightFollows(canvas, sheet) {
+    let raf = 0;
+    canvas.addEventListener('pointermove', (e) => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const r = canvas.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+        sheet.render({ azimuth: Math.atan2(x, -y) * 180 / Math.PI, elevation: Math.max(12, 58 - Math.hypot(x, y) * 80) });
+      });
+    });
+  }
+
+  // A run of mixed styles on one centred line (for underlined italics inside roman).
+  function richLine(f, runs, cx, y, base) {
+    const widths = runs.map((r) => { f.ctx.font = r.font || base; return f.ctx.measureText(r.t).width; });
+    let x = cx - widths.reduce((a, b) => a + b, 0) / 2;
+    runs.forEach((r, i) => { f.text(r.t, x, y, { font: r.font || base, underline: r.u }); x += widths[i]; });
+  }
+
+  // A laurel sprig: stem with paired leaves, mirrored about the centre.
+  function laurel(f, cx, cy, half, leaf) {
+    const c = f.ctx;
+    for (const dir of [-1, 1]) {
+      c.save(); c.translate(cx, cy); c.scale(dir, 1);
+      c.fillRect(leaf * 0.4, -leaf * 0.06, half, leaf * 0.12);
+      for (let x = leaf * 0.9; x < half; x += leaf * 1.15) {
+        for (const side of [-1, 1]) {
+          c.save(); c.translate(x, 0); c.rotate(side * -0.62); c.beginPath();
+          c.moveTo(0, 0); c.quadraticCurveTo(leaf * 0.5, -leaf * 0.36 * side - leaf * 0.1, leaf * 1.05, 0);
+          c.quadraticCurveTo(leaf * 0.5, leaf * 0.2 * side, 0, 0); c.fill(); c.restore();
+        }
+      }
+      c.restore();
+    }
+    for (const a of [0.6, -0.6, Math.PI - 0.6, Math.PI + 0.6]) {
+      c.save(); c.translate(cx, cy); c.rotate(a); c.beginPath(); c.ellipse(leaf * 0.5, 0, leaf * 0.42, leaf * 0.11, 0, 0, 7); c.fill(); c.restore();
+    }
+  }
+
+  const specimens = [
+    { cls: 'wide', w: 960, h: 560, paper: 'cotton', seed: 11, light: { azimuth: 300, elevation: 26 },
+      ticket: ['Calling card, deep bite', 'Stock', 'cotton, soft, toothy', 'Plate', 'photopolymer, 2 passes', 'Ink', 'rubber-base black + blind', 'Bite', '2.6 px'],
+      run(s) {
+        s.impress('blind', (f) => laurel(f, 480, 318, 400, 46));
+        s.impress({ ...impressions.deep, depth: 2.6 }, (f) => {
+          f.text('odile marchetti', 480, 215, { font: 'italic 500 150px "EB Garamond", serif', align: 'center' });
+          f.text('bookbinder  //  020.7946.0142', 480, 440, { font: 'italic 500 46px "EB Garamond", serif', align: 'center', tracking: 2 });
+          f.text('ODILE@MARCHETTI.EXAMPLE', 480, 515, { font: '500 30px "EB Garamond", serif', align: 'center', tracking: 7 });
+        });
+      } },
+    { cls: 'portrait', w: 480, h: 600, paper: 'cottonGrey', seed: 5, light: { azimuth: 330, elevation: 38 },
+      ticket: ['Examination paper', 'Stock', 'grey cotton cover', 'Plate', 'photopolymer', 'Ink', 'black, light film', 'Bite', '1.5 px'],
+      run(s) {
+        s.impress({ ...impressions.deep, depth: 1.5, inking: 0.8, mottle: 0.6 }, (f) => {
+          const b = '700 17px Tinos, serif', r = '25px Tinos, serif';
+          f.text('SECTION – B', 22, 78, { font: b }); f.text('(TYPOGRAPHIC ABILITY)', 22, 106, { font: b });
+          f.text('7', 300, 86, { font: '700 20px Tinos, serif' });
+          f.rule(22, 122, 436, 2);
+          f.text('4.', 22, 222, { font: '700 25px Tinos, serif' });
+          f.text('A line is set solid in 12 point\ntype. How many lines fill\none inch of column?', 66, 222, { font: r, lineHeight: 42 });
+          ['(a)   5', '(b)   6', '(c)   8', '(d)   12'].forEach((t, i) => f.text(t, 72, 376 + i * 62, { font: r }));
+        });
+      } },
+    { w: 720, h: 430, paper: 'cover', seed: 21, light: { azimuth: 350, elevation: 46 },
+      ticket: ['Introduction card', 'Stock', 'dyed cover, fine tooth', 'Plate', 'photopolymer', 'Ink', 'black, heavy squash', 'Bite', '1.6 px'],
+      run(s) {
+        s.impress({ ...impressions.deep, depth: 1.6, squash: 0.7 }, (f) => {
+          const base = '500 30px Literata, serif', it = 'italic 500 30px Literata, serif';
+          richLine(f, [{ t: 'Hello. My name is ' }, { t: 'Ines Halloran', font: it, u: 1 }, { t: ' and I' }], 360, 150, base);
+          richLine(f, [{ t: 'print ' }, { t: 'small editions', font: it, u: 1 }, { t: '. Write to me at' }], 360, 204, base);
+          richLine(f, [{ t: 'ines@halloran.example', font: it, u: 1 }, { t: ', or ring the' }], 360, 258, base);
+          richLine(f, [{ t: 'shop on ' }, { t: '555 0142', font: it, u: 1 }, { t: ' before five.' }], 360, 312, base);
+        });
+      } },
+    { w: 640, h: 440, paper: 'handmade', seed: 33, light: { azimuth: 40, elevation: 30 },
+      ticket: ['Handmade rag, deckle edge', 'Stock', 'cotton rag, felt-marked', 'Plate', 'polymer, one-piece script', 'Ink', 'warm black, kiss', 'Bite', '0.7 px'],
+      run(s) {
+        s.impress({ ...impressions.kiss, depth: 0.7, contact: 0.93, ink: { color: '#262422', strength: 1 } }, (f) => {
+          f.text('Tamsin Arkwright', 320, 250, { font: '92px "Mrs Saint Delafield", cursive', align: 'center' });
+          f.text('TAMSINARKWRIGHT.EXAMPLE  |  STUDIO@TAMSIN.EXAMPLE', 320, 338, { font: '500 13.5px "EB Garamond", serif', align: 'center', tracking: 1.6 });
+        });
+      } },
+    { cls: 'portrait', w: 540, h: 700, paper: 'cartridge', seed: 8, light: { azimuth: 320, elevation: 58 },
+      ticket: ['Wood type poster', 'Stock', 'smooth cartridge', 'Forme', 'worn wood type, hand-set', 'Ink', 'oil-base black, brayered', 'Bite', 'kiss'],
+      run(s) {
+        s.impress({ ...impressions.woodType, ink: 'posterBlack' }, (f) => {
+          const g = (px) => px + 'px "League Gothic", sans-serif';
+          f.text('PROOF THE', 270, 196, { font: g(150), align: 'center', handset: true, jitter: 0.5, tilt: 0.3 });
+          f.text('WORD,', 270, 330, { font: g(150), align: 'center', handset: true, jitter: 0.5, tilt: 0.3 });
+          f.text('NOT', 270, 500, { font: '168px "Alfa Slab One", serif', align: 'center', handset: true, jitter: 0.6, tilt: 0.3 });
+          f.text('THE RUMOUR.', 270, 630, { font: g(126), align: 'center', handset: true, jitter: 0.5, tilt: 0.3 });
+        });
+      } },
+    { w: 720, h: 430, paper: 'cottonWhite', seed: 27, light: { azimuth: 315, elevation: 30 },
+      ticket: ['LaTeX, set as a cut', 'Stock', 'white cotton', 'Plate', 'polymer from MathJax outlines', 'Ink', 'black + oxblood', 'Bite', '2 px'],
+      async run(s) {
+        const eq = await typesetTex('\\zeta(s)=\\sum_{n=1}^{\\infty}\\frac{1}{n^{s}}=\\prod_{p\\ \\mathrm{prime}}\\frac{1}{1-p^{-s}}', { size: 46 });
+        const small = await typesetTex('\\int_{-\\infty}^{\\infty} e^{-x^{2}}\\,dx=\\sqrt{\\pi}', { size: 30 });
+        s.impress({ ...impressions.deep, depth: 2 }, (f) => {
+          f.cut(eq, 360, 190, { align: 'center' });
+          f.cut(small, 360, 362, { align: 'center' });
+        });
+        s.impress({ ...impressions.deep, depth: 1.2, ink: 'oxblood' }, (f) => {
+          f.text('THE EULER PRODUCT', 360, 70, { font: '500 15px "EB Garamond", serif', align: 'center', tracking: 5 });
+          f.rule(310, 292, 100, 1.2);
+        });
+      } },
+    { cls: 'portrait', w: 480, h: 679, paper: 'a4', seed: 19, light: { azimuth: 320, elevation: 34 },
+      ticket: ['Printer paper', 'Stock', 'a4: 80 gsm copier bond, smooth, hard', 'Forme', 'hand-set metal type', 'Ink', 'black + navy', 'Bite', 'slight: thin sheet'],
+      run(s) {
+        s.impress({ ...impressions.handset, ink: 'navy', depth: 1 }, (f) => {
+          f.text('HALLORAN & DAUGHTERS', 240, 86, { font: '500 19px "EB Garamond", serif', align: 'center', tracking: 5, handset: true });
+          f.text('printers to the trade', 240, 114, { font: 'italic 17px "EB Garamond", serif', align: 'center' });
+          f.rule(60, 136, 360, 1.2);
+        });
+        s.impress({ ...impressions.handset, depth: 1 }, (f) => {
+          const r = '17px "EB Garamond", serif';
+          f.text('14 March', 420, 196, { font: 'italic ' + r, align: 'right' });
+          f.text('Dear customer,', 60, 250, { font: r, handset: true });
+          f.text('Your proofs are enclosed. This sheet is plain office printer paper. It is thin and hard, so the type barely bites and the ink sits on the surface. Hold it to a low light and you will still find the impression.', 60, 292, { font: r, maxWidth: 360, lineHeight: 27, handset: true });
+          f.text('Yours faithfully,', 60, 500, { font: r, handset: true });
+          f.text('I. Halloran', 60, 566, { font: 'italic 500 30px "EB Garamond", serif' });
+          f.text('PROOF ROOM  ·  SHEET 1 OF 1', 240, 640, { font: '500 10px "EB Garamond", serif', align: 'center', tracking: 3 });
+        });
+      } },
+    { w: 640, h: 400, paper: 'black', seed: 3, light: { azimuth: 310, elevation: 40 },
+      ticket: ['Foil on black', 'Stock', 'black cover', 'Die', 'hot foil + blind', 'Ink', 'gold foil', 'Bite', '0.9 px'],
+      run(s) {
+        s.impress('blind', (f) => { f.ctx.lineWidth = 3; f.ctx.strokeRect(38, 38, 564, 324); });
+        s.impress({ ...impressions.foil, ink: 'goldFoil' }, (f) => {
+          f.text('ATELIER', 320, 180, { font: '500 64px "EB Garamond", serif', align: 'center', tracking: 22 });
+          f.rule(250, 212, 140, 1.5);
+          f.text('nocturne', 320, 280, { font: 'italic 62px "EB Garamond", serif', align: 'center' });
+        });
+      } },
+    { w: 640, h: 400, paper: 'cottonWhite', seed: 14, light: { azimuth: 320, elevation: 44 },
+      ticket: ['Three-colour overprint', 'Stock', 'white cotton', 'Passes', '3, slightly off register', 'Ink', 'transparent tints', 'Bite', '1.2 px'],
+      run(s) {
+        const pass = (ink, x, reg, ch) => s.impress({ ...impressions.handset, ink, register: reg, sortVariation: 0.2 }, (f) =>
+          f.text(ch, x, 300, { font: '300px "Alfa Slab One", serif', align: 'center' }));
+        pass('yellow', 210, { x: 0.8, y: -0.5 }, 'A');
+        pass('magenta', 320, { x: -0.6, y: 0.7, rotate: 0.15 }, 'B');
+        pass('cyan', 430, { x: 0.4, y: 0.9, rotate: -0.1 }, 'C');
+      } },
+  ];
+
+  const rack = document.getElementById('rack');
+  const slots = specimens.map((sp) => {
+    const fig = document.createElement('figure');
+    if (sp.cls) fig.className = sp.cls;
+    const cv = document.createElement('canvas');
+    cv.className = 'sheet'; cv.width = sp.w; cv.height = sp.h; cv.style.aspectRatio = sp.w + ' / ' + sp.h;
+    cv.setAttribute('role', 'img'); cv.setAttribute('aria-label', sp.ticket[0]);
+    const cap = document.createElement('figcaption');
+    cap.innerHTML = '<b>' + sp.ticket[0] + '</b>' + sp.ticket.slice(1).map((t) => '<span>' + t + '</span>').join('');
+    fig.append(cv, cap); rack.append(fig);
+    return cv;
+  });
+  for (let i = 0; i < specimens.length; i++) {
+    const sp = specimens[i];
+    status.textContent = 'Printing ' + (i + 1) + ' of ' + specimens.length + ': ' + sp.ticket[0].toLowerCase() + '…';
+    await tick();
+    const sheet = createSheet({ width: sp.w, height: sp.h, paper: sp.paper, seed: sp.seed, pixelRatio: PR, light: sp.light, canvas: slots[i] });
+    try { await sp.run(sheet); } catch (e) { console.error(e); slots[i].nextSibling.firstChild.textContent += ' (could not typeset: ' + e.message + ')'; }
+    sheet.render(); lightFollows(slots[i], sheet);
+  }
+
+  // ---- bench: every knob the library has
+  const $ = (id) => document.getElementById(id);
+  const { loadFont } = Impressio;
+  const benchCanvas = $('bench-sheet'), benchMsg = $('bench-msg'), panel = $('bench');
+  const R = (key, label, min, max, step) => ({ key, label, min, max, step });
+  const PAPER_F = [R('tooth', 'Tooth', 0, 1, 0.01), R('toothScale', 'Tooth size', 0.5, 5, 0.1), R('formation', 'Cloudiness', 0, 1.5, 0.01),
+    R('fibers', 'Fibres', 0, 8, 0.01), R('inclusions', 'Flecks', 0, 2, 0.01), R('softness', 'Softness', 0, 1, 0.01),
+    R('absorbency', 'Absorbency', 0, 1, 0.01), R('weave', 'Felt marks', 0, 1, 0.01), R('cockle', 'Cockle', 0, 1.5, 0.01),
+    R('deckle', 'Deckle edge', 0, 20, 1), R('sheen', 'Sheen', 0, 0.5, 0.01)];
+  const INK_F = [R('strength', 'Pigment load', 0.1, 2, 0.01), R('opacity', 'Hiding power', 0, 1, 0.01), R('gloss', 'Gloss', 0, 1, 0.01), R('metallic', 'Metallic', 0, 1, 0.01)];
+  const RUN_F = [R('depth', 'Bite', 0, 5, 0.01), R('contact', 'Contact', 0.55, 1.2, 0.01), R('inking', 'Ink film', 0.2, 1.6, 0.01),
+    R('squash', 'Edge squash', 0, 1, 0.01), R('mottle', 'Mottle', 0, 1, 0.01), R('wear', 'Wear', 0, 1, 0.01),
+    R('sortVariation', 'Sort variation', 0, 1, 0.01), R('makeready', 'Uneven bed', 0, 1, 0.01), R('gain', 'Ink gain', 0, 1.5, 0.01), R('dish', 'Dishing', 0, 1, 0.01)];
+  const LIGHT_F = [R('azimuth', 'Direction', 0, 360, 1), R('elevation', 'Height', 5, 90, 1), R('intensity', 'Exposure', 0.5, 1.5, 0.01),
+    R('ambient', 'Fill', 0, 0.8, 0.01), R('shadow', 'Cast shadow', 0, 1, 0.01), R('occlusion', 'Cavity shade', 0, 1, 0.01), R('falloff', 'Falloff', 0, 0.5, 0.01)];
+  const LIGHT_0 = { azimuth: 315, elevation: 32, intensity: 1, ambient: 0.3, shadow: 0.6, occlusion: 0.5, falloff: 0.06, color: '#ffffff' };
+  const FACES = [['Garamond italic', 'italic 500 SIZEpx "EB Garamond", serif'], ['Garamond roman', '500 SIZEpx "EB Garamond", serif'],
+    ['Gothic wood type', 'SIZEpx "League Gothic", sans-serif'], ['Slab', 'SIZEpx "Alfa Slab One", serif'], ['Script', 'SIZEpx "Mrs Saint Delafield", cursive'],
+    ['Times bold', '700 SIZEpx Tinos, serif'], ['Literata', '500 SIZEpx Literata, serif'], ['Plex Mono', '500 SIZEpx "IBM Plex Mono", monospace']];
+
+  const el = (tag, attrs, kids) => { const n = Object.assign(document.createElement(tag), attrs || {}); (kids || []).forEach((k) => n.append(k)); return n; };
+  const HELP = {
+    'mode': 'Type prints the copy in the chosen face, and anything between dollar signs is typeset as LaTeX maths. One LaTeX formula treats the whole copy as a single formula, no dollar signs needed.',
+    'font': 'The typeface. Any font the browser can render can be locked up and printed.',
+    'text': 'What gets printed. Press Enter for a new line. Use the usual LaTeX convention for maths: $x^2$ sits inline with the text, $$x^2$$ goes on its own centred line, and \\$ prints a dollar sign.',
+    'fontfile': 'Load a font file from your device and print with it. The file stays in this browser tab; it is not uploaded.',
+    't-size': 'Type size in pixels. A line too long for the sheet is scaled down to fit.',
+    't-tracking': 'Extra space added between letters, in pixels.',
+    'align': 'Whether lines sit against the left edge, the centre or the right edge of the sheet.',
+    'underline': 'Prints a rule under each line, as a strip of brass rule would.',
+    'handset': 'Sets every letter as a separate piece of type, as with metal or wood type. Each letter then sits at a slightly different height and takes ink differently. Sort variation, under Press run, sets how much.',
+    't-jitter': 'How far each hand-set letter drifts out of position, in pixels. Only applies when Hand-set is on.',
+    't-tilt': 'How much each hand-set letter leans off straight, in degrees. Only applies when Hand-set is on.',
+    'paper': 'A preset stock. Choosing one resets all the paper controls below to that stock.',
+    'p-color': 'The base colour of the paper before any cloudiness, fibres or lighting.',
+    'p-tooth': 'How rough the surface is. 0 is smooth like coated paper; 1 is rough like cold-pressed watercolour paper. Rough paper also prints less solidly when Contact is low.',
+    'p-toothScale': 'The size of the bumps that make up the tooth, in pixels. Small is a fine grain; large is a coarse, lumpy surface.',
+    'p-formation': 'Soft, cloudy unevenness in the paper colour, from fibres settling unevenly when the sheet was made.',
+    'p-fibers': 'How many visible fibres of the paper itself show on the surface, per 100 by 100 pixels. They are only slightly lighter or darker than the sheet.',
+    'p-inclusions': 'How many stray dark or coloured specks and threads are caught in the sheet, per 100 by 100 pixels. Keep it low for the occasional fleck.',
+    'p-softness': 'How easily the sheet gives under pressure. Soft cotton takes a deep bite with rounded edges; hard paper takes a shallow, sharper one.',
+    'p-absorbency': 'How much the sheet soaks up ink. Higher values let the ink spread slightly past the edge of the type.',
+    'p-weave': 'A faint woven grid pressed into the surface, left by the felts that handmade and mould-made papers dry on.',
+    'p-cockle': 'Gentle large-scale waviness of the whole sheet, as in paper that dried unevenly.',
+    'p-deckle': 'Width of a rough, feathered torn edge, in pixels. 0 gives a clean cut edge.',
+    'p-sheen': 'How shiny the bare paper is. 0 is completely matte.',
+    's-seed': 'Every sheet is generated from this number. The same number always gives the same sheet and the same print; change it for a different one.',
+    'ink': 'A preset ink. Choosing one resets the ink controls below. Blind means no ink at all: the type is only pressed into the paper.',
+    'i-color': 'The colour of the ink pigment.',
+    'i-strength': 'How much pigment the ink carries. High gives a dense, dark print; low gives a pale, see-through tint.',
+    'i-opacity': 'How well the ink covers what is beneath it. At 0 it is transparent, so overlapping colours mix; at 1 it hides the paper completely.',
+    'i-gloss': 'How shiny the dried ink is. Low is matte; high gives a bright highlight where the light catches it.',
+    'i-metallic': 'How much the ink reflects like metal, as bronze inks and foil do.',
+    'run': 'A preset way of running the press. Choosing one resets the controls below. Deep is a modern plate pressed hard into soft paper; kiss barely touches; woodType is worn poster type inked by hand.',
+    'r-depth': 'How far the type sinks into the paper, in pixels. 0 leaves the surface flat; high values give a deep, sculpted impression.',
+    'r-contact': 'How completely the type touches the paper. At 1 or above the print is solid. Lower it and only the high points of the paper take ink, leaving white specks.',
+    'r-inking': 'How much ink is on the type. Low looks starved and grey; high looks heavy and dark.',
+    'r-squash': 'Ink squeezed out to the edges of each letter under pressure, leaving a darker outline and a slightly lighter centre.',
+    'r-mottle': 'Unevenness of the ink inside solid areas: roller streaks and blotchy patches, so black is never perfectly even.',
+    'r-wear': 'Damage to the printing surface: nicks, scratches and wood grain that show as missing ink.',
+    'r-sortVariation': 'How much each separate letter sits above or below the others, so some print darker and some lighter. Most visible with Hand-set on.',
+    'r-makeready': 'Slow variation in pressure across the sheet, as when the press bed has not been levelled carefully. One side prints weaker than the other.',
+    'r-gain': 'How far the ink spreads beyond the edge of the type, in pixels. Higher values make letters slightly fatter.',
+    'r-dish': 'How much the paper around each pressed shape is pulled down with it, forming a soft hollow. This is what makes type look sunk into the sheet.',
+    'second': 'Run the sheet through the press a second time: an uninked border or ornament, or the same type again in another ink.',
+    'ink2': 'The ink for the second pass when overprinting the same type. Transparent inks mix with the first colour where they overlap.',
+    'g-x': 'How far the second pass lands to the right (or left) of the first, in pixels. Real two-colour work is never perfectly aligned.',
+    'g-y': 'How far the second pass lands below (or above) the first, in pixels.',
+    'g-rotate': 'How much the second pass is turned relative to the first, in degrees.',
+    'l-azimuth': 'Where the light comes from, in degrees clockwise from the top of the sheet. 315 is the upper left.',
+    'l-elevation': 'How high the light sits above the sheet, in degrees. Low light rakes across the surface and exaggerates texture and depth; 90 is straight overhead.',
+    'l-intensity': 'Overall brightness of the photograph.',
+    'l-ambient': 'Soft light from all directions that fills in the shadows. Higher values flatten the relief.',
+    'l-shadow': 'How dark the shadows are that the walls of the impression cast onto its floor.',
+    'l-occlusion': 'Extra darkening in the corners and hollows of the impression, where less light reaches.',
+    'l-falloff': 'How much the sheet darkens on the side away from the light.',
+    'l-color': 'The colour of the light. A slightly warm tone looks like a lamp; a cool one looks like daylight.',
+    'follow': 'When on, moving the pointer over the sheet moves the light and updates Direction and Height.',
+  };
+  let tipN = 0;
+  const info = (id, label) => {
+    const tip = el('span', { className: 'tip', id: 'tip-' + ++tipN, textContent: HELP[id] || '' });
+    tip.setAttribute('role', 'tooltip');
+    const b = el('button', { type: 'button', className: 'info', textContent: 'i' });
+    b.setAttribute('aria-label', 'About ' + label.toLowerCase());
+    b.setAttribute('aria-describedby', tip.id);
+    b.addEventListener('click', (e) => { e.preventDefault(); b.focus(); });
+    return [b, tip];
+  };
+  function group(title, open) {
+    const grid = el('div', { className: 'grid' });
+    panel.append(el('details', { open: !!open }, [el('summary', { textContent: title }), grid]));
+    return grid;
+  }
+  function field(grid, id, label, control, full) {
+    control.id = 'b-' + id;
+    const out = control.type === 'range' ? el('output', { textContent: control.value }) : null;
+    const head = el('span', {}, [el('span', { className: 'lab' }, [label].concat(info(id.replace(/^[a-z]-(?=color$)/, (m) => m), label)))]); if (out) head.append(out);
+    grid.append(el('label', { className: full ? 'full' : '', htmlFor: control.id }, [head, control]));
+    return control;
+  }
+  const range = (grid, pre, f, kind) => { const c = field(grid, pre + '-' + f.key, f.label, el('input', { type: 'range', min: f.min, max: f.max, step: f.step })); c.dataset.kind = kind || ''; return c; };
+  const select = (grid, id, label, opts, def, full) => field(grid, id, label, el('select', {}, opts.map((o) => { const [t, v] = Array.isArray(o) ? o : [o, o]; return new Option(t, v, v === def, v === def); })), full);
+  const check = (grid, id, label) => { const c = el('input', { type: 'checkbox', id: 'b-' + id }); grid.append(el('label', { className: 'check', htmlFor: c.id }, [c, el('span', { className: 'lab' }, [label].concat(info(id, label)))])); return c; };
+  const color = (grid, id, label, kind) => { const c = field(grid, id, label, el('input', { type: 'color' })); c.dataset.kind = kind || ''; return c; };
+  const setVal = (id, v) => { const c = $('b-' + id); if (!c) return; c.value = v; const o = c.parentElement.querySelector('output'); if (o) o.textContent = c.value; };
+
+  // Type
+  let g = group('Type', true);
+  select(g, 'mode', 'Set as', [['Type, with $…$ for LaTeX', 'text'], ['One LaTeX formula', 'tex']], 'text');
+  select(g, 'font', 'Face', FACES.map(([t, v]) => [t, v]), FACES[0][1]);
+  field(g, 'text', 'Copy ($…$ inline maths, $$…$$ displayed maths)', el('textarea', { rows: 2, value: 'Fine printing', maxLength: 200 }), true);
+  g.append(el('button', { type: 'button', id: 'b-sample', textContent: 'Try a sample with inline maths' }));
+  field(g, 'fontfile', 'Or load your own font file (.ttf .otf .woff .woff2)', el('input', { type: 'file', accept: '.ttf,.otf,.woff,.woff2' }), true);
+  range(g, 't', R('size', 'Size', 14, 220, 1)); range(g, 't', R('tracking', 'Letterspacing', -4, 40, 0.5));
+  select(g, 'align', 'Alignment', ['left', 'center', 'right'], 'center');
+  check(g, 'underline', 'Underline rule');
+  check(g, 'handset', 'Hand-set (each letter its own sort)');
+  range(g, 't', R('jitter', 'Sort slop', 0, 2, 0.01)); range(g, 't', R('tilt', 'Sort tilt', 0, 2, 0.01));
+  setVal('t-size', 120); setVal('t-tracking', 0); setVal('t-jitter', 0.15); setVal('t-tilt', 0.15);
+
+  // Stock
+  g = group('Stock', true);
+  select(g, 'paper', 'Paper', Object.keys(papers), 'cotton'); color(g, 'p-color', 'Colour');
+  PAPER_F.forEach((f) => range(g, 'p', f));
+  range(g, 's', R('seed', 'Sheet number (seed)', 1, 999, 1));
+  g.append(el('button', { type: 'button', id: 'b-newsheet', textContent: 'Pull a fresh sheet' }));
+  setVal('s-seed', 42);
+
+  // Ink
+  g = group('Ink', true);
+  select(g, 'ink', 'Ink', ['blind (no ink)'].concat(Object.keys(inks)).map((k) => [k, k.split(' ')[0]]), 'black'); color(g, 'i-color', 'Colour');
+  INK_F.forEach((f) => range(g, 'i', f));
+
+  // Press run
+  g = group('Press run', true);
+  select(g, 'run', 'Preset', Object.keys(impressions), 'deep', true);
+  RUN_F.forEach((f) => range(g, 'r', f));
+
+  // Second pass
+  g = group('Second pass', false);
+  select(g, 'second', 'Add a pass', [['none', 'none'], ['blind border', 'border'], ['blind laurel', 'laurel'], ['overprint the same forme', 'overprint']], 'none');
+  select(g, 'ink2', 'Overprint ink', Object.keys(inks), 'magenta');
+  [R('x', 'Misregister x', -12, 12, 0.25), R('y', 'Misregister y', -12, 12, 0.25), R('rotate', 'Misregister turn', -3, 3, 0.01)].forEach((f) => range(g, 'g', f));
+  setVal('g-x', 3); setVal('g-y', 2); setVal('g-rotate', 0);
+
+  // Light
+  g = group('Light', false);
+  LIGHT_F.forEach((f) => range(g, 'l', f, 'light')); color(g, 'l-color', 'Light colour', 'light');
+  const follow = check(g, 'follow', 'Light follows the pointer'); follow.checked = true;
+  Object.keys(LIGHT_0).forEach((k) => setVal('l-' + k, LIGHT_0[k]));
+
+  panel.append(el('button', { type: 'button', id: 'b-reset', textContent: 'Reset the bench' }));
+
+  const read = (pre, fields) => Object.fromEntries(fields.map((f) => [f.key, +$('b-' + pre + '-' + f.key).value]));
+  const readPaper = () => ({ color: $('b-p-color').value, ...read('p', PAPER_F) });
+  const readInk = () => ($('b-ink').value === 'blind' ? null : { color: $('b-i-color').value, ...read('i', INK_F) });
+  const readRun = () => read('r', RUN_F);
+  const readLight = () => ({ ...read('l', LIGHT_F), color: $('b-l-color').value });
+  const applyPaper = () => { const p = papers[$('b-paper').value]; setVal('p-color', p.color); PAPER_F.forEach((f) => setVal('p-' + f.key, p[f.key])); };
+  const applyInk = () => { const i = inks[$('b-ink').value]; if (!i) return; setVal('i-color', i.color); INK_F.forEach((f) => setVal('i-' + f.key, i[f.key])); };
+  const applyRun = () => {
+    const name = $('b-run').value, p = { ...impressions.deep, ...impressions[name] };
+    RUN_F.forEach((f) => setVal('r-' + f.key, p[f.key]));
+    if (name === 'blind') setVal('ink', 'blind');
+    else if (name === 'foil') { setVal('ink', 'goldFoil'); applyInk(); }
+    else if ($('b-ink').value === 'blind') { setVal('ink', 'black'); applyInk(); }
+    $('b-handset').checked = p.sortVariation > 0.3;
+  };
+  applyPaper(); applyInk(); applyRun();
+
+  let benchSheet = null, pullId = 0, placed = null;
+  async function pull() {
+    const id = ++pullId, mode = $('b-mode').value, text = $('b-text').value || ' ', size = +$('b-t-size').value;
+    const paper = readPaper(), run = readRun(), inkNow = readInk(), second = $('b-second').value;
+    let cut = null, block = null;
+    benchMsg.textContent = '';
+    if (mode === 'text' && /\$[^$]+\$/.test(text)) {
+      try {
+        let sz = size;
+        for (let tries = 0; tries < 6; tries++) {
+          block = await typesetRich(text, { font: $('b-font').value.replace('SIZE', +sz.toFixed(1)), maxWidth: 580, align: $('b-align').value, tracking: +$('b-t-tracking').value, handset: $('b-handset').checked });
+          if (block.height <= 360 || sz < 10) break;
+          sz *= 0.85;
+        }
+        block.font = $('b-font').value.replace('SIZE', +sz.toFixed(1));
+      } catch (e) { block = null; benchMsg.textContent = String(e.message).replace('impressio: ', '') + '. Showing the copy as type instead.'; }
+      if (id !== pullId) return;
+    }
+    if (mode === 'tex') {
+      try { cut = await typesetTex(text.replace(/^\s*\$\$?|\$\$?\s*$/g, ''), { size }); } catch (e) { benchMsg.textContent = String(e.message).replace('impressio: ', '') + '. Showing the copy as type instead.'; }
+      if (id !== pullId) return;
+    }
+    const dbl = /\$/.test(text) || mode === 'tex' ? /\\\\([a-zA-Z]+)/.exec(text) : null;
+    if (dbl && !benchMsg.textContent) benchMsg.textContent = 'Note: "\\\\' + dbl[1] + '" has two backslashes, which TeX reads as a line break followed by the letters "' + dbl[1] + '". Use "\\' + dbl[1] + '" for the symbol.';
+    const sheet = createSheet({ width: 660, height: 400, paper, seed: +$('b-s-seed').value, pixelRatio: PR, canvas: benchCanvas, light: readLight() });
+    const draw = (f) => {
+      if (block) {
+        placed = { rich: true, y: Math.round(200 - block.height / 2), font: block.font };
+        f.block(block, 40, placed.y);
+        return;
+      }
+      if (cut) {
+        const k = Math.min(1, 600 / cut.width, 340 / cut.height);
+        placed = { tex: true, y: Math.round(200 - (cut.height / 2 - cut.baseline) * k), scale: +k.toFixed(3) };
+        f.cut(cut, 330, placed.y, { align: 'center', scale: k });
+        return;
+      }
+      const face = $('b-font').value, tracking = +$('b-t-tracking').value, lines = text.split('\n'), align = $('b-align').value;
+      f.ctx.font = face.replace('SIZE', size);
+      const widest = Math.max.apply(null, lines.map((l) => f.ctx.measureText(l).width + tracking * Math.max(0, l.length - 1)));
+      const sz = widest > 600 ? size * 600 / widest : size, lh = sz * 1.15;
+      placed = { font: face.replace('SIZE', +sz.toFixed(1)), x: align === 'left' ? 30 : align === 'right' ? 630 : 330, y: Math.round(200 - (lines.length - 1) * lh / 2 + sz * 0.3),
+        opts: { align, tracking, lineHeight: +lh.toFixed(1), handset: $('b-handset').checked, jitter: +$('b-t-jitter').value, tilt: +$('b-t-tilt').value, underline: $('b-underline').checked } };
+      f.text(text, placed.x, placed.y, { font: placed.font, ...placed.opts });
+    };
+    if (second === 'border') sheet.impress('blind', (f) => { f.ctx.lineWidth = 3; f.ctx.strokeRect(24, 24, 612, 352); });
+    if (second === 'laurel') sheet.impress('blind', (f) => laurel(f, 330, 352, 240, 24));
+    sheet.impress({ ...run, ink: inkNow }, draw);
+    if (second === 'overprint') sheet.impress({ ...run, ink: $('b-ink2').value, register: read('g', [{ key: 'x' }, { key: 'y' }, { key: 'rotate' }]) }, draw);
+    sheet.render();
+    benchSheet = sheet;
+    writeCode();
+  }
+
+  // The current print as code, showing only what differs from the presets.
+  const lit = (o) => '{ ' + Object.entries(o).map(([k, v]) => k + ': ' + (typeof v === 'string' ? "'" + v + "'" : v)).join(', ') + ' }';
+  const diff = (cur, base) => Object.fromEntries(Object.entries(cur).filter(([k, v]) => String(v).toLowerCase() !== String(base[k]).toLowerCase()));
+  const spread = (ns, name, d) => (Object.keys(d).length ? '{ ...' + ns + '.' + name + ', ' + lit(d).slice(2) : "'" + name + "'");
+  function writeCode() {
+    const pn = $('b-paper').value, inn = $('b-ink').value, rn = $('b-run').value, second = $('b-second').value;
+    const text = JSON.stringify($('b-text').value), ld = diff(readLight(), { ...LIGHT_0, azimuth: -1, elevation: -1 });
+    const rd = diff(readRun(), { ...impressions.deep, ...impressions[rn] });
+    const inkExpr = inn === 'blind' ? 'null' : spread('inks', inn, diff(readInk(), inks[inn]));
+    const runExpr = '{ ...impressions.' + rn + (Object.keys(rd).length ? ', ' + lit(rd).slice(2, -2) : '') + ', ink: ' + inkExpr + ' }';
+    const L = [];
+    L.push("import { createSheet, papers, inks, impressions, typesetTex, typesetRich } from 'impressio';", '');
+    L.push('const sheet = createSheet({ width: 660, height: 400, seed: ' + $('b-s-seed').value + ', paper: ' + spread('papers', pn, diff(readPaper(), papers[pn])) + ' });');
+    let body;
+    if (placed && placed.rich) {
+      const o = diff({ align: $('b-align').value, tracking: +$('b-t-tracking').value, handset: $('b-handset').checked }, { align: 'left', tracking: 0, handset: false });
+      L.push('const block = await typesetRich(' + text + ", { font: '" + placed.font + "', maxWidth: 580" + (Object.keys(o).length ? ', ' + lit(o).slice(2, -2) : '') + ' });');
+      body = 'f.block(block, 40, ' + placed.y + ')';
+    } else if (placed && placed.tex) {
+      L.push('const eq = await typesetTex(' + JSON.stringify($('b-text').value.replace(/^\s*\$\$?|\$\$?\s*$/g, '')) + ', { size: ' + $('b-t-size').value + ' });');
+      body = 'f.cut(eq, 330, ' + placed.y + ", { align: 'center'" + (placed.scale < 1 ? ', scale: ' + placed.scale : '') + ' })';
+    } else if (placed) {
+      const o = diff(placed.opts, { align: 'left', tracking: 0, handset: false, underline: false, jitter: placed.opts.handset ? 0.15 : placed.opts.jitter, tilt: placed.opts.handset ? 0.15 : placed.opts.tilt });
+      body = 'f.text(' + text + ', ' + placed.x + ', ' + placed.y + ", { font: '" + placed.font + "'" + (Object.keys(o).length ? ', ' + lit(o).slice(2, -2) : '') + ' })';
+    }
+    L.push('const forme = f => ' + body + ';', '');
+    if (second === 'border') L.push("sheet.impress('blind', f => { f.ctx.lineWidth = 3; f.ctx.strokeRect(24, 24, 612, 352); });");
+    if (second === 'laurel') L.push("sheet.impress('blind', f => drawLaurel(f)); // any Canvas 2D drawing");
+    L.push('sheet.impress(' + runExpr + ', forme);');
+    if (second === 'overprint') L.push("sheet.impress({ ...impressions." + rn + (Object.keys(rd).length ? ', ' + lit(rd).slice(2, -2) : '') + ", ink: '" + $('b-ink2').value + "', register: " + lit(read('g', [{ key: 'x' }, { key: 'y' }, { key: 'rotate' }])) + ' }, forme);');
+    L.push('', 'document.body.append(sheet.render(' + lit(ld) + '));');
+    $('b-code').textContent = L.join('\n');
+  }
+
+  let timer = 0;
+  const later = () => { clearTimeout(timer); timer = setTimeout(pull, 140); };
+  panel.addEventListener('input', (e) => {
+    const t = e.target, o = t.parentElement && t.parentElement.querySelector('output');
+    if (o) o.textContent = t.value;
+    if (t.type === 'file') return;
+    if (t.id === 'b-paper') applyPaper(); else if (t.id === 'b-ink') applyInk(); else if (t.id === 'b-run') applyRun();
+    if (t.dataset.kind === 'light') { if (benchSheet) { benchSheet.render(readLight()); writeCode(); } return; }
+    if (t.id === 'b-follow') return;
+    later();
+  });
+  $('b-fontfile').addEventListener('change', async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    try {
+      const name = 'Bench ' + file.name.replace(/\.[^.]+$/, '').replace(/[^\w -]/g, '');
+      await loadFont(name, await file.arrayBuffer());
+      const opt = new Option(file.name, 'SIZEpx "' + name + '"', true, true);
+      $('b-font').add(opt); setVal('mode', 'text');
+      benchMsg.textContent = ''; pull();
+    } catch (err) { benchMsg.textContent = 'That file could not be read as a font.'; }
+  });
+  $('b-sample').addEventListener('click', () => {
+    setVal('mode', 'text'); setVal('t-size', 30); setVal('font', FACES[1][1]); setVal('align', 'left');
+    $('b-text').value = 'A circle of radius $r$ has area $A = \\pi r^{2}$, and Euler found that $e^{i\\pi} + 1 = 0$. Summing the squares,\n$$\\sum_{n=1}^{\\infty} \\frac{1}{n^{2}} = \\frac{\\pi^{2}}{6}.$$';
+    pull();
+  });
+  $('b-newsheet').addEventListener('click', () => { setVal('s-seed', 1 + Math.floor(Math.random() * 999)); pull(); });
+  $('b-reset').addEventListener('click', () => {
+    setVal('mode', 'text'); setVal('font', FACES[0][1]); setVal('text', 'Fine printing'); setVal('align', 'center');
+    setVal('t-size', 120); setVal('t-tracking', 0); setVal('t-jitter', 0.15); setVal('t-tilt', 0.15); $('b-underline').checked = false;
+    setVal('paper', 'cotton'); setVal('ink', 'black'); setVal('run', 'deep'); setVal('second', 'none'); setVal('s-seed', 42);
+    setVal('g-x', 3); setVal('g-y', 2); setVal('g-rotate', 0);
+    Object.keys(LIGHT_0).forEach((k) => setVal('l-' + k, LIGHT_0[k]));
+    applyPaper(); applyInk(); applyRun(); pull();
+  });
+  $('b-mode').addEventListener('change', () => {
+    const t = $('b-text');
+    if ($('b-mode').value === 'tex' && !/[\\^_{]/.test(t.value)) { t.value = '\\oint_{\\gamma} f(z)\\,dz = 2\\pi i \\sum_{k} \\operatorname{Res}(f, a_k)'; setVal('t-size', 44); }
+    if ($('b-mode').value === 'text' && /\\/.test(t.value)) { t.value = 'Fine printing'; setVal('t-size', 120); setVal('align', 'center'); }
+  });
+  $('b-copy').addEventListener('click', async () => {
+    const code = $('b-code');
+    try { await navigator.clipboard.writeText(code.textContent); $('b-copy').textContent = 'Copied'; }
+    catch (e) { const r = document.createRange(); r.selectNodeContents(code); const s = getSelection(); s.removeAllRanges(); s.addRange(r); $('b-copy').textContent = 'Selected: press copy'; }
+    setTimeout(() => { $('b-copy').textContent = 'Copy'; }, 1800);
+  });
+  benchCanvas.width = 660; benchCanvas.height = 400; benchCanvas.style.aspectRatio = '660 / 400';
+  let braf = 0;
+  benchCanvas.addEventListener('pointermove', (e) => {
+    if (!follow.checked || braf || !benchSheet) return;
+    braf = requestAnimationFrame(() => {
+      braf = 0;
+      const r = benchCanvas.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+      setVal('l-azimuth', Math.round((Math.atan2(x, -y) * 180 / Math.PI + 360) % 360));
+      setVal('l-elevation', Math.round(Math.max(12, 58 - Math.hypot(x, y) * 80)));
+      benchSheet.render(readLight());
+    });
+  });
+  await pull();
+
+  // ---- live DOM text
+  const live = await pressElement($('live'), { paper: 'cotton', impression: 'deep', seed: 9, pixelRatio: PR, light: { azimuth: 315, elevation: 34 } });
+  let lw = $('live').offsetWidth, rt = 0;
+  new ResizeObserver(() => {
+    if ($('live').offsetWidth === lw) return;
+    lw = $('live').offsetWidth; clearTimeout(rt); rt = setTimeout(() => live.update(), 200);
+  }).observe($('live'));
+  status.textContent = '';
+})().catch((e) => { document.getElementById('status').textContent = 'Could not print: ' + e.message; console.error(e); });
+</script>
+</body></html>

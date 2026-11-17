@@ -1,0 +1,668 @@
+<title>Impressio Specimens</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&family=League+Gothic&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,500&family=Mrs+Saint+Delafield&family=Tinos:wght@400;700&display=swap">
+<style>
+/* Layout: specimens lie on an imposing stone (cool grey slab); each carries a mono job ticket. One wide hero, then a two-column proof rack, then the bench (controls) and the code. */
+:root {
+  --stone: #d5d8d4; --stone-2: #c6cac5; --ink: #1c2120; --muted: #56605c; --line: #aab0aa;
+  --panel: #e6e8e4; --proof: #1f4fbf; --shadow: 28, 36, 33;
+  --display: "Bricolage Grotesque", "Inter", system-ui, sans-serif;
+  --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --stone: #1b1f1e; --stone-2: #141716; --ink: #e7eae6; --muted: #98a29d; --line: #3a423f;
+  --panel: #242928; --proof: #8fb0ff; --shadow: 0, 0, 0; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --stone: #1b1f1e; --stone-2: #141716; --ink: #e7eae6; --muted: #98a29d; --line: #3a423f;
+  --panel: #242928; --proof: #8fb0ff; --shadow: 0, 0, 0; color-scheme: dark }
+
+body { background: var(--stone); color: var(--ink); font: 16px/1.55 var(--body); }
+.wrap { max-width: 1120px; margin: 0 auto; padding-block: 40px 72px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-direction: column; gap: 56px; }
+header { display: flex; flex-direction: column; gap: 12px; }
+h1 { font: 800 clamp(40px, 7vw, 76px)/0.95 var(--display); letter-spacing: -0.03em; margin: 0; }
+h2 { font: 600 26px/1.15 var(--display); letter-spacing: -0.01em; margin: 0; text-wrap: balance; }
+p { margin: 0; max-width: 65ch; }
+.lede { font-size: 18px; color: var(--muted); }
+.hint { font: 12px/1.4 var(--mono); color: var(--proof); letter-spacing: 0.02em; }
+section { display: flex; flex-direction: column; gap: 20px; }
+.rack { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)); gap: 40px 32px; align-items: start; }
+figure { margin: 0; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+figure.wide { grid-column: 1 / -1; }
+.sheet { display: block; width: 100%; height: auto; max-width: 100%; touch-action: pan-y; cursor: crosshair;
+  filter: drop-shadow(0 1px 1px rgba(var(--shadow), .35)) drop-shadow(0 10px 18px rgba(var(--shadow), .28)); }
+.portrait .sheet { max-width: 400px; margin-inline: auto; }
+figcaption { font: 12px/1.5 var(--mono); color: var(--muted); display: grid; grid-template-columns: auto 1fr; gap: 0 12px; border-top: 1px solid var(--line); padding-top: 8px; }
+figcaption b { font-weight: 500; color: var(--ink); grid-column: 1 / -1; font-size: 13px; }
+figcaption span:nth-child(even) { color: var(--proof); }
+
+.bench { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+@media (max-width: 760px) { .bench { grid-template-columns: minmax(0, 1fr); } }
+.controls { background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 14px; min-width: 0; }
+.controls label { display: flex; flex-direction: column; gap: 4px; font: 11px/1.3 var(--mono); color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; min-width: 0; }
+.controls .full { grid-column: 1 / -1; }
+.controls input[type="text"], .controls select { font: 15px var(--body); padding: 7px 8px; border: 1px solid var(--line); border-radius: 3px; background: var(--stone); color: var(--ink); min-width: 0; width: 100%; box-sizing: border-box; }
+.controls input[type="range"] { width: 100%; accent-color: var(--proof); margin: 0; }
+
+.bench-view { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 8px); z-index: 2; min-width: 0; background: var(--stone); padding-bottom: 4px; }
+.controls { display: flex; flex-direction: column; gap: 8px; background: none; border: 0; padding: 0; }
+.controls details { background: var(--panel); border: 1px solid var(--line); border-radius: 4px; }
+.controls summary { cursor: pointer; padding: 10px 14px; font: 600 15px var(--display); }
+.controls .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; padding: 2px 14px 14px; align-items: end; }
+.controls label > span { display: flex; justify-content: space-between; gap: 8px; }
+.controls output { color: var(--ink); font-variant-numeric: tabular-nums; }
+.controls textarea { font: 15px var(--body); padding: 7px 8px; border: 1px solid var(--line); border-radius: 3px; background: var(--stone); color: var(--ink); width: 100%; box-sizing: border-box; resize: vertical; }
+.controls input[type="color"] { width: 100%; height: 34px; padding: 2px; border: 1px solid var(--line); border-radius: 3px; background: var(--stone); box-sizing: border-box; }
+.controls input[type="file"] { font: 12px var(--body); color: var(--muted); max-width: 100%; }
+.controls label.check { flex-direction: row; align-items: center; gap: 8px; grid-column: 1 / -1; text-transform: none; letter-spacing: 0; font: 13px var(--body); color: var(--ink); }
+.controls label.check input { accent-color: var(--proof); margin: 0; }
+button { font: 500 13px var(--body); padding: 8px 12px; border: 1px solid var(--line); border-radius: 3px; background: var(--stone); color: var(--ink); cursor: pointer; }
+button:hover { border-color: var(--proof); }
+.controls .grid button { grid-column: 1 / -1; }
+.codebox { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.codebar { display: flex; justify-content: space-between; align-items: center; font: 12px var(--mono); color: var(--muted); }
+
+.controls label { position: relative; }
+.lab { display: inline-flex; align-items: center; gap: 6px; }
+.info { width: 15px; height: 15px; flex: none; padding: 0; border-radius: 50%; border: 1px solid var(--muted); background: none; color: var(--muted); font: italic 700 10px/1 Georgia, serif; text-transform: none; letter-spacing: 0; cursor: help; }
+.info:hover, .info:focus { border-color: var(--proof); color: var(--proof); }
+.tip { position: absolute; left: 0; right: 0; bottom: calc(100% + 4px); z-index: 5; padding: 8px 10px; border-radius: 4px; background: var(--ink); color: var(--stone); font: 12.5px/1.45 var(--body); text-transform: none; letter-spacing: 0; text-align: left; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .12s; box-shadow: 0 4px 14px rgba(var(--shadow), .3); }
+.info:hover + .tip, .info:focus + .tip { opacity: 1; visibility: visible; }
+@media (prefers-reduced-motion: reduce) { .tip { transition: none; } }
+:focus-visible { outline: 2px solid var(--proof); outline-offset: 2px; }
+
+#live { padding: 44px clamp(20px, 6vw, 64px) 48px; color: #1b1a19; font: 400 19px/1.6 "EB Garamond", Georgia, serif; max-width: 640px; margin-inline: auto; box-sizing: border-box; width: 100%;
+  filter: drop-shadow(0 1px 1px rgba(var(--shadow), .35)) drop-shadow(0 10px 18px rgba(var(--shadow), .28)); }
+#live h3 { font: 500 34px/1.1 "EB Garamond", Georgia, serif; font-style: italic; margin: 0 0 6px; }
+#live .sc { font: 500 12px/1.4 "EB Garamond", Georgia, serif; letter-spacing: 0.22em; text-transform: uppercase; }
+#live hr { border: 0; height: 1.5px; background: currentColor; margin: 18px 0; }
+#live p { max-width: none; }
+#live u { text-underline-offset: 3px; }
+
+pre { margin: 0; background: var(--stone-2); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; font: 13px/1.6 var(--mono); color: var(--ink); }
+.status { font: 12px var(--mono); color: var(--muted); min-height: 1.4em; }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Impressio</h1>
+    <p class="lede">A letterpress and cardstock renderer for the canvas. Nothing here is an image: each sheet is a simulated height field, pressed by a forme, inked, and photographed under a light.</p>
+    <p class="hint">Move the pointer across any sheet to move the light.</p>
+    <p class="status" id="status" role="status">Pulling sheets…</p>
+  </header>
+
+  <section aria-label="Specimens">
+    <div class="rack" id="rack"></div>
+  </section>
+
+  <section>
+    <h2>The bench</h2>
+    <p>Every control the library has is here: the type, each property of the stock and the ink, how the press is run, a second pass, and the light. The code for the current print is written out underneath.</p>
+    <div class="bench">
+      <div class="bench-view">
+        <canvas class="sheet" id="bench-sheet" aria-label="Your print"></canvas>
+        <p class="status" id="bench-msg" role="status"></p>
+      </div>
+      <form class="controls" id="bench" onsubmit="return false"></form>
+    </div>
+    <div class="codebox">
+      <div class="codebar"><span>This print, as code</span><button type="button" id="b-copy">Copy</button></div>
+      <pre><code id="b-code"></code></pre>
+    </div>
+  </section>
+
+  <section>
+    <h2>Live text, pressed in place</h2>
+    <p>This block is ordinary HTML. The browser lays it out, so it can be selected, searched and read aloud; the glyphs are reprinted on a sheet behind it. Try selecting a sentence.</p>
+    <div id="live">
+      <p class="sc" data-ink="oxblood">Notice to the trade</p>
+      <h3>On the making-ready of a forme</h3>
+      <hr>
+      <p>Lock the type in the chase, plane it down, and pull a proof. Where the print is weak, <u>build up the packing</u> with tissue; where it punches, cut it away. A good makeready is <span data-ink="navy">felt more than seen</span>.</p>
+      <hr data-press="blind">
+      <p class="sc" data-press="blind">Blind stamped · no ink</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Use it</h2>
+    <pre><code>import { createSheet, pressElement, typesetTex } from 'impressio';
+
+const sheet = createSheet({ width: 720, height: 440, paper: 'cotton', seed: 7 });
+
+sheet.impress('deep', f =&gt; {                       // photopolymer, deep bite, black
+  f.text('odile marchetti', 360, 200, { font: 'italic 96px "EB Garamond"', align: 'center' });
+});
+sheet.impress('blind', f =&gt; f.rule(180, 250, 360, 2)); // a second, uninked pass
+sheet.impress({ ink: '#7a1f1c', depth: 1 }, f =&gt; {     // any CSS colour is an ink
+  f.ctx.arc(360, 330, 18, 0, 7); f.ctx.fill();         // any Canvas 2D drawing is a forme
+});
+
+document.body.append(sheet.render({ azimuth: 315, elevation: 35 }));
+
+// LaTeX: typeset with MathJax (or your own engine), then lock it up like any other cut
+const eq = await typesetTex('e^{i\\pi} + 1 = 0', { size: 48 });
+sheet.impress('deep', f =&gt; f.cut(eq, 360, 220, { align: 'center' }));
+
+// type and maths together: $inline$ sits on the baseline, $$display$$ takes its own line
+const block = await typesetRich('The area is $A = \\pi r^2$ exactly.', { font: '24px "EB Garamond"', maxWidth: 480 });
+sheet.impress('deep', f =&gt; f.block(block, 40, 60));
+
+// or press real DOM text in place, in whatever fonts your CSS uses:
+await pressElement(document.querySelector('.card'), { paper: 'handmade' });</code></pre>
+  </section>
+</div>
+
+<script>window.MathJax = { svg: { fontCache: 'none' }, startup: { typeset: false } };</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
+<script>/*__LIB__*/</script>
+<script>
+(async function () {
+  const { createSheet, papers, inks, impressions, fontsReady, pressElement, typesetTex, typesetRich } = Impressio;
+  const status = document.getElementById('status');
+  const PR = Math.min(2, Math.max(1.5, window.devicePixelRatio || 1));
+  const tick = () => new Promise((r) => setTimeout(r, 0));
+
+  await fontsReady(['italic 40px "EB Garamond"', '500 12px "EB Garamond"', '40px "League Gothic"', '40px "Alfa Slab One"',
+    '40px "Mrs Saint Delafield"', '700 20px Tinos', '20px Tinos', '500 20px Literata', 'italic 500 20px Literata']);
+
+  // Light follows the pointer over a sheet.
+  function lightFollows(canvas, sheet) {
+    let raf = 0;
+    canvas.addEventListener('pointermove', (e) => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const r = canvas.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+        sheet.render({ azimuth: Math.atan2(x, -y) * 180 / Math.PI, elevation: Math.max(12, 58 - Math.hypot(x, y) * 80) });
+      });
+    });
+  }
+
+  // A run of mixed styles on one centred line (for underlined italics inside roman).
+  function richLine(f, runs, cx, y, base) {
+    const widths = runs.map((r) => { f.ctx.font = r.font || base; return f.ctx.measureText(r.t).width; });
+    let x = cx - widths.reduce((a, b) => a + b, 0) / 2;
+    runs.forEach((r, i) => { f.text(r.t, x, y, { font: r.font || base, underline: r.u }); x += widths[i]; });
+  }
+
+  // A laurel sprig: stem with paired leaves, mirrored about the centre.
+  function laurel(f, cx, cy, half, leaf) {
+    const c = f.ctx;
+    for (const dir of [-1, 1]) {
+      c.save(); c.translate(cx, cy); c.scale(dir, 1);
+      c.fillRect(leaf * 0.4, -leaf * 0.06, half, leaf * 0.12);
+      for (let x = leaf * 0.9; x < half; x += leaf * 1.15) {
+        for (const side of [-1, 1]) {
+          c.save(); c.translate(x, 0); c.rotate(side * -0.62); c.beginPath();
+          c.moveTo(0, 0); c.quadraticCurveTo(leaf * 0.5, -leaf * 0.36 * side - leaf * 0.1, leaf * 1.05, 0);
+          c.quadraticCurveTo(leaf * 0.5, leaf * 0.2 * side, 0, 0); c.fill(); c.restore();
+        }
+      }
+      c.restore();
+    }
+    for (const a of [0.6, -0.6, Math.PI - 0.6, Math.PI + 0.6]) {
+      c.save(); c.translate(cx, cy); c.rotate(a); c.beginPath(); c.ellipse(leaf * 0.5, 0, leaf * 0.42, leaf * 0.11, 0, 0, 7); c.fill(); c.restore();
+    }
+  }
+
+  const specimens = [
+    { cls: 'wide', w: 960, h: 560, paper: 'cotton', seed: 11, light: { azimuth: 300, elevation: 26 },
+      ticket: ['Calling card, deep bite', 'Stock', 'cotton, soft, toothy', 'Plate', 'photopolymer, 2 passes', 'Ink', 'rubber-base black + blind', 'Bite', '2.6 px'],
+      run(s) {
+        s.impress('blind', (f) => laurel(f, 480, 318, 400, 46));
+        s.impress({ ...impressions.deep, depth: 2.6 }, (f) => {
+          f.text('odile marchetti', 480, 215, { font: 'italic 500 150px "EB Garamond", serif', align: 'center' });
+          f.text('bookbinder  //  020.7946.0142', 480, 440, { font: 'italic 500 46px "EB Garamond", serif', align: 'center', tracking: 2 });
+          f.text('ODILE@MARCHETTI.EXAMPLE', 480, 515, { font: '500 30px "EB Garamond", serif', align: 'center', tracking: 7 });
+        });
+      } },
+    { cls: 'portrait', w: 480, h: 600, paper: 'cottonGrey', seed: 5, light: { azimuth: 330, elevation: 38 },
+      ticket: ['Examination paper', 'Stock', 'grey cotton cover', 'Plate', 'photopolymer', 'Ink', 'black, light film', 'Bite', '1.5 px'],
+      run(s) {
+        s.impress({ ...impressions.deep, depth: 1.5, inking: 0.8, mottle: 0.6 }, (f) => {
+          const b = '700 17px Tinos, serif', r = '25px Tinos, serif';
+          f.text('SECTION – B', 22, 78, { font: b }); f.text('(TYPOGRAPHIC ABILITY)', 22, 106, { font: b });
+          f.text('7', 300, 86, { font: '700 20px Tinos, serif' });
+          f.rule(22, 122, 436, 2);
+          f.text('4.', 22, 222, { font: '700 25px Tinos, serif' });
+          f.text('A line is set solid in 12 point\ntype. How many lines fill\none inch of column?', 66, 222, { font: r, lineHeight: 42 });
+          ['(a)   5', '(b)   6', '(c)   8', '(d)   12'].forEach((t, i) => f.text(t, 72, 376 + i * 62, { font: r }));
+        });
+      } },
+    { w: 720, h: 430, paper: 'cover', seed: 21, light: { azimuth: 350, elevation: 46 },
+      ticket: ['Introduction card', 'Stock', 'dyed cover, fine tooth', 'Plate', 'photopolymer', 'Ink', 'black, heavy squash', 'Bite', '1.6 px'],
+      run(s) {
+        s.impress({ ...impressions.deep, depth: 1.6, squash: 0.7 }, (f) => {
+          const base = '500 30px Literata, serif', it = 'italic 500 30px Literata, serif';
+          richLine(f, [{ t: 'Hello. My name is ' }, { t: 'Ines Halloran', font: it, u: 1 }, { t: ' and I' }], 360, 150, base);
+          richLine(f, [{ t: 'print ' }, { t: 'small editions', font: it, u: 1 }, { t: '. Write to me at' }], 360, 204, base);
+          richLine(f, [{ t: 'ines@halloran.example', font: it, u: 1 }, { t: ', or ring the' }], 360, 258, base);
+          richLine(f, [{ t: 'shop on ' }, { t: '555 0142', font: it, u: 1 }, { t: ' before five.' }], 360, 312, base);
+        });
+      } },
+    { w: 640, h: 440, paper: 'handmade', seed: 33, light: { azimuth: 40, elevation: 30 },
+      ticket: ['Handmade rag, deckle edge', 'Stock', 'cotton rag, felt-marked', 'Plate', 'polymer, one-piece script', 'Ink', 'warm black, kiss', 'Bite', '0.7 px'],
+      run(s) {
+        s.impress({ ...impressions.kiss, depth: 0.7, contact: 0.93, ink: { color: '#262422', strength: 1 } }, (f) => {
+          f.text('Tamsin Arkwright', 320, 250, { font: '92px "Mrs Saint Delafield", cursive', align: 'center' });
+          f.text('TAMSINARKWRIGHT.EXAMPLE  |  STUDIO@TAMSIN.EXAMPLE', 320, 338, { font: '500 13.5px "EB Garamond", serif', align: 'center', tracking: 1.6 });
+        });
+      } },
+    { cls: 'portrait', w: 540, h: 700, paper: 'cartridge', seed: 8, light: { azimuth: 320, elevation: 58 },
+      ticket: ['Wood type poster', 'Stock', 'smooth cartridge', 'Forme', 'worn wood type, hand-set', 'Ink', 'oil-base black, brayered', 'Bite', 'kiss'],
+      run(s) {
+        s.impress({ ...impressions.woodType, ink: 'posterBlack' }, (f) => {
+          const g = (px) => px + 'px "League Gothic", sans-serif';
+          f.text('PROOF THE', 270, 196, { font: g(150), align: 'center', handset: true, jitter: 0.5, tilt: 0.3 });
+          f.text('WORD,', 270, 330, { font: g(150), align: 'center', handset: true, jitter: 0.5, tilt: 0.3 });
+          f.text('NOT', 270, 500, { font: '168px "Alfa Slab One", serif', align: 'center', handset: true, jitter: 0.6, tilt: 0.3 });
+          f.text('THE RUMOUR.', 270, 630, { font: g(126), align: 'center', handset: true, jitter: 0.5, tilt: 0.3 });
+        });
+      } },
+    { w: 720, h: 430, paper: 'cottonWhite', seed: 27, light: { azimuth: 315, elevation: 30 },
+      ticket: ['LaTeX, set as a cut', 'Stock', 'white cotton', 'Plate', 'polymer from MathJax outlines', 'Ink', 'black + oxblood', 'Bite', '2 px'],
+      async run(s) {
+        const eq = await typesetTex('\\zeta(s)=\\sum_{n=1}^{\\infty}\\frac{1}{n^{s}}=\\prod_{p\\ \\mathrm{prime}}\\frac{1}{1-p^{-s}}', { size: 46 });
+        const small = await typesetTex('\\int_{-\\infty}^{\\infty} e^{-x^{2}}\\,dx=\\sqrt{\\pi}', { size: 30 });
+        s.impress({ ...impressions.deep, depth: 2 }, (f) => {
+          f.cut(eq, 360, 190, { align: 'center' });
+          f.cut(small, 360, 362, { align: 'center' });
+        });
+        s.impress({ ...impressions.deep, depth: 1.2, ink: 'oxblood' }, (f) => {
+          f.text('THE EULER PRODUCT', 360, 70, { font: '500 15px "EB Garamond", serif', align: 'center', tracking: 5 });
+          f.rule(310, 292, 100, 1.2);
+        });
+      } },
+    { cls: 'portrait', w: 480, h: 679, paper: 'a4', seed: 19, light: { azimuth: 320, elevation: 34 },
+      ticket: ['Printer paper', 'Stock', 'a4: 80 gsm copier bond, smooth, hard', 'Forme', 'hand-set metal type', 'Ink', 'black + navy', 'Bite', 'slight: thin sheet'],
+      run(s) {
+        s.impress({ ...impressions.handset, ink: 'navy', depth: 1 }, (f) => {
+          f.text('HALLORAN & DAUGHTERS', 240, 86, { font: '500 19px "EB Garamond", serif', align: 'center', tracking: 5, handset: true });
+          f.text('printers to the trade', 240, 114, { font: 'italic 17px "EB Garamond", serif', align: 'center' });
+          f.rule(60, 136, 360, 1.2);
+        });
+        s.impress({ ...impressions.handset, depth: 1 }, (f) => {
+          const r = '17px "EB Garamond", serif';
+          f.text('14 March', 420, 196, { font: 'italic ' + r, align: 'right' });
+          f.text('Dear customer,', 60, 250, { font: r, handset: true });
+          f.text('Your proofs are enclosed. This sheet is plain office printer paper. It is thin and hard, so the type barely bites and the ink sits on the surface. Hold it to a low light and you will still find the impression.', 60, 292, { font: r, maxWidth: 360, lineHeight: 27, handset: true });
+          f.text('Yours faithfully,', 60, 500, { font: r, handset: true });
+          f.text('I. Halloran', 60, 566, { font: 'italic 500 30px "EB Garamond", serif' });
+          f.text('PROOF ROOM  ·  SHEET 1 OF 1', 240, 640, { font: '500 10px "EB Garamond", serif', align: 'center', tracking: 3 });
+        });
+      } },
+    { w: 640, h: 400, paper: 'black', seed: 3, light: { azimuth: 310, elevation: 40 },
+      ticket: ['Foil on black', 'Stock', 'black cover', 'Die', 'hot foil + blind', 'Ink', 'gold foil', 'Bite', '0.9 px'],
+      run(s) {
+        s.impress('blind', (f) => { f.ctx.lineWidth = 3; f.ctx.strokeRect(38, 38, 564, 324); });
+        s.impress({ ...impressions.foil, ink: 'goldFoil' }, (f) => {
+          f.text('ATELIER', 320, 180, { font: '500 64px "EB Garamond", serif', align: 'center', tracking: 22 });
+          f.rule(250, 212, 140, 1.5);
+          f.text('nocturne', 320, 280, { font: 'italic 62px "EB Garamond", serif', align: 'center' });
+        });
+      } },
+    { w: 640, h: 400, paper: 'cottonWhite', seed: 14, light: { azimuth: 320, elevation: 44 },
+      ticket: ['Three-colour overprint', 'Stock', 'white cotton', 'Passes', '3, slightly off register', 'Ink', 'transparent tints', 'Bite', '1.2 px'],
+      run(s) {
+        const pass = (ink, x, reg, ch) => s.impress({ ...impressions.handset, ink, register: reg, sortVariation: 0.2 }, (f) =>
+          f.text(ch, x, 300, { font: '300px "Alfa Slab One", serif', align: 'center' }));
+        pass('yellow', 210, { x: 0.8, y: -0.5 }, 'A');
+        pass('magenta', 320, { x: -0.6, y: 0.7, rotate: 0.15 }, 'B');
+        pass('cyan', 430, { x: 0.4, y: 0.9, rotate: -0.1 }, 'C');
+      } },
+  ];
+
+  const rack = document.getElementById('rack');
+  const slots = specimens.map((sp) => {
+    const fig = document.createElement('figure');
+    if (sp.cls) fig.className = sp.cls;
+    const cv = document.createElement('canvas');
+    cv.className = 'sheet'; cv.width = sp.w; cv.height = sp.h; cv.style.aspectRatio = sp.w + ' / ' + sp.h;
+    cv.setAttribute('role', 'img'); cv.setAttribute('aria-label', sp.ticket[0]);
+    const cap = document.createElement('figcaption');
+    cap.innerHTML = '<b>' + sp.ticket[0] + '</b>' + sp.ticket.slice(1).map((t) => '<span>' + t + '</span>').join('');
+    fig.append(cv, cap); rack.append(fig);
+    return cv;
+  });
+  for (let i = 0; i < specimens.length; i++) {
+    const sp = specimens[i];
+    status.textContent = 'Printing ' + (i + 1) + ' of ' + specimens.length + ': ' + sp.ticket[0].toLowerCase() + '…';
+    await tick();
+    const sheet = createSheet({ width: sp.w, height: sp.h, paper: sp.paper, seed: sp.seed, pixelRatio: PR, light: sp.light, canvas: slots[i] });
+    try { await sp.run(sheet); } catch (e) { console.error(e); slots[i].nextSibling.firstChild.textContent += ' (could not typeset: ' + e.message + ')'; }
+    sheet.render(); lightFollows(slots[i], sheet);
+  }
+
+  // ---- bench: every knob the library has
+  const $ = (id) => document.getElementById(id);
+  const { loadFont } = Impressio;
+  const benchCanvas = $('bench-sheet'), benchMsg = $('bench-msg'), panel = $('bench');
+  const R = (key, label, min, max, step) => ({ key, label, min, max, step });
+  const PAPER_F = [R('tooth', 'Tooth', 0, 1, 0.01), R('toothScale', 'Tooth size', 0.5, 5, 0.1), R('formation', 'Cloudiness', 0, 1.5, 0.01),
+    R('fibers', 'Fibres', 0, 8, 0.01), R('inclusions', 'Flecks', 0, 2, 0.01), R('softness', 'Softness', 0, 1, 0.01),
+    R('absorbency', 'Absorbency', 0, 1, 0.01), R('weave', 'Felt marks', 0, 1, 0.01), R('cockle', 'Cockle', 0, 1.5, 0.01),
+    R('deckle', 'Deckle edge', 0, 20, 1), R('sheen', 'Sheen', 0, 0.5, 0.01)];
+  const INK_F = [R('strength', 'Pigment load', 0.1, 2, 0.01), R('opacity', 'Hiding power', 0, 1, 0.01), R('gloss', 'Gloss', 0, 1, 0.01), R('metallic', 'Metallic', 0, 1, 0.01)];
+  const RUN_F = [R('depth', 'Bite', 0, 5, 0.01), R('contact', 'Contact', 0.55, 1.2, 0.01), R('inking', 'Ink film', 0.2, 1.6, 0.01),
+    R('squash', 'Edge squash', 0, 1, 0.01), R('mottle', 'Mottle', 0, 1, 0.01), R('wear', 'Wear', 0, 1, 0.01),
+    R('sortVariation', 'Sort variation', 0, 1, 0.01), R('makeready', 'Uneven bed', 0, 1, 0.01), R('gain', 'Ink gain', 0, 1.5, 0.01), R('dish', 'Dishing', 0, 1, 0.01)];
+  const LIGHT_F = [R('azimuth', 'Direction', 0, 360, 1), R('elevation', 'Height', 5, 90, 1), R('intensity', 'Exposure', 0.5, 1.5, 0.01),
+    R('ambient', 'Fill', 0, 0.8, 0.01), R('shadow', 'Cast shadow', 0, 1, 0.01), R('occlusion', 'Cavity shade', 0, 1, 0.01), R('falloff', 'Falloff', 0, 0.5, 0.01)];
+  const LIGHT_0 = { azimuth: 315, elevation: 32, intensity: 1, ambient: 0.3, shadow: 0.6, occlusion: 0.5, falloff: 0.06, color: '#ffffff' };
+  const FACES = [['Garamond italic', 'italic 500 SIZEpx "EB Garamond", serif'], ['Garamond roman', '500 SIZEpx "EB Garamond", serif'],
+    ['Gothic wood type', 'SIZEpx "League Gothic", sans-serif'], ['Slab', 'SIZEpx "Alfa Slab One", serif'], ['Script', 'SIZEpx "Mrs Saint Delafield", cursive'],
+    ['Times bold', '700 SIZEpx Tinos, serif'], ['Literata', '500 SIZEpx Literata, serif'], ['Plex Mono', '500 SIZEpx "IBM Plex Mono", monospace']];
+
+  const el = (tag, attrs, kids) => { const n = Object.assign(document.createElement(tag), attrs || {}); (kids || []).forEach((k) => n.append(k)); return n; };
+  const HELP = {
+    'mode': 'Type prints the copy in the chosen face, and anything between dollar signs is typeset as LaTeX maths. One LaTeX formula treats the whole copy as a single formula, no dollar signs needed.',
+    'font': 'The typeface. Any font the browser can render can be locked up and printed.',
+    'text': 'What gets printed. Press Enter for a new line. Use the usual LaTeX convention for maths: $x^2$ sits inline with the text, $$x^2$$ goes on its own centred line, and \\$ prints a dollar sign.',
+    'fontfile': 'Load a font file from your device and print with it. The file stays in this browser tab; it is not uploaded.',
+    't-size': 'Type size in pixels. A line too long for the sheet is scaled down to fit.',
+    't-tracking': 'Extra space added between letters, in pixels.',
+    'align': 'Whether lines sit against the left edge, the centre or the right edge of the sheet.',
+    'underline': 'Prints a rule under each line, as a strip of brass rule would.',
+    'handset': 'Sets every letter as a separate piece of type, as with metal or wood type. Each letter then sits at a slightly different height and takes ink differently. Sort variation, under Press run, sets how much.',
+    't-jitter': 'How far each hand-set letter drifts out of position, in pixels. Only applies when Hand-set is on.',
+    't-tilt': 'How much each hand-set letter leans off straight, in degrees. Only applies when Hand-set is on.',
+    'paper': 'A preset stock. Choosing one resets all the paper controls below to that stock.',
+    'p-color': 'The base colour of the paper before any cloudiness, fibres or lighting.',
+    'p-tooth': 'How rough the surface is. 0 is smooth like coated paper; 1 is rough like cold-pressed watercolour paper. Rough paper also prints less solidly when Contact is low.',
+    'p-toothScale': 'The size of the bumps that make up the tooth, in pixels. Small is a fine grain; large is a coarse, lumpy surface.',
+    'p-formation': 'Soft, cloudy unevenness in the paper colour, from fibres settling unevenly when the sheet was made.',
+    'p-fibers': 'How many visible fibres of the paper itself show on the surface, per 100 by 100 pixels. They are only slightly lighter or darker than the sheet.',
+    'p-inclusions': 'How many stray dark or coloured specks and threads are caught in the sheet, per 100 by 100 pixels. Keep it low for the occasional fleck.',
+    'p-softness': 'How easily the sheet gives under pressure. Soft cotton takes a deep bite with rounded edges; hard paper takes a shallow, sharper one.',
+    'p-absorbency': 'How much the sheet soaks up ink. Higher values let the ink spread slightly past the edge of the type.',
+    'p-weave': 'A faint woven grid pressed into the surface, left by the felts that handmade and mould-made papers dry on.',
+    'p-cockle': 'Gentle large-scale waviness of the whole sheet, as in paper that dried unevenly.',
+    'p-deckle': 'Width of a rough, feathered torn edge, in pixels. 0 gives a clean cut edge.',
+    'p-sheen': 'How shiny the bare paper is. 0 is completely matte.',
+    's-seed': 'Every sheet is generated from this number. The same number always gives the same sheet and the same print; change it for a different one.',
+    'ink': 'A preset ink. Choosing one resets the ink controls below. Blind means no ink at all: the type is only pressed into the paper.',
+    'i-color': 'The colour of the ink pigment.',
+    'i-strength': 'How much pigment the ink carries. High gives a dense, dark print; low gives a pale, see-through tint.',
+    'i-opacity': 'How well the ink covers what is beneath it. At 0 it is transparent, so overlapping colours mix; at 1 it hides the paper completely.',
+    'i-gloss': 'How shiny the dried ink is. Low is matte; high gives a bright highlight where the light catches it.',
+    'i-metallic': 'How much the ink reflects like metal, as bronze inks and foil do.',
+    'run': 'A preset way of running the press. Choosing one resets the controls below. Deep is a modern plate pressed hard into soft paper; kiss barely touches; woodType is worn poster type inked by hand.',
+    'r-depth': 'How far the type sinks into the paper, in pixels. 0 leaves the surface flat; high values give a deep, sculpted impression.',
+    'r-contact': 'How completely the type touches the paper. At 1 or above the print is solid. Lower it and only the high points of the paper take ink, leaving white specks.',
+    'r-inking': 'How much ink is on the type. Low looks starved and grey; high looks heavy and dark.',
+    'r-squash': 'Ink squeezed out to the edges of each letter under pressure, leaving a darker outline and a slightly lighter centre.',
+    'r-mottle': 'Unevenness of the ink inside solid areas: roller streaks and blotchy patches, so black is never perfectly even.',
+    'r-wear': 'Damage to the printing surface: nicks, scratches and wood grain that show as missing ink.',
+    'r-sortVariation': 'How much each separate letter sits above or below the others, so some print darker and some lighter. Most visible with Hand-set on.',
+    'r-makeready': 'Slow variation in pressure across the sheet, as when the press bed has not been levelled carefully. One side prints weaker than the other.',
+    'r-gain': 'How far the ink spreads beyond the edge of the type, in pixels. Higher values make letters slightly fatter.',
+    'r-dish': 'How much the paper around each pressed shape is pulled down with it, forming a soft hollow. This is what makes type look sunk into the sheet.',
+    'second': 'Run the sheet through the press a second time: an uninked border or ornament, or the same type again in another ink.',
+    'ink2': 'The ink for the second pass when overprinting the same type. Transparent inks mix with the first colour where they overlap.',
+    'g-x': 'How far the second pass lands to the right (or left) of the first, in pixels. Real two-colour work is never perfectly aligned.',
+    'g-y': 'How far the second pass lands below (or above) the first, in pixels.',
+    'g-rotate': 'How much the second pass is turned relative to the first, in degrees.',
+    'l-azimuth': 'Where the light comes from, in degrees clockwise from the top of the sheet. 315 is the upper left.',
+    'l-elevation': 'How high the light sits above the sheet, in degrees. Low light rakes across the surface and exaggerates texture and depth; 90 is straight overhead.',
+    'l-intensity': 'Overall brightness of the photograph.',
+    'l-ambient': 'Soft light from all directions that fills in the shadows. Higher values flatten the relief.',
+    'l-shadow': 'How dark the shadows are that the walls of the impression cast onto its floor.',
+    'l-occlusion': 'Extra darkening in the corners and hollows of the impression, where less light reaches.',
+    'l-falloff': 'How much the sheet darkens on the side away from the light.',
+    'l-color': 'The colour of the light. A slightly warm tone looks like a lamp; a cool one looks like daylight.',
+    'follow': 'When on, moving the pointer over the sheet moves the light and updates Direction and Height.',
+  };
+  let tipN = 0;
+  const info = (id, label) => {
+    const tip = el('span', { className: 'tip', id: 'tip-' + ++tipN, textContent: HELP[id] || '' });
+    tip.setAttribute('role', 'tooltip');
+    const b = el('button', { type: 'button', className: 'info', textContent: 'i' });
+    b.setAttribute('aria-label', 'About ' + label.toLowerCase());
+    b.setAttribute('aria-describedby', tip.id);
+    b.addEventListener('click', (e) => { e.preventDefault(); b.focus(); });
+    return [b, tip];
+  };
+  function group(title, open) {
+    const grid = el('div', { className: 'grid' });
+    panel.append(el('details', { open: !!open }, [el('summary', { textContent: title }), grid]));
+    return grid;
+  }
+  function field(grid, id, label, control, full) {
+    control.id = 'b-' + id;
+    const out = control.type === 'range' ? el('output', { textContent: control.value }) : null;
+    const head = el('span', {}, [el('span', { className: 'lab' }, [label].concat(info(id.replace(/^[a-z]-(?=color$)/, (m) => m), label)))]); if (out) head.append(out);
+    grid.append(el('label', { className: full ? 'full' : '', htmlFor: control.id }, [head, control]));
+    return control;
+  }
+  const range = (grid, pre, f, kind) => { const c = field(grid, pre + '-' + f.key, f.label, el('input', { type: 'range', min: f.min, max: f.max, step: f.step })); c.dataset.kind = kind || ''; return c; };
+  const select = (grid, id, label, opts, def, full) => field(grid, id, label, el('select', {}, opts.map((o) => { const [t, v] = Array.isArray(o) ? o : [o, o]; return new Option(t, v, v === def, v === def); })), full);
+  const check = (grid, id, label) => { const c = el('input', { type: 'checkbox', id: 'b-' + id }); grid.append(el('label', { className: 'check', htmlFor: c.id }, [c, el('span', { className: 'lab' }, [label].concat(info(id, label)))])); return c; };
+  const color = (grid, id, label, kind) => { const c = field(grid, id, label, el('input', { type: 'color' })); c.dataset.kind = kind || ''; return c; };
+  const setVal = (id, v) => { const c = $('b-' + id); if (!c) return; c.value = v; const o = c.parentElement.querySelector('output'); if (o) o.textContent = c.value; };
+
+  // Type
+  let g = group('Type', true);
+  select(g, 'mode', 'Set as', [['Type, with $…$ for LaTeX', 'text'], ['One LaTeX formula', 'tex']], 'text');
+  select(g, 'font', 'Face', FACES.map(([t, v]) => [t, v]), FACES[0][1]);
+  field(g, 'text', 'Copy ($…$ inline maths, $$…$$ displayed maths)', el('textarea', { rows: 2, value: 'Fine printing', maxLength: 200 }), true);
+  g.append(el('button', { type: 'button', id: 'b-sample', textContent: 'Try a sample with inline maths' }));
+  field(g, 'fontfile', 'Or load your own font file (.ttf .otf .woff .woff2)', el('input', { type: 'file', accept: '.ttf,.otf,.woff,.woff2' }), true);
+  range(g, 't', R('size', 'Size', 14, 220, 1)); range(g, 't', R('tracking', 'Letterspacing', -4, 40, 0.5));
+  select(g, 'align', 'Alignment', ['left', 'center', 'right'], 'center');
+  check(g, 'underline', 'Underline rule');
+  check(g, 'handset', 'Hand-set (each letter its own sort)');
+  range(g, 't', R('jitter', 'Sort slop', 0, 2, 0.01)); range(g, 't', R('tilt', 'Sort tilt', 0, 2, 0.01));
+  setVal('t-size', 120); setVal('t-tracking', 0); setVal('t-jitter', 0.15); setVal('t-tilt', 0.15);
+
+  // Stock
+  g = group('Stock', true);
+  select(g, 'paper', 'Paper', Object.keys(papers), 'cotton'); color(g, 'p-color', 'Colour');
+  PAPER_F.forEach((f) => range(g, 'p', f));
+  range(g, 's', R('seed', 'Sheet number (seed)', 1, 999, 1));
+  g.append(el('button', { type: 'button', id: 'b-newsheet', textContent: 'Pull a fresh sheet' }));
+  setVal('s-seed', 42);
+
+  // Ink
+  g = group('Ink', true);
+  select(g, 'ink', 'Ink', ['blind (no ink)'].concat(Object.keys(inks)).map((k) => [k, k.split(' ')[0]]), 'black'); color(g, 'i-color', 'Colour');
+  INK_F.forEach((f) => range(g, 'i', f));
+
+  // Press run
+  g = group('Press run', true);
+  select(g, 'run', 'Preset', Object.keys(impressions), 'deep', true);
+  RUN_F.forEach((f) => range(g, 'r', f));
+
+  // Second pass
+  g = group('Second pass', false);
+  select(g, 'second', 'Add a pass', [['none', 'none'], ['blind border', 'border'], ['blind laurel', 'laurel'], ['overprint the same forme', 'overprint']], 'none');
+  select(g, 'ink2', 'Overprint ink', Object.keys(inks), 'magenta');
+  [R('x', 'Misregister x', -12, 12, 0.25), R('y', 'Misregister y', -12, 12, 0.25), R('rotate', 'Misregister turn', -3, 3, 0.01)].forEach((f) => range(g, 'g', f));
+  setVal('g-x', 3); setVal('g-y', 2); setVal('g-rotate', 0);
+
+  // Light
+  g = group('Light', false);
+  LIGHT_F.forEach((f) => range(g, 'l', f, 'light')); color(g, 'l-color', 'Light colour', 'light');
+  const follow = check(g, 'follow', 'Light follows the pointer'); follow.checked = true;
+  Object.keys(LIGHT_0).forEach((k) => setVal('l-' + k, LIGHT_0[k]));
+
+  panel.append(el('button', { type: 'button', id: 'b-reset', textContent: 'Reset the bench' }));
+
+  const read = (pre, fields) => Object.fromEntries(fields.map((f) => [f.key, +$('b-' + pre + '-' + f.key).value]));
+  const readPaper = () => ({ color: $('b-p-color').value, ...read('p', PAPER_F) });
+  const readInk = () => ($('b-ink').value === 'blind' ? null : { color: $('b-i-color').value, ...read('i', INK_F) });
+  const readRun = () => read('r', RUN_F);
+  const readLight = () => ({ ...read('l', LIGHT_F), color: $('b-l-color').value });
+  const applyPaper = () => { const p = papers[$('b-paper').value]; setVal('p-color', p.color); PAPER_F.forEach((f) => setVal('p-' + f.key, p[f.key])); };
+  const applyInk = () => { const i = inks[$('b-ink').value]; if (!i) return; setVal('i-color', i.color); INK_F.forEach((f) => setVal('i-' + f.key, i[f.key])); };
+  const applyRun = () => {
+    const name = $('b-run').value, p = { ...impressions.deep, ...impressions[name] };
+    RUN_F.forEach((f) => setVal('r-' + f.key, p[f.key]));
+    if (name === 'blind') setVal('ink', 'blind');
+    else if (name === 'foil') { setVal('ink', 'goldFoil'); applyInk(); }
+    else if ($('b-ink').value === 'blind') { setVal('ink', 'black'); applyInk(); }
+    $('b-handset').checked = p.sortVariation > 0.3;
+  };
+  applyPaper(); applyInk(); applyRun();
+
+  let benchSheet = null, pullId = 0, placed = null;
+  async function pull() {
+    const id = ++pullId, mode = $('b-mode').value, text = $('b-text').value || ' ', size = +$('b-t-size').value;
+    const paper = readPaper(), run = readRun(), inkNow = readInk(), second = $('b-second').value;
+    let cut = null, block = null;
+    benchMsg.textContent = '';
+    if (mode === 'text' && /\$[^$]+\$/.test(text)) {
+      try {
+        let sz = size;
+        for (let tries = 0; tries < 6; tries++) {
+          block = await typesetRich(text, { font: $('b-font').value.replace('SIZE', +sz.toFixed(1)), maxWidth: 580, align: $('b-align').value, tracking: +$('b-t-tracking').value, handset: $('b-handset').checked });
+          if (block.height <= 360 || sz < 10) break;
+          sz *= 0.85;
+        }
+        block.font = $('b-font').value.replace('SIZE', +sz.toFixed(1));
+      } catch (e) { block = null; benchMsg.textContent = String(e.message).replace('impressio: ', '') + '. Showing the copy as type instead.'; }
+      if (id !== pullId) return;
+    }
+    if (mode === 'tex') {
+      try { cut = await typesetTex(text.replace(/^\s*\$\$?|\$\$?\s*$/g, ''), { size }); } catch (e) { benchMsg.textContent = String(e.message).replace('impressio: ', '') + '. Showing the copy as type instead.'; }
+      if (id !== pullId) return;
+    }
+    const dbl = /\$/.test(text) || mode === 'tex' ? /\\\\([a-zA-Z]+)/.exec(text) : null;
+    if (dbl && !benchMsg.textContent) benchMsg.textContent = 'Note: "\\\\' + dbl[1] + '" has two backslashes, which TeX reads as a line break followed by the letters "' + dbl[1] + '". Use "\\' + dbl[1] + '" for the symbol.';
+    const sheet = createSheet({ width: 660, height: 400, paper, seed: +$('b-s-seed').value, pixelRatio: PR, canvas: benchCanvas, light: readLight() });
+    const draw = (f) => {
+      if (block) {
+        placed = { rich: true, y: Math.round(200 - block.height / 2), font: block.font };
+        f.block(block, 40, placed.y);
+        return;
+      }
+      if (cut) {
+        const k = Math.min(1, 600 / cut.width, 340 / cut.height);
+        placed = { tex: true, y: Math.round(200 - (cut.height / 2 - cut.baseline) * k), scale: +k.toFixed(3) };
+        f.cut(cut, 330, placed.y, { align: 'center', scale: k });
+        return;
+      }
+      const face = $('b-font').value, tracking = +$('b-t-tracking').value, lines = text.split('\n'), align = $('b-align').value;
+      f.ctx.font = face.replace('SIZE', size);
+      const widest = Math.max.apply(null, lines.map((l) => f.ctx.measureText(l).width + tracking * Math.max(0, l.length - 1)));
+      const sz = widest > 600 ? size * 600 / widest : size, lh = sz * 1.15;
+      placed = { font: face.replace('SIZE', +sz.toFixed(1)), x: align === 'left' ? 30 : align === 'right' ? 630 : 330, y: Math.round(200 - (lines.length - 1) * lh / 2 + sz * 0.3),
+        opts: { align, tracking, lineHeight: +lh.toFixed(1), handset: $('b-handset').checked, jitter: +$('b-t-jitter').value, tilt: +$('b-t-tilt').value, underline: $('b-underline').checked } };
+      f.text(text, placed.x, placed.y, { font: placed.font, ...placed.opts });
+    };
+    if (second === 'border') sheet.impress('blind', (f) => { f.ctx.lineWidth = 3; f.ctx.strokeRect(24, 24, 612, 352); });
+    if (second === 'laurel') sheet.impress('blind', (f) => laurel(f, 330, 352, 240, 24));
+    sheet.impress({ ...run, ink: inkNow }, draw);
+    if (second === 'overprint') sheet.impress({ ...run, ink: $('b-ink2').value, register: read('g', [{ key: 'x' }, { key: 'y' }, { key: 'rotate' }]) }, draw);
+    sheet.render();
+    benchSheet = sheet;
+    writeCode();
+  }
+
+  // The current print as code, showing only what differs from the presets.
+  const lit = (o) => '{ ' + Object.entries(o).map(([k, v]) => k + ': ' + (typeof v === 'string' ? "'" + v + "'" : v)).join(', ') + ' }';
+  const diff = (cur, base) => Object.fromEntries(Object.entries(cur).filter(([k, v]) => String(v).toLowerCase() !== String(base[k]).toLowerCase()));
+  const spread = (ns, name, d) => (Object.keys(d).length ? '{ ...' + ns + '.' + name + ', ' + lit(d).slice(2) : "'" + name + "'");
+  function writeCode() {
+    const pn = $('b-paper').value, inn = $('b-ink').value, rn = $('b-run').value, second = $('b-second').value;
+    const text = JSON.stringify($('b-text').value), ld = diff(readLight(), { ...LIGHT_0, azimuth: -1, elevation: -1 });
+    const rd = diff(readRun(), { ...impressions.deep, ...impressions[rn] });
+    const inkExpr = inn === 'blind' ? 'null' : spread('inks', inn, diff(readInk(), inks[inn]));
+    const runExpr = '{ ...impressions.' + rn + (Object.keys(rd).length ? ', ' + lit(rd).slice(2, -2) : '') + ', ink: ' + inkExpr + ' }';
+    const L = [];
+    L.push("import { createSheet, papers, inks, impressions, typesetTex, typesetRich } from 'impressio';", '');
+    L.push('const sheet = createSheet({ width: 660, height: 400, seed: ' + $('b-s-seed').value + ', paper: ' + spread('papers', pn, diff(readPaper(), papers[pn])) + ' });');
+    let body;
+    if (placed && placed.rich) {
+      const o = diff({ align: $('b-align').value, tracking: +$('b-t-tracking').value, handset: $('b-handset').checked }, { align: 'left', tracking: 0, handset: false });
+      L.push('const block = await typesetRich(' + text + ", { font: '" + placed.font + "', maxWidth: 580" + (Object.keys(o).length ? ', ' + lit(o).slice(2, -2) : '') + ' });');
+      body = 'f.block(block, 40, ' + placed.y + ')';
+    } else if (placed && placed.tex) {
+      L.push('const eq = await typesetTex(' + JSON.stringify($('b-text').value.replace(/^\s*\$\$?|\$\$?\s*$/g, '')) + ', { size: ' + $('b-t-size').value + ' });');
+      body = 'f.cut(eq, 330, ' + placed.y + ", { align: 'center'" + (placed.scale < 1 ? ', scale: ' + placed.scale : '') + ' })';
+    } else if (placed) {
+      const o = diff(placed.opts, { align: 'left', tracking: 0, handset: false, underline: false, jitter: placed.opts.handset ? 0.15 : placed.opts.jitter, tilt: placed.opts.handset ? 0.15 : placed.opts.tilt });
+      body = 'f.text(' + text + ', ' + placed.x + ', ' + placed.y + ", { font: '" + placed.font + "'" + (Object.keys(o).length ? ', ' + lit(o).slice(2, -2) : '') + ' })';
+    }
+    L.push('const forme = f => ' + body + ';', '');
+    if (second === 'border') L.push("sheet.impress('blind', f => { f.ctx.lineWidth = 3; f.ctx.strokeRect(24, 24, 612, 352); });");
+    if (second === 'laurel') L.push("sheet.impress('blind', f => drawLaurel(f)); // any Canvas 2D drawing");
+    L.push('sheet.impress(' + runExpr + ', forme);');
+    if (second === 'overprint') L.push("sheet.impress({ ...impressions." + rn + (Object.keys(rd).length ? ', ' + lit(rd).slice(2, -2) : '') + ", ink: '" + $('b-ink2').value + "', register: " + lit(read('g', [{ key: 'x' }, { key: 'y' }, { key: 'rotate' }])) + ' }, forme);');
+    L.push('', 'document.body.append(sheet.render(' + lit(ld) + '));');
+    $('b-code').textContent = L.join('\n');
+  }
+
+  let timer = 0;
+  const later = () => { clearTimeout(timer); timer = setTimeout(pull, 140); };
+  panel.addEventListener('input', (e) => {
+    const t = e.target, o = t.parentElement && t.parentElement.querySelector('output');
+    if (o) o.textContent = t.value;
+    if (t.type === 'file') return;
+    if (t.id === 'b-paper') applyPaper(); else if (t.id === 'b-ink') applyInk(); else if (t.id === 'b-run') applyRun();
+    if (t.dataset.kind === 'light') { if (benchSheet) { benchSheet.render(readLight()); writeCode(); } return; }
+    if (t.id === 'b-follow') return;
+    later();
+  });
+  $('b-fontfile').addEventListener('change', async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    try {
+      const name = 'Bench ' + file.name.replace(/\.[^.]+$/, '').replace(/[^\w -]/g, '');
+      await loadFont(name, await file.arrayBuffer());
+      const opt = new Option(file.name, 'SIZEpx "' + name + '"', true, true);
+      $('b-font').add(opt); setVal('mode', 'text');
+      benchMsg.textContent = ''; pull();
+    } catch (err) { benchMsg.textContent = 'That file could not be read as a font.'; }
+  });
+  $('b-sample').addEventListener('click', () => {
+    setVal('mode', 'text'); setVal('t-size', 30); setVal('font', FACES[1][1]); setVal('align', 'left');
+    $('b-text').value = 'A circle of radius $r$ has area $A = \\pi r^{2}$, and Euler found that $e^{i\\pi} + 1 = 0$. Summing the squares,\n$$\\sum_{n=1}^{\\infty} \\frac{1}{n^{2}} = \\frac{\\pi^{2}}{6}.$$';
+    pull();
+  });
+  $('b-newsheet').addEventListener('click', () => { setVal('s-seed', 1 + Math.floor(Math.random() * 999)); pull(); });
+  $('b-reset').addEventListener('click', () => {
+    setVal('mode', 'text'); setVal('font', FACES[0][1]); setVal('text', 'Fine printing'); setVal('align', 'center');
+    setVal('t-size', 120); setVal('t-tracking', 0); setVal('t-jitter', 0.15); setVal('t-tilt', 0.15); $('b-underline').checked = false;
+    setVal('paper', 'cotton'); setVal('ink', 'black'); setVal('run', 'deep'); setVal('second', 'none'); setVal('s-seed', 42);
+    setVal('g-x', 3); setVal('g-y', 2); setVal('g-rotate', 0);
+    Object.keys(LIGHT_0).forEach((k) => setVal('l-' + k, LIGHT_0[k]));
+    applyPaper(); applyInk(); applyRun(); pull();
+  });
+  $('b-mode').addEventListener('change', () => {
+    const t = $('b-text');
+    if ($('b-mode').value === 'tex' && !/[\\^_{]/.test(t.value)) { t.value = '\\oint_{\\gamma} f(z)\\,dz = 2\\pi i \\sum_{k} \\operatorname{Res}(f, a_k)'; setVal('t-size', 44); }
+    if ($('b-mode').value === 'text' && /\\/.test(t.value)) { t.value = 'Fine printing'; setVal('t-size', 120); setVal('align', 'center'); }
+  });
+  $('b-copy').addEventListener('click', async () => {
+    const code = $('b-code');
+    try { await navigator.clipboard.writeText(code.textContent); $('b-copy').textContent = 'Copied'; }
+    catch (e) { const r = document.createRange(); r.selectNodeContents(code); const s = getSelection(); s.removeAllRanges(); s.addRange(r); $('b-copy').textContent = 'Selected: press copy'; }
+    setTimeout(() => { $('b-copy').textContent = 'Copy'; }, 1800);
+  });
+  benchCanvas.width = 660; benchCanvas.height = 400; benchCanvas.style.aspectRatio = '660 / 400';
+  let braf = 0;
+  benchCanvas.addEventListener('pointermove', (e) => {
+    if (!follow.checked || braf || !benchSheet) return;
+    braf = requestAnimationFrame(() => {
+      braf = 0;
+      const r = benchCanvas.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+      setVal('l-azimuth', Math.round((Math.atan2(x, -y) * 180 / Math.PI + 360) % 360));
+      setVal('l-elevation', Math.round(Math.max(12, 58 - Math.hypot(x, y) * 80)));
+      benchSheet.render(readLight());
+    });
+  });
+  await pull();
+
+  // ---- live DOM text
+  const live = await pressElement($('live'), { paper: 'cotton', impression: 'deep', seed: 9, pixelRatio: PR, light: { azimuth: 315, elevation: 34 } });
+  let lw = $('live').offsetWidth, rt = 0;
+  new ResizeObserver(() => {
+    if ($('live').offsetWidth === lw) return;
+    lw = $('live').offsetWidth; clearTimeout(rt); rt = setTimeout(() => live.update(), 200);
+  }).observe($('live'));
+  status.textContent = '';
+})().catch((e) => { document.getElementById('status').textContent = 'Could not print: ' + e.message; console.error(e); });
+</script>
