@@ -4,11 +4,20 @@
   <img src="docs/header.webp" width="640" alt="A notice card letterpressed by Impressio from live HTML text">
 </p>
 
+<p align="center">
+  <a href="https://www.npmjs.com/package/impressio"><img src="https://img.shields.io/npm/v/impressio?color=7a1f1c&label=npm" alt="npm version"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/npm/l/impressio?color=1d2f55" alt="MIT licence"></a>
+</p>
+
 <p align="center"><b><a href="https://delip.github.io/impressio/">Live demo</a></b> · <b><a href="GALLERY.md">Gallery: every feature, with a picture and the code that made it</a></b></p>
 
 Letterpress on cardstock, simulated. A TypeScript library (zero dependencies, ~20 kB minified)
 that renders to a `<canvas>`. Nothing is a texture or an image: every sheet is generated, pressed,
 inked and lit from a seed.
+
+```bash
+npm install impressio
+```
 
 ```ts
 import { createSheet } from 'impressio';
